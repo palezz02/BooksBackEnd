@@ -20,7 +20,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "authors")
 
-public class Authors {
+public class Author {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,5 +42,5 @@ public class Authors {
     private String coverImageUrl;
 
     @ManyToMany(mappedBy = "authors", fetch = FetchType.EAGER)
-    private List<Books> books;
+    private List<Book> books;
 }
