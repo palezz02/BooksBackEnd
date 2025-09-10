@@ -53,4 +53,13 @@ public class Book {
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "publisher_id", nullable = false)
 	private Publisher publisher;
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(
+	    name = "book_category",
+	    joinColumns = @JoinColumn(name = "book_id"),
+	    inverseJoinColumns = @JoinColumn(name = "category_id")
+	)
+	private List<Category> categories;
+
 }
