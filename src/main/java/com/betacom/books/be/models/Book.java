@@ -78,7 +78,7 @@ public class Book {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "inventory_id", referencedColumnName = "id")
-	private Inventory invenory;
+	private Inventory inventory;
 	
 	@OneToMany(mappedBy = "book", fetch = FetchType.EAGER)
 	private List<Review> reviews;

@@ -37,7 +37,7 @@ public class Inventory {
 	@Column(name = "updated_at", nullable = false)
 	private LocalDateTime updatedAt;
 	
-	@OneToOne(mappedBy = "book")
+	@OneToOne(mappedBy = "inventory")
 	private Book book;
 	
 	@OneToMany(mappedBy = "inventory", fetch = FetchType.EAGER)
