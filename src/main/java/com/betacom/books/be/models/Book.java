@@ -14,6 +14,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
@@ -77,7 +78,10 @@ public class Book {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "inventory_id", referencedColumnName = "id")
-	private Inventory invenory;
+	private Inventory inventory;
+	
+	@OneToMany(mappedBy = "book", fetch = FetchType.EAGER)
+	private List<Review> reviews;
 	
 
 }

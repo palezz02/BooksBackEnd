@@ -34,7 +34,7 @@ public class Review {
 
 	@ManyToOne
 	@JoinColumn(
-			name="user",
+			name="user_id",
 			nullable = false
 			)
 	private User user;
