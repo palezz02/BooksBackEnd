@@ -39,8 +39,8 @@ public class Review {
 			)
 	private User user;
 
-   @Min(0)
-   @Max(5)
+    @Min(0)
+    @Max(5)
 	@Column (name="rating",
 			nullable = false)
 	private int rating;

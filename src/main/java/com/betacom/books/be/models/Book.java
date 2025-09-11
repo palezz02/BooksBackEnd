@@ -15,6 +15,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,6 +31,7 @@ public class Book {
 	private String isbn;
 	@Column(name = "title", length = 150, nullable = false)
 	private String title;
+	@Max(value = 10000)
 	@Column(name = "page_count", nullable = false)
 	private Integer pageCount;
 	@Column(name = "description", nullable = true, length = 5000)
