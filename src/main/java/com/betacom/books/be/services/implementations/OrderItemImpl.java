@@ -10,9 +10,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 public class OrderItemImpl implements IOrderItemServices {
 	private IOrderItemRepository orderIRep;
-
+	
 	@Override
-	public OrderItemDTO getAll(OrderItemReq req) throws BooksException {
+	public OrderItemDTO getAll() throws BooksException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public OrderItemDTO getById(Integer id) throws BooksException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -37,5 +43,7 @@ public class OrderItemImpl implements IOrderItemServices {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 
 }
