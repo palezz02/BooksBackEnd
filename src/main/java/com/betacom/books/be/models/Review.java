@@ -43,15 +43,15 @@ public class Review {
     @Max(5)
 	@Column (name="rating",
 			nullable = false)
-	private int rating;
+	private Integer rating;
 
 	@Column (name="title",
 			nullable = true)
-	private int title;
+	private String title;
 
 	@Column (name="body",
 			nullable = true)
-	private int body;
+	private String body;
 
 	@Column (name="created_at",
 			nullable = false)
