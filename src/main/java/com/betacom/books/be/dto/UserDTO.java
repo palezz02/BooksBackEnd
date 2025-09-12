@@ -1,0 +1,34 @@
+package com.betacom.books.be.dto;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import com.betacom.books.be.models.Address;
+import com.betacom.books.be.models.Order;
+import com.betacom.books.be.models.Review;
+import com.betacom.books.be.utils.Roles;
+
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@ToString
+@Builder
+@Getter
+@Setter
+public class UserDTO {
+
+	private Integer id;
+	private String email;
+	private String password;
+	private String firstName;
+	private String lastName;
+	private LocalDate birthDate;
+	private LocalDate createdAt;
+	private LocalDate updatedAt;
+	private Roles role;
+	private List<Review> reviews;
+	private List<Address> addresses;
+	private List<Order> orders;
+}

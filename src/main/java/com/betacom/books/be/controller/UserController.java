@@ -1,6 +1,5 @@
 package com.betacom.books.be.controller;
 
-import java.util.List;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,30 +9,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.betacom.books.be.dto.ReviewDTO;
-import com.betacom.books.be.requests.ReviewReq;
+import com.betacom.books.be.dto.UserDTO;
+import com.betacom.books.be.requests.UserReq;
 import com.betacom.books.be.response.ResponseBase;
 import com.betacom.books.be.response.ResponseList;
-import com.betacom.books.be.services.interfaces.IReviewServices;
+import com.betacom.books.be.services.interfaces.IUserServices;
 
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @RestController
-@RequestMapping("/rest/review")
-public class ReviewController {
+@RequestMapping("/rest/user")
+public class UserController {
 
-	private IReviewServices reviewS;
+	private IUserServices userS;
 
-	public ReviewController(IReviewServices reviewS) {
-		this.reviewS = reviewS;
+	public UserController(IUserServices userS) {
+		this.userS = userS;
 	}
 
 	@PostMapping("create")
-	public ResponseBase create(@RequestBody(required = true) ReviewReq req) {
+	public ResponseBase create(@RequestBody(required = true) UserReq req) {
 		ResponseBase r = new ResponseBase();
 		try {
-			reviewS.create(req);
+			userS.create(req);
 			r.setRc(true);
 		} catch (Exception e) {
 			r.setRc(false);
@@ -43,10 +42,10 @@ public class ReviewController {
 	}
 
 	@DeleteMapping("delete")
-	public ResponseBase delete(@RequestBody(required = true) ReviewReq req) {
+	public ResponseBase delete(@RequestBody(required = true) UserReq req) {
 		ResponseBase r = new ResponseBase();
 		try {
-			reviewS.delete(req);
+			userS.delete(req);
 			r.setRc(true);
 		} catch (Exception e) {
 			r.setRc(false);
@@ -56,10 +55,10 @@ public class ReviewController {
 	}
 
 	@PutMapping("update")
-	public ResponseBase update(@RequestBody(required = true) ReviewReq req) {
+	public ResponseBase update(@RequestBody(required = true) UserReq req) {
 		ResponseBase r = new ResponseBase();
 		try {
-			reviewS.update(req);
+			userS.update(req);
 			r.setRc(true);
 		} catch (Exception e) {
 			r.setRc(false);
@@ -69,10 +68,10 @@ public class ReviewController {
 	}
 
 	@GetMapping("/getAll")
-	public ResponseList<ReviewDTO> getAll() {
-		ResponseList<ReviewDTO> r = new ResponseList<ReviewDTO>();
+	public ResponseList<UserDTO> getAll() {
+		ResponseList<UserDTO> r = new ResponseList<UserDTO>();
 		try {
-			r.setDati(reviewS.getAll());
+			r.setDati(userS.getAll());
 			r.setRc(true);
 		} catch (Exception e) {
 			r.setRc(false);
@@ -80,4 +79,5 @@ public class ReviewController {
 		}
 		return r;
 	}
+
 }
