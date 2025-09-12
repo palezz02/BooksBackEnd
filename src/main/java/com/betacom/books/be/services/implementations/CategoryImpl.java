@@ -38,7 +38,7 @@ public class CategoryImpl implements ICategoryService{@Override
 	}
 
 	@Override
-	public List<CategoryReq> getAll() {
+	public List<CategoryDTO> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}

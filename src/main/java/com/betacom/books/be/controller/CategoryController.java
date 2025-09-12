@@ -8,27 +8,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.betacom.books.be.dto.BookDTO;
-import com.betacom.books.be.requests.BookReq;
+import com.betacom.books.be.dto.CategoryDTO;
+import com.betacom.books.be.requests.CategoryReq;
 import com.betacom.books.be.response.ResponseBase;
 import com.betacom.books.be.response.ResponseList;
-import com.betacom.books.be.services.interfaces.IBookService;
+import com.betacom.books.be.services.interfaces.ICategoryService;
 
 @RestController
-@RequestMapping("/rest/book")
-public class BookController {
-	
-	private IBookService bookService;
+@RequestMapping("/rest/category")
+public class CategoryController {
 
-	public BookController(IBookService bookService) {
-		this.bookService = bookService;
+	private ICategoryService categoryService;
+
+	public CategoryController(ICategoryService categoryService) {
+		this.categoryService = categoryService;
 	}
 	
 	@PostMapping("create")
-	public ResponseBase create(@RequestBody (required = true)  BookReq req) {
+	public ResponseBase create(@RequestBody (required = true)  CategoryReq req) {
 		ResponseBase r = new ResponseBase();
 		try {
-			bookService.create(req);
+			categoryService.create(req);
 			r.setRc(true);
 		} catch (Exception e) {
 			r.setRc(false);
@@ -38,10 +38,10 @@ public class BookController {
 	}
 	
 	@PutMapping("update")
-	public ResponseBase update(@RequestBody (required = true)  BookReq req) {
+	public ResponseBase update(@RequestBody (required = true)  CategoryReq req) {
 		ResponseBase r = new ResponseBase();
 		try {
-			bookService.update(req);
+			categoryService.update(req);
 			r.setRc(true);
 		} catch (Exception e) {
 			r.setRc(false);
@@ -51,10 +51,10 @@ public class BookController {
 	}
 
 	@PostMapping("delete")
-	public ResponseBase delete(@RequestBody (required = true)  BookReq req) {
+	public ResponseBase delete(@RequestBody (required = true)  CategoryReq req) {
 		ResponseBase r = new ResponseBase();
 		try {
-			bookService.delete(req);
+			categoryService.delete(req);
 			r.setRc(true);
 		} catch (Exception e) {
 			r.setRc(false);
@@ -67,7 +67,7 @@ public class BookController {
 	public ResponseBase getById(@RequestParam (required = true) Integer id) {
 		ResponseBase r = new ResponseBase();
 		try {
-			bookService.getById(id);
+			categoryService.getById(id);
 			r.setRc(true);
 		} catch (Exception e) {
 			r.setRc(false);
@@ -77,10 +77,10 @@ public class BookController {
 	}
 	
 	@GetMapping("getAll")
-	public ResponseList<BookDTO> getAll(){
-		ResponseList<BookDTO> r = new ResponseList<BookDTO>();
+	public ResponseList<CategoryDTO> getAll(){
+		ResponseList<CategoryDTO> r = new ResponseList<CategoryDTO>();
 		try {
-			r.setDati(bookService.getAll());
+			r.setDati(categoryService.getAll());
 			r.setRc(true);
 		} catch (Exception e) {
 			r.setRc(false);
@@ -89,5 +89,5 @@ public class BookController {
 		return r;
 	}
 	
-
+	
 }

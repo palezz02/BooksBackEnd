@@ -12,5 +12,5 @@ public interface ICategoryService{
 	void update(CategoryReq req) throws BooksException;
 	void delete(CategoryReq req) throws BooksException;
 	CategoryDTO getById(Integer id) throws BooksException;
-	List<CategoryReq> getAll();
+	List<CategoryDTO> getAll();
 }
