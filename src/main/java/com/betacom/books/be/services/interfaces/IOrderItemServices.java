@@ -10,7 +10,7 @@ public interface IOrderItemServices {
 	List<OrderItemDTO> getAll() throws BooksException;
 	OrderItemDTO getById(Integer id) throws BooksException;
 	
-	void create(OrderItemReq req) throws BooksException;
+	OrderItemDTO create(OrderItemReq req) throws BooksException;
 	void update(OrderItemReq req) throws BooksException;
 	void delete(OrderItemReq req) throws BooksException;
 	
