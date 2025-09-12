@@ -1,5 +1,7 @@
 package com.betacom.books.be.services.implementations;
 
+import java.util.List;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import com.betacom.books.be.dto.PublisherDTO;
@@ -12,7 +14,7 @@ public class PublisherImpl implements IPublisherServices {
 	private IPublisherRepository publishRep;
 	
 	@Override
-	public PublisherDTO getAll() throws BooksException {
+	public List<PublisherDTO> getAll() throws BooksException {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -6,13 +6,15 @@ import com.betacom.books.be.repositories.IOrderItemRepository;
 import com.betacom.books.be.requests.OrderItemReq;
 import com.betacom.books.be.services.interfaces.IOrderItemServices;
 
+import java.util.List;
+
 import org.springframework.transaction.annotation.Transactional;
 
 public class OrderItemImpl implements IOrderItemServices {
 	private IOrderItemRepository orderIRep;
 	
 	@Override
-	public OrderItemDTO getAll() throws BooksException {
+	public List<OrderItemDTO> getAll() throws BooksException {
 		// TODO Auto-generated method stub
 		return null;
 	}
