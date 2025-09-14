@@ -1,6 +1,7 @@
 package com.betacom.books.be.requests;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,5 +25,8 @@ public class BookReq {
 	private String languageCode;
 	private LocalDate PublicationDate;
 	private String edition;
+    private Integer publisherId;
+    private List<Integer> authorIds;
+    private List<Integer> categoryIds;
 	private String errorMsg;
 }

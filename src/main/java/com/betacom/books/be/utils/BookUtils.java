@@ -17,21 +17,21 @@ public final class BookUtils {
 	            return null;
 	        }
 
-	        BookDTO dto = new BookDTO();
-	        dto.setId(book.getId());
-	        dto.setIsbn(book.getIsbn());
-	        dto.setTitle(book.getTitle());
-	        dto.setPageCount(book.getPageCount());
-	        dto.setDescription(book.getDescription());
-	        dto.setCoverImage(book.getCoverImage());
-	        dto.setLanguageCode(book.getLanguageCode());
-	        dto.setPublicationDate(book.getPublicationDate());
-	        dto.setEdition(book.getEdition());
-	        dto.setPublisher(toDTO(book.getPublisher()));
-	        dto.setAuthors(toAuthorDTOList(book.getAuthors()));
-	        dto.setCategories(toCategoryDTOList(book.getCategories()));
-	        dto.setReviews(toReviewDTOList(book.getReviews()));
-	        return dto;
+	        return BookDTO.builder()
+	                .id(book.getId())
+	                .isbn(book.getIsbn())
+	                .title(book.getTitle())
+	                .pageCount(book.getPageCount())
+	                .description(book.getDescription())
+	                .coverImage(book.getCoverImage())
+	                .languageCode(book.getLanguageCode())
+	                .publicationDate(book.getPublicationDate())
+	                .edition(book.getEdition())
+	                .publisher(toDTO(book.getPublisher()))
+	                .authors(toAuthorDTOList(book.getAuthors()))
+	                .categories(toCategoryDTOList(book.getCategories()))
+	                .reviews(toReviewDTOList(book.getReviews()))
+	                .build();
 	    }
 
 
