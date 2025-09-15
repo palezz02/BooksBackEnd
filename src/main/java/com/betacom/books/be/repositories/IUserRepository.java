@@ -8,4 +8,6 @@ import com.betacom.books.be.models.User;
 @Repository
 public interface IUserRepository extends JpaRepository<User, Integer> {
 
+	boolean existsByEmail(String email);
+
 }
