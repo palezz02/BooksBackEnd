@@ -1,6 +1,7 @@
 package com.betacom.books.be.models;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.betacom.books.be.utils.Roles;
@@ -43,10 +44,10 @@ public class User {
 	private LocalDate birthDate;
 	
 	@Column(name = "created_at", nullable = false)
-	private LocalDate createdAt;
+	private LocalDateTime createdAt;
 	
 	@Column(name = "updated_at", nullable = false)
-	private LocalDate updatedAt;
+	private LocalDateTime updatedAt;
 
 	@Column(name = "role", nullable = false)
 	private Roles role;
