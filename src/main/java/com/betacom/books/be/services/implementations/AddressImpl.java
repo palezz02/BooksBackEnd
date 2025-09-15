@@ -35,7 +35,6 @@ public class AddressImpl extends Utilities implements IAddressService {
     public Integer create(AddressReq req) throws BooksException {
         log.debug("create :" + req);
 
-        // validate user
         Optional<User> userOpt = userR.findById(req.getUserId());
         if (userOpt.isEmpty()) {
             throw new BooksException("User not found for id " + req.getUserId());
@@ -64,7 +63,6 @@ public class AddressImpl extends Utilities implements IAddressService {
 
         Address addr = addrOpt.get();
 
-        // prevent deletion if address has orders
         if (addr.getOrders() != null && !addr.getOrders().isEmpty()) {
             throw new BooksException("Address has associated orders and cannot be deleted");
         }

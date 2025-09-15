@@ -57,7 +57,6 @@ public class AuthorImpl extends Utilities implements IAuthorService {
 
         Author author = authorOpt.get();
 
-        // prevent deletion if author is linked to books
         if (author.getBooks() != null && !author.getBooks().isEmpty()) {
             throw new BooksException("Author has associated books and cannot be deleted");
         }
