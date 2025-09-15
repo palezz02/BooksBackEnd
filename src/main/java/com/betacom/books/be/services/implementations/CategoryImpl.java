@@ -12,7 +12,7 @@ import com.betacom.books.be.models.Category;
 import com.betacom.books.be.repositories.ICategoryRepository;
 import com.betacom.books.be.requests.CategoryReq;
 import com.betacom.books.be.services.interfaces.ICategoryService;
-import com.betacom.books.be.utils.CategoryUtils;
+import com.betacom.books.be.utils.UtilsCategory;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -39,7 +39,7 @@ public class CategoryImpl implements ICategoryService{
 		category.setName(req.getName().trim().toUpperCase());
 
 		categoryRepository.save(category);
-		return CategoryUtils.toDTO(category);
+		return UtilsCategory.toDTO(category);
 	}
 
 	@Transactional(rollbackFor = Exception.class)
@@ -91,14 +91,14 @@ public class CategoryImpl implements ICategoryService{
 	        throw new BooksException("Cannot delete category with ID " + id + " as it is associated with books.");
 	    }
 
-		return CategoryUtils.toDTO(category);
+		return UtilsCategory.toDTO(category);
 	}
 
 	@Override
 	public List<CategoryDTO> getAll() {
 		log.debug("getAll");
 		List<Category> categories = categoryRepository.findAll();
-		return CategoryUtils.toDTOList(categories);
+		return UtilsCategory.toDTOList(categories);
 	}
 
 }

@@ -7,10 +7,10 @@ import java.util.stream.Collectors;
 import com.betacom.books.be.dto.BookDTO;
 import com.betacom.books.be.models.Book;
 
-public final class BookUtils {
+public final class UtilsBook {
 
 
-	    private BookUtils() {	}
+	    private UtilsBook() {	}
 
 	    public static BookDTO toDTO(Book book) {
 	        if (book == null) {
@@ -40,7 +40,7 @@ public final class BookUtils {
 	            return Collections.emptyList();
 	        }
 	        return books.stream()
-	                    .map(BookUtils::toDTO)
+	                    .map(UtilsBook::toDTO)
 	                    .collect(Collectors.toList());
 	    }
 }

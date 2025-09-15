@@ -17,7 +17,7 @@ import com.betacom.books.be.models.Publisher;
 import com.betacom.books.be.repositories.IBookRepository;
 import com.betacom.books.be.requests.BookReq;
 import com.betacom.books.be.services.interfaces.IBookService;
-import com.betacom.books.be.utils.BookUtils;
+import com.betacom.books.be.utils.UtilsBook;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -59,12 +59,20 @@ public class BookImpl implements IBookService{
 		if (b.isPresent()) {
 			throw new BooksException("ISBN " + req.getIsbn() + " already exist");
 		}
-		
 		if (b.get().getInventory() == null) {
 			throw new BooksException("Inventory not found");
 		}
 		
 		Book book = new Book();
+		Inventory inventory = b.get().getInventory();
+		
+		inventory.setStock(inventory.getStock() + 1);
+		inventory.setUpdatedAt(LocalDateTime.now());
+		
+		if(inventory.getStock() > 1000) {
+			throw new BooksException("Inventory capacity is full");
+		}
+		
 		book.setIsbn(req.getIsbn());
 		book.setTitle(req.getTitle());
 		book.setPageCount(req.getPageCount());
@@ -76,12 +84,9 @@ public class BookImpl implements IBookService{
 
 		bookRepository.save(book);
 		
-		Inventory inventory = b.get().getInventory();
-		inventory.setStock(inventory.getStock() + 1);
-		inventory.setUpdatedAt(LocalDateTime.now());
 		invenntoryRepository.save();
 		
-		return BookUtils.toDTO(book);
+		return UtilsBook.toDTO(book);
 	}
 
 	@Transactional(rollbackFor = Exception.class)
@@ -140,8 +145,15 @@ public class BookImpl implements IBookService{
 			}
 			
 			Inventory inventory = existingBook.getInventory();
+			
+			if((inventory.getStock() - 1) < 0) {
+				throw new BooksException("Inventory is already empty");
+			}
+			
 			inventory.setStock(inventory.getStock() - 1);
 			inventory.setUpdatedAt(LocalDateTime.now());
+			
+			
 			invenntoryRepository.save();
 			
 	        bookRepository.delete(existingBook);
@@ -155,14 +167,14 @@ public class BookImpl implements IBookService{
 	        log.debug("getById: ", id);
 	        Book book = bookRepository.findById(id)
 	                .orElseThrow(() -> new BooksException("Book with ID " + id + " not found."));
-	        return BookUtils.toDTO(book);
+	        return UtilsBook.toDTO(book);
 	    }
 
 	    @Override
 	    public List<BookDTO> getAll() {
 	        log.debug("getAll");
 	        List<Book> books = bookRepository.findAll();
-	        return BookUtils.toDTOList(books);
+	        return UtilsBook.toDTOList(books);
 	    }
 
 }

@@ -7,9 +7,9 @@ import java.util.stream.Collectors;
 import com.betacom.books.be.dto.CategoryDTO;
 import com.betacom.books.be.models.Category;
 
-public final class CategoryUtils {
+public final class UtilsCategory {
 
-	private CategoryUtils() {	}
+	private UtilsCategory() {	}
 
 	public static CategoryDTO toDTO(Category category) {
         if (category == null) {
@@ -28,7 +28,7 @@ public final class CategoryUtils {
             return Collections.emptyList();
         }
         return categories.stream()
-                          .map(CategoryUtils::toDTO)
+                          .map(UtilsCategory::toDTO)
                           .collect(Collectors.toList());
     }
 }
