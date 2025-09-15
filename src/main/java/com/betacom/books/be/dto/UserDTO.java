@@ -1,6 +1,7 @@
 package com.betacom.books.be.dto;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.betacom.books.be.models.Address;
@@ -25,8 +26,8 @@ public class UserDTO {
 	private String firstName;
 	private String lastName;
 	private LocalDate birthDate;
-	private LocalDate createdAt;
-	private LocalDate updatedAt;
+	private LocalDateTime createdAt;
+	private LocalDateTime updatedAt;
 	private Roles role;
 	private List<Review> reviews;
 	private List<Address> addresses;
