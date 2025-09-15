@@ -1,6 +1,8 @@
 package com.betacom.books.be.models;
 
+import java.io.ObjectInputFilter.Status;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -15,9 +17,13 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "Inventories")
+@Getter
+@Setter
 public class Inventory {
 
 	@Id
@@ -35,7 +41,7 @@ public class Inventory {
 	private BigDecimal price;
 	
 	@Column(name = "updated_at", nullable = false)
-	private LocalDateTime updatedAt;
+	private LocalDate updatedAt;
 	
 	@OneToOne(mappedBy = "inventory")
 	private Book book;
