@@ -3,8 +3,15 @@ package com.betacom.books.be.dto;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.betacom.books.be.models.Book;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
+@ToString
+@Builder
+@Getter
+@Setter
 public class AuthorDTO {
 
 	private Integer id;
@@ -13,6 +20,6 @@ public class AuthorDTO {
     private LocalDate birthDate;
     private LocalDate deathDate;
     private String coverImageUrl;
-    private List<Book> books;
+    private List<BookDTO> books;
 
 }

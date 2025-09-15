@@ -2,8 +2,15 @@ package com.betacom.books.be.dto;
 
 import java.util.List;
 
-import com.betacom.books.be.models.User;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
+@ToString
+@Builder
+@Getter
+@Setter
 public class AddressDTO {
 
     private Integer id;
@@ -13,7 +20,7 @@ public class AddressDTO {
     private String cap;
     private String country;
 
-    private User user;
+    private UserDTO  user;
     private List<OrderDTO> orders;
 
 }
