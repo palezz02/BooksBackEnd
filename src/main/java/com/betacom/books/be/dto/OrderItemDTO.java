@@ -13,7 +13,7 @@ import lombok.Setter;
 @Getter
 @Builder
 public class OrderItemDTO {
-	private Long id;
+	private Integer id;
 	private Order order;
 	private Inventory inventory;
 	private Integer quantity;
