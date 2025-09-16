@@ -12,13 +12,13 @@ import com.betacom.books.be.repositories.IOrderRepository;
 import com.betacom.books.be.requests.OrderReq;
 import com.betacom.books.be.services.interfaces.IOrderServices;
 import com.betacom.books.be.utils.Status;
-import com.betacom.books.be.utils.Utilities;
+import com.betacom.books.be.utils.UtilsOrderInventory;
 
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @Service
-public class OrderImpl extends Utilities implements IOrderServices {
+public class OrderImpl extends UtilsOrderInventory implements IOrderServices {
 
     private final WebSecurityConfiguration webSecurityConfiguration;
 

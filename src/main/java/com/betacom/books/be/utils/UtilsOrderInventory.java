@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import com.betacom.books.be.dto.OrderItemDTO;
 import com.betacom.books.be.models.OrderItem;
 
-public class Utilities {
+public class UtilsOrderInventory {
 	public List<OrderItemDTO> buildOrderItems(List<OrderItem> orderItems){
 		return orderItems.stream()
 				.map(orderItem -> OrderItemDTO.builder()

@@ -12,13 +12,13 @@ import com.betacom.books.be.models.Inventory;
 import com.betacom.books.be.repositories.IInventoryRepository;
 import com.betacom.books.be.requests.InventoryReq;
 import com.betacom.books.be.services.interfaces.IInventoryServices;
-import com.betacom.books.be.utils.Utilities;
+import com.betacom.books.be.utils.UtilsOrderInventory;
 
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @Service
-public class InventoryImpl extends Utilities implements IInventoryServices {
+public class InventoryImpl extends UtilsOrderInventory implements IInventoryServices {
 
 	private IInventoryRepository inventoryRepository;
 
