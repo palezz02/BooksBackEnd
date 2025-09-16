@@ -1,7 +1,10 @@
 package com.betacom.books.be.requests;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+
+import com.betacom.books.be.models.Publisher;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,7 +29,8 @@ public class BookReq {
 	private LocalDate PublicationDate;
 	private String edition;
     private Integer publisherId;
+    private Integer stock;
+    private BigDecimal price;
     private List<Integer> authorIds;
     private List<Integer> categoryIds;
-	private String errorMsg;
 }

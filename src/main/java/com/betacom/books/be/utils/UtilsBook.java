@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.betacom.books.be.dto.BookDTO;
+import com.betacom.books.be.models.Author;
 import com.betacom.books.be.models.Book;
+import com.betacom.books.be.models.Review;
 
 public final class UtilsBook {
 
@@ -27,14 +29,14 @@ public final class UtilsBook {
 	                .languageCode(book.getLanguageCode())
 	                .publicationDate(book.getPublicationDate())
 	                .edition(book.getEdition())
-	                .publisher(toDTO(book.getPublisher()))
-	                .authors(toAuthorDTOList(book.getAuthors()))
-	                .categories(toCategoryDTOList(book.getCategories()))
-	                .reviews(toReviewDTOList(book.getReviews()))
+	                .publisher(book.getPublisher().getId())
+	                .authors(book.getAuthors().stream().map(Author::getId).collect(Collectors.toList()))
+	                .categories(UtilsCategory.toDTOList(book.getCategories()))
+	                .reviews(book.getReviews().stream().map(Review::getId).collect(Collectors.toList()))
 	                .build();
 	    }
 
-
+	    
 	    public static List<BookDTO> toDTOList(List<Book> books) {
 	        if (books == null) {
 	            return Collections.emptyList();

@@ -21,7 +21,7 @@ import com.betacom.books.be.models.User;
 import com.betacom.books.be.repositories.IUserRepository;
 import com.betacom.books.be.requests.UserReq;
 import com.betacom.books.be.services.interfaces.IUserServices;
-import com.betacom.books.be.utils.UtilitiesUser;
+import com.betacom.books.be.utils.UtilsUser;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -88,7 +88,7 @@ public class UserImpl extends Utilities implements IUserServices {
 
 		userR.save(user);
 
-		return UtilitiesUser.toDTO(user);
+		return UtilsUser.toDTO(user);
 	}
 
 	@Transactional(rollbackFor = Exception.class)
@@ -180,7 +180,7 @@ public class UserImpl extends Utilities implements IUserServices {
 		if (users == null || users.isEmpty())
 			return new ArrayList<>();
 
-		return UtilitiesUser.toDTOList(users);
+		return UtilsUser.toDTOList(users);
 	}
 
 }

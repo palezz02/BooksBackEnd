@@ -14,8 +14,8 @@ import lombok.Setter;
 @Builder
 public class OrderItemDTO {
 	private Integer id;
-	private Order order;
-	private Inventory inventory;
+	private Integer orderId;
+	private Integer inventory;
 	private Integer quantity;
 	private BigDecimal unitPrice;
 	private BigDecimal subtotal;

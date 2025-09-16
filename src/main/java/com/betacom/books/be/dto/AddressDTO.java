@@ -20,7 +20,7 @@ public class AddressDTO {
     private String cap;
     private String country;
 
-    private UserDTO  user;
-    private List<OrderDTO> orders;
+    private Integer  user;
+    private List<Integer> orders;
 
 }

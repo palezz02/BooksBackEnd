@@ -27,10 +27,5 @@ public class UserReq {
 	private String firstName;
 	private String lastName;
 	private LocalDate birthDate;
-	private LocalDateTime createdAt;
-	private LocalDateTime updatedAt;
 	private Roles role;
-	private List<Review> reviews;
-	private List<Address> addresses;
-	private List<Order> orders;
 }

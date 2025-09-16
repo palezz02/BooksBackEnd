@@ -2,6 +2,7 @@ package com.betacom.books.be.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -53,7 +54,7 @@ public class OrderItemController {
 	}
 	
 	@PostMapping("/create")
-	public ResponseBase create(@RequestParam(required=true) OrderItemReq req){
+	public ResponseBase create(@RequestBody(required=true) OrderItemReq req){
 		ResponseBase res = new ResponseBase();
 		try {
 			orderItemS.create(req);
@@ -67,7 +68,7 @@ public class OrderItemController {
 	}
 	
 	@PostMapping("/update")
-	public ResponseBase update(@RequestParam(required=true) OrderItemReq req){
+	public ResponseBase update(@RequestBody(required=true) OrderItemReq req){
 		ResponseBase res = new ResponseBase();
 		try {
 			orderItemS.update(req);
@@ -81,7 +82,7 @@ public class OrderItemController {
 	}
 	
 	@PostMapping("/delete")
-	public ResponseBase delete(@RequestParam(required=true) OrderItemReq req){
+	public ResponseBase delete(@RequestBody(required=true) OrderItemReq req){
 		ResponseBase res = new ResponseBase();
 		try {
 			orderItemS.delete(req);
