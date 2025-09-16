@@ -14,8 +14,11 @@ import com.betacom.books.be.response.ResponseBase;
 import com.betacom.books.be.response.ResponseList;
 import com.betacom.books.be.services.interfaces.IBookService;
 
+import lombok.extern.log4j.Log4j2;
+
 @RestController
-@RequestMapping("/rest/book")
+@RequestMapping("/rest/book/")
+@Log4j2
 public class BookController {
 	
 	private IBookService bookService;
@@ -26,6 +29,7 @@ public class BookController {
 	
 	@PostMapping("create")
 	public ResponseBase create(@RequestBody (required = true)  BookReq req) {
+		log.debug("CREATE: {req}");
 		ResponseBase r = new ResponseBase();
 		try {
 			bookService.create(req);

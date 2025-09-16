@@ -22,6 +22,10 @@ import lombok.extern.log4j.Log4j2;
 public class PublisherImpl extends UtilsPublisher implements IPublisherServices {
 	private IPublisherRepository publishRep;
 	
+	public PublisherImpl(IPublisherRepository publishRep) {
+		this.publishRep = publishRep;
+	}
+	
 	@Override
 	public List<PublisherDTO> getAll() throws BooksException {
 		log.debug("getAll Publisher");
@@ -48,8 +52,9 @@ public class PublisherImpl extends UtilsPublisher implements IPublisherServices 
 	@Override
 	public PublisherDTO create(PublisherReq req) throws BooksException {
 		log.debug("create Publisher");
+		log.debug(req);
 		Publisher p = new Publisher();
-		Optional<Publisher> publisher = publishRep.findById(req.getId());
+		Optional<Publisher> publisher = publishRep.findByName(req.getName());
 		
 		if(publisher.isPresent()) {
 			throw new BooksException("OrderItem esistente");

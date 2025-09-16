@@ -21,8 +21,8 @@ public class BookDTO {
 	    private String languageCode;
 	    private LocalDate publicationDate;
 	    private String edition;
-	    private PublisherDTO publisher;
-	    private List<AuthorDTO> authors;
+	    private Integer publisher;
+	    private List<Integer> authors;
 	    private List<CategoryDTO> categories;
-	    private List<ReviewDTO> reviews;
+	    private List<Integer> reviews;
 }

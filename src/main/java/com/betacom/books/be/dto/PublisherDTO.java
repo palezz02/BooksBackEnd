@@ -15,5 +15,5 @@ public class PublisherDTO {
 	private Integer id;
     private String name;
     private String description;
-	private List<Book> books;
+	private List<Integer> books;
 }

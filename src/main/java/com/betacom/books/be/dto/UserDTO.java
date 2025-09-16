@@ -29,7 +29,7 @@ public class UserDTO {
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
 	private Roles role;
-	private List<Review> reviews;
+	private List<Integer> reviews;
 	private List<Address> addresses;
-	private List<Order> orders;
+	private List<Integer> orders;
 }

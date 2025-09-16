@@ -14,13 +14,13 @@ import com.betacom.books.be.repositories.IAddressRepository;
 import com.betacom.books.be.repositories.IUserRepository;
 import com.betacom.books.be.requests.AddressReq;
 import com.betacom.books.be.services.interfaces.IAddressService;
-import com.betacom.books.be.utils.Utilities;
+import com.betacom.books.be.utils.UtilsAddressAuthor;
 
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @Service
-public class AddressImpl extends Utilities implements IAddressService {
+public class AddressImpl extends UtilsAddressAuthor implements IAddressService {
 
     private final IAddressRepository addressR;
     private final IUserRepository userR;
@@ -35,9 +35,9 @@ public class AddressImpl extends Utilities implements IAddressService {
     public Integer create(AddressReq req) throws BooksException {
         log.debug("create :" + req);
 
-        Optional<User> userOpt = userR.findById(req.getUserId());
+        Optional<User> userOpt = userR.findById(req.getUser());
         if (userOpt.isEmpty()) {
-            throw new BooksException("User not found for id " + req.getUserId());
+            throw new BooksException("User not found for id " + req.getUser());
         }
 
         Address addr = new Address();
@@ -98,11 +98,11 @@ public class AddressImpl extends Utilities implements IAddressService {
 			addr.setCountry(req.getCountry());
 		}
 
-        if (req.getUserId() != null &&
-            !req.getUserId().equals(addr.getUser().getId())) {
-            Optional<User> userOpt = userR.findById(req.getUserId());
+        if (req.getUser() != null &&
+            !req.getUser().equals(addr.getUser().getId())) {
+            Optional<User> userOpt = userR.findById(req.getUser());
             if (userOpt.isEmpty()) {
-				throw new BooksException("User not found for id " + req.getUserId());
+				throw new BooksException("User not found for id " + req.getUser());
 			}
             addr.setUser(userOpt.get());
         }

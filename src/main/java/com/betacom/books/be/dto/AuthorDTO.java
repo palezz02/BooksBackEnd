@@ -20,6 +20,6 @@ public class AuthorDTO {
     private LocalDate birthDate;
     private LocalDate deathDate;
     private String coverImageUrl;
-    private List<BookDTO> books;
+    private List<Integer> books;
 
 }
