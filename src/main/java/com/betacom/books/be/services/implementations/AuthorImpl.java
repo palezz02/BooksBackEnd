@@ -12,13 +12,13 @@ import com.betacom.books.be.models.Author;
 import com.betacom.books.be.repositories.IAuthorRepository;
 import com.betacom.books.be.requests.AuthorReq;
 import com.betacom.books.be.services.interfaces.IAuthorService;
-import com.betacom.books.be.utils.Utilities;
+import com.betacom.books.be.utils.UtilsAddressAuthor;
 
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @Service
-public class AuthorImpl extends Utilities implements IAuthorService {
+public class AuthorImpl extends UtilsAddressAuthor implements IAuthorService {
 
     private final IAuthorRepository authorR;
 

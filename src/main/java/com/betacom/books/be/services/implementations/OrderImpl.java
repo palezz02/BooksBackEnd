@@ -1,5 +1,8 @@
 package com.betacom.books.be.services.implementations;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -7,26 +10,29 @@ import org.springframework.transaction.annotation.Transactional;
 import com.betacom.books.be.configurations.WebSecurityConfiguration;
 import com.betacom.books.be.dto.OrderDTO;
 import com.betacom.books.be.exception.BooksException;
+import com.betacom.books.be.models.Address;
 import com.betacom.books.be.models.Order;
+import com.betacom.books.be.repositories.IAddressRepository;
 import com.betacom.books.be.repositories.IOrderRepository;
 import com.betacom.books.be.requests.OrderReq;
 import com.betacom.books.be.services.interfaces.IOrderServices;
 import com.betacom.books.be.utils.Status;
-import com.betacom.books.be.utils.UtilsOrderInventory;
+import com.betacom.books.be.utils.UtilsOrder;
 
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @Service
-public class OrderImpl extends UtilsOrderInventory implements IOrderServices {
+public class OrderImpl extends UtilsOrder implements IOrderServices {
 
     private final WebSecurityConfiguration webSecurityConfiguration;
 
 	private IOrderRepository orderRepository;
-
-	public OrderImpl(IOrderRepository orderRepository, WebSecurityConfiguration webSecurityConfiguration) {
+	private IAddressRepository addR;
+	public OrderImpl(IOrderRepository orderRepository, WebSecurityConfiguration webSecurityConfiguration,IAddressRepository addR) {
 		this.orderRepository = orderRepository;
 		this.webSecurityConfiguration = webSecurityConfiguration;
+		this.addR = addR;
 	}
 
 	@Override
@@ -39,17 +45,10 @@ public class OrderImpl extends UtilsOrderInventory implements IOrderServices {
 
 		Order o = order.get();
 
-		return OrderDTO.builder()
-				.id(o.getId())
-				.status(o.getStatus().toString())
-				.total(o.getTotal())
-				.orderNumber(o.getOrderNumber())
-				.createdAt(o.getCreatedAt())
-				.updatedAt(o.getUpdatedAt())
-				.orderItem(buildOrderItems(o.getOrderItems()))
-				.build();
+		return buildOrderDTO(o);
 	}
 
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void create(OrderReq req) throws BooksException {
 		log.debug("Create: " + req);
@@ -58,23 +57,28 @@ public class OrderImpl extends UtilsOrderInventory implements IOrderServices {
 
 		if (order.isPresent())
 			throw new BooksException("Order with id: " + req.getId() + " already exists");
-
+		
+		o.setCreatedAt(LocalDate.now());
+		
 		if(req.getStatus() == null)
 			throw new BooksException("Status mandatory");
+		
+		Optional<Address> a = addR.findById(req.getShippingAddress());
+		if(a.isEmpty())
+			throw new BooksException("ShippingAddress mandatory");
 		if(req.getTotal() == null)
 			throw new BooksException("Total mandatory");
 		if(req.getOrderNumber() == null)
 			throw new BooksException("Order number mandatory");
-		if(req.getCreatedAt() == null)
-			throw new BooksException("Created at mandatory");
 		if(req.getUpdatedAt() == null)
 			throw new BooksException("Updated at mandatory");
 		
-		o.setId(req.getId());
 		o.setTotal(req.getTotal());
 		o.setOrderNumber(req.getOrderNumber());
-		o.setCreatedAt(req.getCreatedAt());
 		o.setUpdatedAt(req.getUpdatedAt());
+		
+		
+		o.setAddress(a.get());
 		orderRepository.save(o);
 
 	}
@@ -92,7 +96,7 @@ public class OrderImpl extends UtilsOrderInventory implements IOrderServices {
 		Order o = new Order();
 		
 		if((req.getStatus() != null)) {
-			o.setStatus(Status.valueOf(req.getStatus()));
+			o.setStatus(req.getStatus());
 		}
 		
 		if((req.getTotal() != null)) {
@@ -103,10 +107,6 @@ public class OrderImpl extends UtilsOrderInventory implements IOrderServices {
 			o.setOrderNumber(req.getOrderNumber());
 		}
 		
-		if((req.getCreatedAt() != null)) {
-			o.setCreatedAt(req.getCreatedAt());
-		}
-		
 		if((req.getUpdatedAt() != null)) {
 			o.setUpdatedAt(req.getUpdatedAt());
 		}
@@ -114,6 +114,7 @@ public class OrderImpl extends UtilsOrderInventory implements IOrderServices {
 		orderRepository.save(o);
 	}
 
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void delete(OrderReq req) throws BooksException {
 		log.debug("Delete: " + req);

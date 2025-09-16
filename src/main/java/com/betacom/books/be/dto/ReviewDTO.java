@@ -17,8 +17,8 @@ import lombok.ToString;
 public class ReviewDTO {
 
 	private Integer id;
-	private Book book;
-	private User user;
+	private Integer book;
+	private Integer user;
 	private Integer rating;
 	private String title;
 	private String body;

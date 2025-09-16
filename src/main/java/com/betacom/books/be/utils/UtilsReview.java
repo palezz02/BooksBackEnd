@@ -5,9 +5,9 @@ import java.util.List;
 import com.betacom.books.be.dto.ReviewDTO;
 import com.betacom.books.be.models.Review;
 
-public class UtilitiesReview {
+public class UtilsReview {
 
-	private UtilitiesReview() {
+	private UtilsReview() {
 	}
 
 	public static ReviewDTO toDTO(Review rev) {
@@ -15,9 +15,14 @@ public class UtilitiesReview {
 			return null;
 		}
 
-		return ReviewDTO.builder().id(rev.getId()).book(rev.getBook())
-				.user(rev.getUser()) 
-				.rating(rev.getRating()).title(rev.getTitle()).body(rev.getBody()).createdAt(rev.getCreatedAt())
+		return ReviewDTO.builder()
+				.id(rev.getId())
+				.book(rev.getBook().getId())
+				.user(rev.getUser().getId()) 
+				.rating(rev.getRating())
+				.title(rev.getTitle())
+				.body(rev.getBody())
+				.createdAt(rev.getCreatedAt())
 				.build();
 	}
 	
@@ -26,7 +31,7 @@ public class UtilitiesReview {
 	        return List.of();
 	    }
 	    return reviews.stream()
-	                  .map(UtilitiesReview::toDTO)
+	                  .map(UtilsReview::toDTO)
 	                  .toList();
 	}
 

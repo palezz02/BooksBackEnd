@@ -5,20 +5,19 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.betacom.books.be.dto.BookDTO;
 import com.betacom.books.be.dto.InventoryDTO;
 import com.betacom.books.be.exception.BooksException;
 import com.betacom.books.be.models.Inventory;
 import com.betacom.books.be.repositories.IInventoryRepository;
 import com.betacom.books.be.requests.InventoryReq;
 import com.betacom.books.be.services.interfaces.IInventoryServices;
-import com.betacom.books.be.utils.UtilsOrderInventory;
+import com.betacom.books.be.utils.UtilsInventory;
 
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @Service
-public class InventoryImpl extends UtilsOrderInventory implements IInventoryServices {
+public class InventoryImpl implements IInventoryServices {
 
 	private IInventoryRepository inventoryRepository;
 
@@ -36,15 +35,7 @@ public class InventoryImpl extends UtilsOrderInventory implements IInventoryServ
 
 		Inventory i = inventory.get();
 
-		return InventoryDTO.builder().id(i.getId()).stock(i.getStock()).price(i.getPrice()).updatedAt(i.getUpdatedAt())
-				.book((i.getBook() == null) ? null
-						: BookDTO.builder().id(i.getBook().getId()).isbn(i.getBook().getIsbn())
-								.title(i.getBook().getTitle()).pageCount(i.getBook().getPageCount())
-								.description(i.getBook().getDescription()).coverImage(i.getBook().getCoverImage())
-								.languageCode(i.getBook().getLanguageCode())
-								.publicationDate(i.getBook().getPublicationDate()).edition(i.getBook().getEdition())
-								.build())
-				.orderItem(buildOrderItems(i.getOrderItems())).build();
+		return UtilsInventory.buildInventoryDTO(i);
 
 	}
 

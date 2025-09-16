@@ -41,7 +41,7 @@ public class Inventory {
 	private BigDecimal price;
 	
 	@Column(name = "updated_at", nullable = false)
-	private LocalDate updatedAt;
+	private LocalDateTime updatedAt;
 	
 	@OneToOne(mappedBy = "inventory")
 	private Book book;

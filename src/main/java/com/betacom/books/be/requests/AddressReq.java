@@ -20,6 +20,6 @@ public class AddressReq {
     private String cap;
     private String country;
 
-    private Integer userId;
+    private Integer user;
 
 }

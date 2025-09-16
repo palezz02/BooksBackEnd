@@ -1,16 +1,5 @@
 package com.betacom.books.be.services.implementations;
 
-import com.betacom.books.be.dto.OrderItemDTO;
-import com.betacom.books.be.exception.BooksException;
-import com.betacom.books.be.models.Order;
-import com.betacom.books.be.models.OrderItem;
-import com.betacom.books.be.repositories.IOrderItemRepository;
-import com.betacom.books.be.requests.OrderItemReq;
-import com.betacom.books.be.services.interfaces.IOrderItemServices;
-import com.betacom.books.be.utils.UtilsOrderItem;
-
-import lombok.extern.log4j.Log4j2;
-
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
@@ -18,10 +7,31 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.betacom.books.be.dto.OrderItemDTO;
+import com.betacom.books.be.exception.BooksException;
+import com.betacom.books.be.models.Inventory;
+import com.betacom.books.be.models.Order;
+import com.betacom.books.be.models.OrderItem;
+import com.betacom.books.be.repositories.IInventoryRepository;
+import com.betacom.books.be.repositories.IOrderItemRepository;
+import com.betacom.books.be.repositories.IOrderRepository;
+import com.betacom.books.be.requests.OrderItemReq;
+import com.betacom.books.be.services.interfaces.IOrderItemServices;
+import com.betacom.books.be.utils.UtilsOrderItem;
+
+import lombok.extern.log4j.Log4j2;
+
 @Log4j2
 @Service
 public class OrderItemImpl extends UtilsOrderItem implements IOrderItemServices {
 	private IOrderItemRepository orderIRep;
+	private IOrderRepository orderR;
+	private IInventoryRepository invR;
+	public OrderItemImpl(IOrderItemRepository orderIRep, IOrderRepository orderR,IInventoryRepository invR) {
+		this.orderIRep = orderIRep;
+		this.orderR = orderR;
+		this.invR = invR;
+	}
 	
 	@Override
 	public List<OrderItemDTO> getAll() throws BooksException {
@@ -56,9 +66,9 @@ public class OrderItemImpl extends UtilsOrderItem implements IOrderItemServices 
 		}
 		
 		
-		if (req.getOrder() == null)
+		if (req.getOrderId() == null)
 			throw new BooksException("Order obbligatorio");
-		if (req.getInventory() == null)
+		if (req.getInventoryId() == null)
 			throw new BooksException("Inventory obbligatorio");
 		if (req.getQuantity() == null)
 			throw new BooksException("Quantity obbligatorio");
@@ -68,9 +78,15 @@ public class OrderItemImpl extends UtilsOrderItem implements IOrderItemServices 
 		BigDecimal quantity = new BigDecimal(req.getQuantity());
 		BigDecimal subTotal = quantity.multiply(req.getUnitPrice());
 		
+		Optional<Order> order = orderR.findById(req.getOrderId());
+		if(order.isEmpty()) throw new BooksException("Order non trovato");
 		
-		o.setOrder(req.getOrder());
-		o.setInventory(req.getInventory());
+		o.setOrder(order.get());
+		
+		Optional<Inventory> inventory = invR.findById(req.getInventoryId());
+		if(inventory.isEmpty()) throw new BooksException("Inventory non trovato");
+		
+		o.setInventory(inventory.get());
 		o.setQuantity(req.getQuantity());
 		o.setUnitPrice(req.getUnitPrice());
 		o.setSubtotal(subTotal);
@@ -91,11 +107,15 @@ public class OrderItemImpl extends UtilsOrderItem implements IOrderItemServices 
 		if(orderItem.isEmpty()) {
 			throw new BooksException("OrderItem non trovato");
 		}
-		
-		if (req.getOrder() != null)
-			o.setOrder(req.getOrder());
-		if (req.getInventory() != null)
-			o.setInventory(req.getInventory());
+		Optional<Order> order = orderR.findById(req.getOrderId());
+		if(order.isPresent()) {
+			o.setOrder(order.get());
+		}
+		Optional<Inventory> inventory = invR.findById(req.getInventoryId());
+		if(inventory.isPresent()) {
+			o.setInventory(inventory.get());
+		}
+			
 		if (req.getQuantity() != null) {
 			o.setQuantity(req.getQuantity());
 			modified = true;

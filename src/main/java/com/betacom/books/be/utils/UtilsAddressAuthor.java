@@ -7,10 +7,14 @@ import com.betacom.books.be.dto.AddressDTO;
 import com.betacom.books.be.dto.AuthorDTO;
 import com.betacom.books.be.models.Address;
 import com.betacom.books.be.models.Author;
+import com.betacom.books.be.models.Book;
+import com.betacom.books.be.models.Order;
+import com.betacom.books.be.utils.UtilsBook;
+import com.betacom.books.be.utils.UtilsUser;
+import com.betacom.books.be.utils.UtilsOrder;
+public class UtilsAddressAuthor  {
 
-public class Utilities {
-
-    public List<AddressDTO> buildListAddressDTO(List<Address> lA) {
+    public static List<AddressDTO> buildListAddressDTO(List<Address> lA) {
         return lA.stream()
                 .map(a -> AddressDTO.builder()
                         .id(a.getId())
@@ -19,13 +23,12 @@ public class Utilities {
                         .region(a.getRegion())
                         .cap(a.getCap())
                         .country(a.getCountry())
-                        .user((a.getUser() == null) ? null : buildUserDTO(a.getUser()))
-                        .orders((a.getOrders() == null) ? null : buildOrderDTO(a.getOrders()))
-                        .build())
-                .collect(Collectors.toList());
+                        .user(a.getUser().getId())
+                        .orders(a.getOrders().stream().map(Order::getId).collect(Collectors.toList()))
+                        .build()).collect(Collectors.toList());
     }
 
-    public List<AuthorDTO> buildListAuthorDTO(List<Author> lA) {
+    public static List<AuthorDTO> buildListAuthorDTO(List<Author> lA) {
         return lA.stream()
                 .map(a -> AuthorDTO.builder()
                         .id(a.getId())
@@ -34,21 +37,8 @@ public class Utilities {
                         .birthDate(a.getBirthDate())
                         .deathDate(a.getDeathDate())
                         .coverImageUrl(a.getCoverImageUrl())
-                        .books((a.getBooks() == null) ? null : buildBookDTO(a.getBooks()))
+                        .books(a.getBooks().stream().map(Book::getId).collect(Collectors.toList()))
                         .build())
                 .collect(Collectors.toList());
-    }
-
-    // Assuming these exist somewhere else in your codebase
-    private Object buildUserDTO(Object user) {
-        return null; // placeholder
-    }
-
-    private Object buildOrderDTO(Object orders) {
-        return null; // placeholder
-    }
-
-    private Object buildBookDTO(Object books) {
-        return null; // placeholder
     }
 }

@@ -21,6 +21,11 @@ import lombok.extern.log4j.Log4j2;
 public class CategoryImpl implements ICategoryService{
 	private ICategoryRepository categoryRepository;
 	
+	public CategoryImpl(ICategoryRepository categoryRepository) {
+		this.categoryRepository = categoryRepository;
+	}
+	
+	
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public CategoryDTO create(CategoryReq req) throws BooksException {
