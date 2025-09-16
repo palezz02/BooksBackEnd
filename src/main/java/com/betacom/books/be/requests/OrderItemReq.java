@@ -13,7 +13,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class OrderItemReq {
-	private Long id;
+	private Integer id;
 	private Order order;
 	private Inventory inventory;
 	private Integer quantity;
