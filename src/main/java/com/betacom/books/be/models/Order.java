@@ -1,8 +1,9 @@
 package com.betacom.books.be.models;
 
-import java.io.ObjectInputFilter.Status;
 import java.time.LocalDate;
 import java.util.List;
+
+import com.betacom.books.be.utils.Status;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,7 +37,7 @@ public class Order {
 	@Column(name = "total", nullable = false)
 	private Integer total;
 
-	@Column(name = "order_number", unique = true)
+	@Column(name = "order_number", unique = true, nullable = false)
 	private Integer orderNumber;
 
 	@Column(name = "created_at", nullable = false)
