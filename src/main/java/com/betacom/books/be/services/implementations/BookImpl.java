@@ -1,6 +1,5 @@
 package com.betacom.books.be.services.implementations;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
@@ -191,14 +190,8 @@ public class BookImpl implements IBookService {
 
 		Inventory inventory = existingBook.getInventory();
 
-		if ((inventory.getStock() - 1) < 0) {
-			throw new BooksException("Inventory is already empty");
-		}
 
-		inventory.setStock(inventory.getStock() - 1);
-		inventory.setUpdatedAt(LocalDateTime.now());
-
-		invenntoryRepository.save(inventory);
+		invenntoryRepository.delete(inventory);
 
 		bookRepository.delete(existingBook);
 
