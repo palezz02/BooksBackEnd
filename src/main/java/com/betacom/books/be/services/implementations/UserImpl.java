@@ -190,7 +190,7 @@ public class UserImpl extends Utilities implements IUserServices {
 	public SingInDTO signIn(SingInReq req) {
 		log.debug("signIn:" + req);
 		SingInDTO r = new SingInDTO();
-		Optional<User> u = userR.findByUserNameAndPwd(req.getUser(), req.getPwd());
+		Optional<User> u = userR.findByEmailAndPassword(req.getUser(), req.getPwd());
 		if (u.isEmpty()) {
 			r.setLogged(false);
 		} else {
