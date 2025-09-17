@@ -6,12 +6,14 @@ import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import javax.swing.text.Utilities;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.betacom.books.be.dto.SingInDTO;
 import com.betacom.books.be.dto.UserDTO;
 import com.betacom.books.be.exception.BooksException;
 import com.betacom.books.be.models.Address;
@@ -19,6 +21,7 @@ import com.betacom.books.be.models.Order;
 import com.betacom.books.be.models.Review;
 import com.betacom.books.be.models.User;
 import com.betacom.books.be.repositories.IUserRepository;
+import com.betacom.books.be.requests.SingInReq;
 import com.betacom.books.be.requests.UserReq;
 import com.betacom.books.be.services.interfaces.IUserServices;
 import com.betacom.books.be.utils.UtilsUser;
@@ -181,6 +184,22 @@ public class UserImpl extends Utilities implements IUserServices {
 			return new ArrayList<>();
 
 		return UtilsUser.toDTOList(users);
+	}
+	
+	@Override
+	public SingInDTO signIn(SingInReq req) {
+		log.debug("signIn:" + req);
+		SingInDTO r = new SingInDTO();
+		Optional<User> u = userR.findByUserNameAndPwd(req.getUser(), req.getPwd());
+		if (u.isEmpty()) {
+			r.setLogged(false);
+		} else {
+			r.setId(u.get().getId());
+			r.setLogged(true);
+			r.setRole(u.get().getRole().toString());
+		}
+		
+		return r;
 	}
 
 }

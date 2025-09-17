@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.betacom.books.be.dto.SingInDTO;
 import com.betacom.books.be.dto.UserDTO;
+import com.betacom.books.be.requests.SingInReq;
 import com.betacom.books.be.requests.UserReq;
 import com.betacom.books.be.response.ResponseBase;
 import com.betacom.books.be.response.ResponseList;
@@ -78,6 +80,11 @@ public class UserController {
 			r.setMsg(e.getMessage());
 		}
 		return r;
+	}
+	
+	@PostMapping("/signin")
+	public SingInDTO signin(@RequestBody (required = true) SingInReq req) {
+		return userS.signIn(req);
 	}
 
 }
