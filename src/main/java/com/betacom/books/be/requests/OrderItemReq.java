@@ -1,11 +1,6 @@
 package com.betacom.books.be.requests;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.List;
-
-import com.betacom.books.be.models.Inventory;
-import com.betacom.books.be.models.Order;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

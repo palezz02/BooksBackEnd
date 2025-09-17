@@ -1,6 +1,5 @@
 package com.betacom.books.be.services.implementations;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.betacom.books.be.dto.PublisherDTO;
 import com.betacom.books.be.exception.BooksException;
-import com.betacom.books.be.models.OrderItem;
 import com.betacom.books.be.models.Publisher;
 import com.betacom.books.be.repositories.IPublisherRepository;
 import com.betacom.books.be.requests.PublisherReq;
