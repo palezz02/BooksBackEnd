@@ -2,7 +2,6 @@ package com.betacom.books.be.dto;
 
 import java.util.List;
 
-import com.betacom.books.be.models.Book;
 
 import lombok.Builder;
 import lombok.Getter;

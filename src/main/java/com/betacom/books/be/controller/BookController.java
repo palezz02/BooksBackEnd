@@ -1,5 +1,6 @@
 package com.betacom.books.be.controller;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -55,7 +56,7 @@ public class BookController {
 		return r;
 	}
 
-	@PostMapping("delete")
+	@DeleteMapping("delete")
 	public ResponseBase delete(@RequestBody (required = true)  BookReq req) {
 		ResponseBase r = new ResponseBase();
 		try {

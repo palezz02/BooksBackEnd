@@ -1,8 +1,6 @@
 package com.betacom.books.be.models;
 
-import java.io.ObjectInputFilter.Status;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
