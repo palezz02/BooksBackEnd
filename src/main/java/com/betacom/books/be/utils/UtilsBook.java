@@ -12,29 +12,33 @@ import com.betacom.books.be.models.Review;
 public final class UtilsBook {
 
 
-	    private UtilsBook() {	}
-
-	    public static BookDTO toDTO(Book book) {
-	        if (book == null) {
-	            return null;
-	        }
-
-	        return BookDTO.builder()
-	                .id(book.getId())
-	                .isbn(book.getIsbn())
-	                .title(book.getTitle())
-	                .pageCount(book.getPageCount())
-	                .description(book.getDescription())
-	                .coverImage(book.getCoverImage())
-	                .languageCode(book.getLanguageCode())
-	                .publicationDate(book.getPublicationDate())
-	                .edition(book.getEdition())
-	                .publisher(book.getPublisher().getId())
-	                .authors(book.getAuthors().stream().map(Author::getId).collect(Collectors.toList()))
-	                .categories(UtilsCategory.toDTOList(book.getCategories()))
-	                .reviews(book.getReviews().stream().map(Review::getId).collect(Collectors.toList()))
-	                .build();
+	public static BookDTO toDTO(Book book) {
+	    if (book == null) {
+	        return null;
 	    }
+
+	    return BookDTO.builder()
+	            .id(book.getId())
+	            .isbn(book.getIsbn())
+	            .title(book.getTitle())
+	            .pageCount(book.getPageCount())
+	            .description(book.getDescription())
+	            .coverImage(book.getCoverImage())
+	            .languageCode(book.getLanguageCode())
+	            .publicationDate(book.getPublicationDate())
+	            .edition(book.getEdition())
+	            .publisher(book.getPublisher() != null ? book.getPublisher().getId() : null)
+	            .authors(book.getAuthors() != null ? 
+	                     book.getAuthors().stream().map(Author::getId).collect(Collectors.toList()) : 
+	                     Collections.emptyList())
+	            .categories(book.getCategories() != null ? 
+	                        UtilsCategory.toDTOList(book.getCategories()) : 
+	                        Collections.emptyList())
+	            .reviews(book.getReviews() != null ? 
+	                     book.getReviews().stream().map(Review::getId).collect(Collectors.toList()) : 
+	                     Collections.emptyList())
+	            .build();
+	}
 
 	    
 	    public static List<BookDTO> toDTOList(List<Book> books) {
