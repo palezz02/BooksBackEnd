@@ -30,16 +30,21 @@ public class UserImplTest {
 	@Autowired
 	private IUserServices userS;
 
+	private UserReq buildNewUser(String email) {
+		UserReq req = new UserReq();
+		req.setEmail(email);
+		req.setPassword("password");
+		req.setFirstName("Mario");
+		req.setLastName("Rossi");
+		req.setBirthDate(LocalDate.of(2000, 1, 1));
+		return req;
+	}
+
 	@Test
 	public void createUserImpl() throws BooksException {
 		log.debug("test create user");
-		LocalDate birthDate = LocalDate.of(2000, 5, 15);
-		UserReq req = new UserReq();
-		req.setEmail("email@esempio.com");
-		req.setBirthDate(birthDate);
-		req.setFirstName("Nome");
-		req.setLastName("Cognome");
-		req.setPassword("password");
+
+		UserReq req = buildNewUser("email@esempio.com");
 
 		assertThat(userS.create(req)).isInstanceOf(UserDTO.class);
 	}
@@ -50,35 +55,25 @@ public class UserImplTest {
 			"NULL, Email non presente" }, nullValues = "NULL")
 	void createUserImplWithEmailError(String emailValue, String errorMessage) {
 		log.debug("test create user with wrong email");
-		UserReq req = new UserReq();
-		req.setEmail(emailValue);
-		req.setBirthDate(null);
-		req.setFirstName("Nome");
-		req.setLastName("Cognome");
-		req.setPassword("password");
-
+		
+		UserReq req = buildNewUser(emailValue);
+		
 		Assertions.assertThatThrownBy(() -> userS.create(req)).isInstanceOf(BooksException.class)
 				.hasMessage(errorMessage);
 	}
 
 	@Test
 	void createUserImplWithSameEmail() throws BooksException {
-		log.debug("test create user with wrong email");
-		UserReq req = new UserReq();
-		req.setEmail("email@esempio.com");
-		req.setBirthDate(null);
-		req.setFirstName("Nome");
-		req.setLastName("Cognome");
-		req.setPassword("password");
+		log.debug("test create two user with same email");
+
+		String sameEmail = "email@esempio.com";
+		
+		UserReq req = buildNewUser(sameEmail);
 
 		userS.create(req);
 
-		UserReq req1 = new UserReq();
-		req1.setEmail("email@esempio.com");
-		req1.setBirthDate(null);
-		req1.setFirstName("Nome");
-		req1.setLastName("Cognome");
-		req1.setPassword("password");
+		UserReq req1 = buildNewUser(sameEmail);
+
 		Assertions.assertThatThrownBy(() -> userS.create(req1)).isInstanceOf(BooksException.class)
 				.hasMessage("Mail già presente");
 	}
@@ -87,6 +82,8 @@ public class UserImplTest {
 	@CsvSource(value = { "NULL,Password non presente", "'',Password non presente",
 			"'   ',Password non presente" }, nullValues = "NULL")
 	void createUserImplWithPasswordError(String passwordValue, String errorMessage) {
+		log.debug("test create user with invalid password");
+
 		UserReq req = new UserReq();
 		req.setEmail("valid@example.com");
 		req.setBirthDate(null);
@@ -102,6 +99,8 @@ public class UserImplTest {
 	@CsvSource(value = { "NULL,Nome utente non presente", "'',Nome utente non presente",
 			"'   ',Nome utente non presente" }, nullValues = "NULL")
 	void createUserImplWithFirstNameError(String firstNameValue, String errorMessage) {
+		log.debug("test create with invalid first name");
+		
 		UserReq req = new UserReq();
 		req.setEmail("valid@example.com");
 		req.setBirthDate(null);
@@ -117,6 +116,8 @@ public class UserImplTest {
 	@CsvSource(value = { "NULL,Cognome utente non presente", "'',Cognome utente non presente",
 			"'   ',Cognome utente non presente" }, nullValues = "NULL")
 	void createUserImplWithLastNameError(String lastNameValue, String errorMessage) {
+		log.debug("test create with invalid last name");
+		
 		UserReq req = new UserReq();
 		req.setEmail("valid@example.com");
 		req.setBirthDate(null);
@@ -129,10 +130,9 @@ public class UserImplTest {
 	}
 
 	@ParameterizedTest
-	@CsvSource({ "2045-09-18",
-			"2030-01-01"
-	})
+	@CsvSource({ "2045-09-18", "2030-01-01" })
 	void createUserImplWithInvalidBirthDate(String dateStr) {
+		log.debug("test create with invalid birth date");
 		LocalDate birthDate = LocalDate.parse(dateStr);
 
 		UserReq req = new UserReq();
