@@ -18,12 +18,18 @@ public class UtilsPublisher {
                     .collect(Collectors.toList());
 	}
 	
-	public static PublisherDTO buildPublisherDTO(Publisher p){
-		return PublisherDTO.builder()
-				.id(p.getId())
-				.name(p.getName())
-				.description(p.getDescription())
-				.books(p.getBooks().stream().map(Book::getId).collect(Collectors.toList()))
-				.build();
+	public static PublisherDTO buildPublisherDTO(Publisher p) {
+	    if (p == null) {
+	        return null;
+	    }
+	    List<Book> books = (p.getBooks() != null) ? p.getBooks() : Collections.emptyList();
+	    return PublisherDTO.builder()
+	            .id(p.getId())
+	            .name(p.getName())
+	            .description(p.getDescription())
+	            .books(books.stream()
+	                    .map(Book::getId)
+	                    .collect(Collectors.toList()))
+	            .build();
 	}
 }

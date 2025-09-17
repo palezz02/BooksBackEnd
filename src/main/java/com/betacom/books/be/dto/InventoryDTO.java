@@ -18,6 +18,6 @@ public class InventoryDTO {
 	private Integer stock;
 	private BigDecimal price;
 	private LocalDateTime updatedAt;
-	private Integer book;
+	private Integer bookId;
 	private List<Integer> orderItem;
 }

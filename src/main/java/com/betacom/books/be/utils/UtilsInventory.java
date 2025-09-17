@@ -14,7 +14,7 @@ public class UtilsInventory extends UtilsOrderItem{
 				.stock(i.getStock())
 				.price(i.getPrice())
 				.updatedAt(i.getUpdatedAt())
-				.book(i.getBook().getId())
+				.bookId(i.getBook().getId())
 				.orderItem(i.getOrderItems().stream().map(OrderItem::getId).collect(Collectors.toList()))
 				.build();
 	}
