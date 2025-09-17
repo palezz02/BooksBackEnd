@@ -44,8 +44,14 @@ public class OrderItemServiceTest extends UtilsOrderItem {
 		BigDecimal uPrice = new BigDecimal(3.99);
 		BigDecimal quantity = new BigDecimal(12);
 		BigDecimal total = quantity.multiply(uPrice);
-		Optional<Inventory> inventory = invR.findById(1);
-		req.setInventory(inventory.get());
+		
+		
+		
+		Inventory inv = new Inventory();
+		inv.setStock(12);
+		inv.setPrice(uPrice);
+		
+		req.setInventory(inv);
 		req.setQuantity(1);
 		req.setUnitPrice(uPrice);
 		req.setSubtotal(total);
@@ -60,9 +66,13 @@ public class OrderItemServiceTest extends UtilsOrderItem {
 		log.debug("Test update OrderItem");
 		
 		OrderItem req = new OrderItem();
-		Optional<Inventory> inventory = invR.findById(2);
+		BigDecimal uPrice = new BigDecimal(3.99);
+		Inventory inv = new Inventory();
+		inv.setStock(12);
+		inv.setPrice(uPrice);
+		
 		req.setId(1);
-		req.setInventory(inventory.get());
+		req.setInventory(inv);
 		
 		orderIRep.save(req);
 	}
@@ -96,8 +106,10 @@ public class OrderItemServiceTest extends UtilsOrderItem {
 		BigDecimal uPrice = new BigDecimal(3.99);
 		BigDecimal quantity = new BigDecimal(12);
 		BigDecimal total = quantity.multiply(uPrice);
-		Optional<Inventory> inventory = invR.findById(1);
-		req.setInventory(inventory.get());
+		Inventory inv = new Inventory();
+		inv.setStock(12);
+		inv.setPrice(uPrice);
+		req.setInventory(inv);
 		req.setQuantity(1);
 		req.setUnitPrice(uPrice);
 		req.setSubtotal(total);

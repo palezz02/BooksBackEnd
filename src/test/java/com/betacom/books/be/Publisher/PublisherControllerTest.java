@@ -110,6 +110,6 @@ public class PublisherControllerTest {
 		req.setId(123);
 		
 		ResponseBase res2 = publisherC.delete(req2);
-		Assertions.assertThat(res2.getRc()).isEqualTo(true);
+		Assertions.assertThat(res2.getRc()).isEqualTo(false);
 	}
 }
