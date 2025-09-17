@@ -1,5 +1,7 @@
 package com.betacom.books.be.Publisher;
 
+import java.util.Optional;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -9,7 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.betacom.books.be.controller.PublisherController;
+import com.betacom.books.be.dto.OrderItemDTO;
 import com.betacom.books.be.dto.PublisherDTO;
+import com.betacom.books.be.models.OrderItem;
+import com.betacom.books.be.requests.OrderItemReq;
 import com.betacom.books.be.requests.PublisherReq;
 import com.betacom.books.be.response.ResponseBase;
 import com.betacom.books.be.response.ResponseList;
@@ -83,5 +88,28 @@ public class PublisherControllerTest {
 		ResponseList<PublisherDTO> r = publisherC.getAll();
 		
 		Assertions.assertThat(r.getRc()).isEqualTo(true);
+	}
+	
+	@Test
+	@Order(6)
+	public void errorTest() {
+		log.debug("Test Errors Publisher");
+		// GetById error
+		ResponseObject<PublisherDTO> r = publisherC.getById(123);
+		Assertions.assertThat(r.getRc()).isEqualTo(false);
+		
+		// Create error
+		PublisherReq req = new PublisherReq();
+		req.setName("test");
+		
+		ResponseBase res = publisherC.create(req);
+		Assertions.assertThat(res.getRc()).isEqualTo(false);
+		
+		// Delete error
+		PublisherReq req2 = new PublisherReq();
+		req.setId(123);
+		
+		ResponseBase res2 = publisherC.delete(req2);
+		Assertions.assertThat(res2.getRc()).isEqualTo(true);
 	}
 }

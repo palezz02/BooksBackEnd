@@ -113,4 +113,28 @@ public class OrderItemControllerTest {
 		
 		Assertions.assertThat(r.getRc()).isEqualTo(true);
 	}
+	
+	@Test
+	@Order(6)
+	public void errorTest() {
+		log.debug("Test Errors OrderItem");
+		// GetById error
+		ResponseObject<OrderItemDTO> r = orderIC.getById(-1);
+		Assertions.assertThat(r.getRc()).isEqualTo(false);
+		
+		// Create error
+		OrderItemReq req = new OrderItemReq();
+		req.setOrderId(1);
+		req.setInventoryId(1);
+		req.setQuantity(12);
+		
+		ResponseBase res = orderIC.create(req);
+		Assertions.assertThat(res.getRc()).isEqualTo(false);
+		
+		// Delete error
+		OrderItemReq req2 = new OrderItemReq();
+		req.setId(-1);
+		ResponseBase res2 = orderIC.delete(req2);
+		Assertions.assertThat(res2.getRc()).isEqualTo(false);
+	}
 }

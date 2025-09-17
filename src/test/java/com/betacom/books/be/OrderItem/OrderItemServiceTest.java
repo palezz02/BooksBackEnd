@@ -12,11 +12,15 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.betacom.books.be.dto.OrderItemDTO;
 import com.betacom.books.be.models.Inventory;
 import com.betacom.books.be.models.OrderItem;
 import com.betacom.books.be.repositories.IInventoryRepository;
 import com.betacom.books.be.repositories.IOrderItemRepository;
 import com.betacom.books.be.repositories.IOrderRepository;
+import com.betacom.books.be.requests.OrderItemReq;
+import com.betacom.books.be.response.ResponseBase;
+import com.betacom.books.be.response.ResponseObject;
 import com.betacom.books.be.utils.UtilsOrderItem;
 
 import lombok.extern.log4j.Log4j2;
@@ -102,5 +106,14 @@ public class OrderItemServiceTest extends UtilsOrderItem {
 		
 		
 		Assertions.assertThat(orderItem.isPresent()).isEqualTo(true);
+	}
+	
+	@Test
+	@Order(6)
+	public void errorTest() {
+		log.debug("Test Errors OrderItem");
+		// GetById error
+		Optional<OrderItem> r = orderIRep.findById(999);
+		Assertions.assertThat(r.isPresent()).isEqualTo(false);
 	}
 }

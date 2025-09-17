@@ -11,6 +11,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.betacom.books.be.models.OrderItem;
 import com.betacom.books.be.models.Publisher;
 import com.betacom.books.be.repositories.IPublisherRepository;
 import com.betacom.books.be.utils.UtilsPublisher;
@@ -85,5 +86,14 @@ public class PublisherServiceTest extends UtilsPublisher {
 		
 		
 		Assertions.assertThat(publisher.isPresent()).isEqualTo(true);
+	}
+	
+	@Test
+	@Order(6)
+	public void errorTest() {
+		log.debug("Test Errors Publisher");
+		// GetById error
+		Optional<Publisher> r = publishRep.findById(999);
+		Assertions.assertThat(r.isPresent()).isEqualTo(false);
 	}
 }
