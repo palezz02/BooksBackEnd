@@ -1,6 +1,7 @@
 
 package com.betacom.books.be.controller;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -27,8 +28,8 @@ public class InventoryController {
 		this.inventoryServices = inventoryServices;
 	}
 
-	@GetMapping("/getInventory")
-	public ResponseObject<InventoryDTO> getOrder(@RequestParam(required = true) Integer id) {
+	@GetMapping("/getById")
+	public ResponseObject<InventoryDTO> getById(@RequestParam(required = true) Integer id) {
 		ResponseObject<InventoryDTO> r = new ResponseObject<InventoryDTO>();
 		try {
 			r.setDati(inventoryServices.getById(id));
@@ -53,7 +54,7 @@ public class InventoryController {
 		return r;
 	}
 
-	@PostMapping("delete")
+	@DeleteMapping("delete")
 	public ResponseBase delete(@RequestBody(required = true) InventoryReq req) {
 		ResponseBase r = new ResponseBase();
 		try {
