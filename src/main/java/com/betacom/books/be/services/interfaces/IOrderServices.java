@@ -1,5 +1,7 @@
 package com.betacom.books.be.services.interfaces;
 
+import java.util.List;
+
 import com.betacom.books.be.dto.OrderDTO;
 import com.betacom.books.be.exception.BooksException;
 import com.betacom.books.be.requests.OrderReq;
@@ -13,4 +15,5 @@ public interface IOrderServices {
 
 	void delete(OrderReq req) throws BooksException;
 
+	List<OrderDTO> getAll();
 }

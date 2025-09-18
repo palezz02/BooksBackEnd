@@ -1,5 +1,6 @@
 package com.betacom.books.be.services.implementations;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -102,5 +103,12 @@ public class InventoryImpl implements IInventoryServices {
 		if (!inventory.get().getOrderItems().isEmpty())
 			throw new BooksException("Inventory with id: " + req.getId() + " doesn't have items");
 
+	}
+
+	@Override
+	public List<InventoryDTO> getAll() {
+		log.debug("Get all inventories");
+		List<Inventory> inventories = inventoryRepository.findAll();
+		return UtilsInventory.buildInventoryListDTO(inventories);
 	}
 }

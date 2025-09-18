@@ -1,6 +1,7 @@
 package com.betacom.books.be.services.implementations;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -123,6 +124,13 @@ public class OrderImpl extends UtilsOrder implements IOrderServices {
 			throw new BooksException("Order with id: " + req.getId() + " doesn't have items");
 
 		orderRepository.delete(order.get());
+	}
+
+	@Override
+	public List<OrderDTO> getAll() {
+		log.debug("Get all orders!");
+		List<Order> orders = orderRepository.findAll();
+		return UtilsOrder.buildOrderListDTO(orders);
 	}
 
 }
