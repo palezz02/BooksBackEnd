@@ -1,14 +1,11 @@
 package com.betacom.books.be.models;
 
+import java.io.ObjectInputFilter.Status;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.betacom.books.be.utils.Status;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -33,14 +30,13 @@ public class Order {
 	@JoinColumn(name = "user_id", nullable = false)
 	private User user;
 
-	@Enumerated(EnumType.STRING)
 	@Column(name = "status", nullable = false)
 	private Status status;
 
 	@Column(name = "total", nullable = false)
 	private Integer total;
 
-	@Column(name = "order_number", unique = true, nullable = false)
+	@Column(name = "order_number", unique = true)
 	private Integer orderNumber;
 
 	@Column(name = "created_at", nullable = false)
