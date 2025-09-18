@@ -15,9 +15,13 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "Inventories")
+@Getter
+@Setter
 public class Inventory {
 
 	@Id
