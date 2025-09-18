@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.betacom.books.be.models.Publisher;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

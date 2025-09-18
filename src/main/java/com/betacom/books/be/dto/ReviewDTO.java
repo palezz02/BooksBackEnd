@@ -2,8 +2,6 @@ package com.betacom.books.be.dto;
 
 import java.time.LocalDateTime;
 
-import com.betacom.books.be.models.Book;
-import com.betacom.books.be.models.User;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -1,5 +1,6 @@
 package com.betacom.books.be.controller;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -13,8 +14,6 @@ import com.betacom.books.be.requests.OrderReq;
 import com.betacom.books.be.response.ResponseObject;
 
 import com.betacom.books.be.services.interfaces.IOrderServices;
-import com.betacom.books.be.response.ResponseBase;
-import com.betacom.books.be.response.ResponseObject;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -29,8 +28,8 @@ public class OrderController {
 		this.orderServices = orderServices;
 	}
 	
-	@GetMapping("/getOrder")
-	public ResponseObject<OrderDTO> getOrder(@RequestParam(required = true) Integer id) {
+	@GetMapping("/getById")
+	public ResponseObject<OrderDTO> getgetById(@RequestParam(required = true) Integer id) {
 		ResponseObject<OrderDTO> r = new ResponseObject<OrderDTO>();
 		try {
 			r.setDati(orderServices.getById(id));
@@ -55,7 +54,7 @@ public class OrderController {
 		return r;
 	}
 	
-	@PostMapping("delete")
+	@DeleteMapping("delete")
 	public ResponseBase delete(@RequestBody (required = true)  OrderReq req) {
 		ResponseBase r = new ResponseBase();
 		try {

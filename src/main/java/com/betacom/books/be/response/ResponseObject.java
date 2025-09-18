@@ -1,6 +1,5 @@
 package com.betacom.books.be.response;
 
-import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;

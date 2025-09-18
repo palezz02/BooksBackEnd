@@ -1,7 +1,6 @@
 package com.betacom.books.be.requests;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
