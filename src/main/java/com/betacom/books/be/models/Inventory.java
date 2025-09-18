@@ -1,8 +1,6 @@
 package com.betacom.books.be.models;
 
-import java.io.ObjectInputFilter.Status;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -41,7 +39,7 @@ public class Inventory {
 	private BigDecimal price;
 	
 	@Column(name = "updated_at", nullable = false)
-	private LocalDate updatedAt;
+	private LocalDateTime updatedAt;
 	
 	@OneToOne(mappedBy = "inventory")
 	private Book book;

@@ -2,7 +2,6 @@ package com.betacom.books.be.dto;
 
 import java.util.List;
 
-import com.betacom.books.be.models.Book;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -15,5 +14,5 @@ public class PublisherDTO {
 	private Integer id;
     private String name;
     private String description;
-	private List<Book> books;
+	private List<Integer> books;
 }

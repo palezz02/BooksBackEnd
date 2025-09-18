@@ -1,6 +1,5 @@
 package com.betacom.books.be.services.implementations;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.betacom.books.be.dto.PublisherDTO;
 import com.betacom.books.be.exception.BooksException;
-import com.betacom.books.be.models.OrderItem;
 import com.betacom.books.be.models.Publisher;
 import com.betacom.books.be.repositories.IPublisherRepository;
 import com.betacom.books.be.requests.PublisherReq;
@@ -21,6 +19,10 @@ import lombok.extern.log4j.Log4j2;
 @Service
 public class PublisherImpl extends UtilsPublisher implements IPublisherServices {
 	private IPublisherRepository publishRep;
+	
+	public PublisherImpl(IPublisherRepository publishRep) {
+		this.publishRep = publishRep;
+	}
 	
 	@Override
 	public List<PublisherDTO> getAll() throws BooksException {
@@ -48,8 +50,9 @@ public class PublisherImpl extends UtilsPublisher implements IPublisherServices 
 	@Override
 	public PublisherDTO create(PublisherReq req) throws BooksException {
 		log.debug("create Publisher");
+		log.debug(req);
 		Publisher p = new Publisher();
-		Optional<Publisher> publisher = publishRep.findById(req.getId());
+		Optional<Publisher> publisher = publishRep.findByName(req.getName());
 		
 		if(publisher.isPresent()) {
 			throw new BooksException("OrderItem esistente");

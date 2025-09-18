@@ -11,11 +11,15 @@ import org.springframework.stereotype.Service;
 
 import com.betacom.books.be.dto.ReviewDTO;
 import com.betacom.books.be.exception.BooksException;
+import com.betacom.books.be.models.Book;
 import com.betacom.books.be.models.Review;
+import com.betacom.books.be.models.User;
+import com.betacom.books.be.repositories.IBookRepository;
 import com.betacom.books.be.repositories.IReviewRepository;
+import com.betacom.books.be.repositories.IUserRepository;
 import com.betacom.books.be.requests.ReviewReq;
 import com.betacom.books.be.services.interfaces.IReviewServices;
-import com.betacom.books.be.utils.UtilitiesReview;
+import com.betacom.books.be.utils.UtilsReview;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,9 +30,12 @@ import lombok.extern.log4j.Log4j2;
 public class ReviewImpl extends Utilities implements IReviewServices {
 
 	private IReviewRepository reviewR;
-
-	public ReviewImpl(IReviewRepository reviewR) {
+	private IBookRepository bookR;
+	private IUserRepository userR;
+	public ReviewImpl(IReviewRepository reviewR,IUserRepository userR,IBookRepository bookR) {
 		this.reviewR = reviewR;
+		this.userR = userR;
+		this.bookR = bookR;
 	}
 
 	@Transactional(rollbackFor = Exception.class)
@@ -38,10 +45,10 @@ public class ReviewImpl extends Utilities implements IReviewServices {
 		log.debug("create: " + req);
 		Review rev = new Review();
 
-		if (req.getUser() == null)
+		if (req.getUserId() == null)
 			throw new BooksException("Utente obbligatorio");
 
-		if (req.getBook() == null)
+		if (req.getBookId() == null)
 			throw new BooksException("Libro obbligatorio");
 
 		if (req.getRating() == null)
@@ -51,9 +58,18 @@ public class ReviewImpl extends Utilities implements IReviewServices {
 
 		if (rating < 1 || rating > 5)
 			throw new BooksException("Voto recensione fuori range (1-5)");
-
-		rev.setBook(req.getBook());
-		rev.setUser(req.getUser());
+		
+		Optional<User> u = userR.findById(req.getUserId());
+		
+		if(u.isEmpty()) {
+			throw new BooksException("User non valido");
+		}
+		
+		Optional<Book> b = bookR.findById(req.getBookId());
+		if(b.isEmpty()) throw new BooksException("Book non esistente");
+		
+		rev.setBook(b.get());
+		rev.setUser(u.get());
 		rev.setRating(req.getRating());
 		rev.setTitle(req.getTitle());
 		rev.setBody(req.getBody());
@@ -61,7 +77,7 @@ public class ReviewImpl extends Utilities implements IReviewServices {
 
 		reviewR.save(rev);
 
-		return UtilitiesReview.toDTO(rev);
+		return UtilsReview.toDTO(rev);
 	}
 
 	@Transactional(rollbackFor = Exception.class)
@@ -115,7 +131,7 @@ public class ReviewImpl extends Utilities implements IReviewServices {
 	@Override
 	public List<ReviewDTO> getAll() {
 		List<Review> lR = reviewR.findAll();
-		return UtilitiesReview.toDTOList(lR);
+		return UtilsReview.toDTOList(lR);
 	}
 
 }

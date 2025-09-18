@@ -1,7 +1,6 @@
 package com.betacom.books.be.requests;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
@@ -19,6 +18,6 @@ public class InventoryReq {
 	private Integer id;
 	private Integer stock;
 	private BigDecimal price;
-	private LocalDate updatedAt;
+	private LocalDateTime updatedAt;
 	private String errorMsg;
 }

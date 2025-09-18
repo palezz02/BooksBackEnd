@@ -2,6 +2,8 @@ package com.betacom.books.be.requests;
 
 import java.time.LocalDate;
 
+import com.betacom.books.be.utils.Status;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,10 +17,9 @@ import lombok.ToString;
 @NoArgsConstructor
 public class OrderReq {
 	private Integer id;
-	private String status;
+	private Status status;
 	private Integer total;
 	private Integer orderNumber;
-	private LocalDate createdAt;
+	private Integer shippingAddress;
 	private LocalDate updatedAt;
-	private String errorMsg;
 }

@@ -1,15 +1,16 @@
 package com.betacom.books.be.controller;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.betacom.books.be.dto.OrderItemDTO;
-import com.betacom.books.be.dto.PublisherDTO;
 import com.betacom.books.be.requests.OrderItemReq;
-import com.betacom.books.be.requests.PublisherReq;
 import com.betacom.books.be.response.ResponseBase;
 import com.betacom.books.be.response.ResponseList;
 import com.betacom.books.be.response.ResponseObject;
@@ -53,7 +54,7 @@ public class OrderItemController {
 	}
 	
 	@PostMapping("/create")
-	public ResponseBase create(@RequestParam(required=true) OrderItemReq req){
+	public ResponseBase create(@RequestBody(required=true) OrderItemReq req){
 		ResponseBase res = new ResponseBase();
 		try {
 			orderItemS.create(req);
@@ -66,8 +67,8 @@ public class OrderItemController {
 		
 	}
 	
-	@PostMapping("/update")
-	public ResponseBase update(@RequestParam(required=true) OrderItemReq req){
+	@PutMapping("/update")
+	public ResponseBase update(@RequestBody(required=true) OrderItemReq req){
 		ResponseBase res = new ResponseBase();
 		try {
 			orderItemS.update(req);
@@ -80,8 +81,8 @@ public class OrderItemController {
 		
 	}
 	
-	@PostMapping("/delete")
-	public ResponseBase delete(@RequestParam(required=true) OrderItemReq req){
+	@DeleteMapping("/delete")
+	public ResponseBase delete(@RequestBody(required=true) OrderItemReq req){
 		ResponseBase res = new ResponseBase();
 		try {
 			orderItemS.delete(req);

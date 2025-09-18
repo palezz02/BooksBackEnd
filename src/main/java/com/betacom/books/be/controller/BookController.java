@@ -1,5 +1,6 @@
 package com.betacom.books.be.controller;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -12,10 +13,14 @@ import com.betacom.books.be.dto.BookDTO;
 import com.betacom.books.be.requests.BookReq;
 import com.betacom.books.be.response.ResponseBase;
 import com.betacom.books.be.response.ResponseList;
+import com.betacom.books.be.response.ResponseObject;
 import com.betacom.books.be.services.interfaces.IBookService;
 
+import lombok.extern.log4j.Log4j2;
+
 @RestController
-@RequestMapping("/rest/book")
+@RequestMapping("/rest/book/")
+@Log4j2
 public class BookController {
 	
 	private IBookService bookService;
@@ -26,6 +31,7 @@ public class BookController {
 	
 	@PostMapping("create")
 	public ResponseBase create(@RequestBody (required = true)  BookReq req) {
+		log.debug("CREATE: {req}");
 		ResponseBase r = new ResponseBase();
 		try {
 			bookService.create(req);
@@ -50,7 +56,7 @@ public class BookController {
 		return r;
 	}
 
-	@PostMapping("delete")
+	@DeleteMapping("delete")
 	public ResponseBase delete(@RequestBody (required = true)  BookReq req) {
 		ResponseBase r = new ResponseBase();
 		try {
@@ -64,16 +70,18 @@ public class BookController {
 	}
 	
 	@GetMapping("getById")
-	public ResponseBase getById(@RequestParam (required = true) Integer id) {
-		ResponseBase r = new ResponseBase();
-		try {
-			bookService.getById(id);
-			r.setRc(true);
-		} catch (Exception e) {
-			r.setRc(false);
-			r.setMsg(e.getMessage());
-		}
-		return r;
+	public ResponseObject<BookDTO> getById(@RequestParam(required = true) Integer id) {
+	    ResponseObject<BookDTO> r = new ResponseObject<>();
+	    try {
+	        BookDTO bookDTO = bookService.getById(id);
+	        r.setDati(bookDTO);
+	        r.setRc(true);
+	    } catch (Exception e) {
+	        r.setRc(false);
+	        r.setMsg(e.getMessage());
+	        r.setDati(null);
+	    }
+	    return r;
 	}
 	
 	@GetMapping("getAll")

@@ -5,8 +5,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.betacom.books.be.models.Address;
-import com.betacom.books.be.models.Order;
-import com.betacom.books.be.models.Review;
 import com.betacom.books.be.utils.Roles;
 
 import lombok.Builder;
@@ -29,7 +27,7 @@ public class UserDTO {
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
 	private Roles role;
-	private List<Review> reviews;
+	private List<Integer> reviews;
 	private List<Address> addresses;
-	private List<Order> orders;
+	private List<Integer> orders;
 }

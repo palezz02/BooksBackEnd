@@ -1,27 +1,35 @@
 package com.betacom.books.be.utils;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import com.betacom.books.be.dto.PublisherDTO;
+import com.betacom.books.be.models.Book;
 import com.betacom.books.be.models.Publisher;
 
 public class UtilsPublisher {
 	public List<PublisherDTO> buildPublisherDTOList(List<Publisher> lista){
-		return lista.stream().map(p -> PublisherDTO.builder()
-				.id(p.getId())
-				.name(p.getName())
-				.description(p.getDescription())
-				.books(p.getBooks())
-				.build()).collect(Collectors.toList());
+		if (lista == null) {
+            return Collections.emptyList();
+        }
+        return lista.stream()
+                    .map(UtilsPublisher::buildPublisherDTO)
+                    .collect(Collectors.toList());
 	}
-	
-	public PublisherDTO buildPublisherDTO(Publisher p){
-		return PublisherDTO.builder()
-				.id(p.getId())
-				.name(p.getName())
-				.description(p.getDescription())
-				.books(p.getBooks())
-				.build();
+
+	public static PublisherDTO buildPublisherDTO(Publisher p) {
+	    if (p == null) {
+	        return null;
+	    }
+
+	    return PublisherDTO.builder()
+	            .id(p.getId())
+	            .name(p.getName())
+	            .description(p.getDescription())
+	            .books(p.getBooks() != null ? 
+	                   p.getBooks().stream().map(Book::getId).collect(Collectors.toList()) : 
+	                   Collections.emptyList())
+	            .build();
 	}
 }

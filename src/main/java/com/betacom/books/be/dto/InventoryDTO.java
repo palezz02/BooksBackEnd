@@ -1,7 +1,7 @@
 package com.betacom.books.be.dto;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -16,7 +16,7 @@ public class InventoryDTO {
 	private Integer id;
 	private Integer stock;
 	private BigDecimal price;
-	private LocalDate updatedAt;
-	private BookDTO book;
-	private List<OrderItemDTO> orderItem;
+	private LocalDateTime updatedAt;
+	private Integer bookId;
+	private List<Integer> orderItem;
 }

@@ -8,6 +8,8 @@ import com.betacom.books.be.utils.Roles;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -49,6 +51,7 @@ public class User {
 	@Column(name = "updated_at", nullable = false)
 	private LocalDateTime updatedAt;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name = "role", nullable = false)
 	private Roles role;
 	
@@ -59,5 +62,5 @@ public class User {
 	private List<Address> addresses;
 	
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-	private List<Order> orders;;
+	private List<Order> orders;
 }
