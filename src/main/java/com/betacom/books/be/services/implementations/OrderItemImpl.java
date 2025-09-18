@@ -101,12 +101,15 @@ public class OrderItemImpl extends UtilsOrderItem implements IOrderItemServices 
 	public void update(OrderItemReq req) throws BooksException {
 		log.debug("update OrderItem");
 		Boolean modified = false;
-		OrderItem o = new OrderItem();
+		
 		Optional<OrderItem> orderItem = orderIRep.findById(req.getId());
 		
 		if(orderItem.isEmpty()) {
 			throw new BooksException("OrderItem non trovato");
 		}
+		
+		OrderItem o = orderItem.get();
+		
 		Optional<Order> order = orderR.findById(req.getOrderId());
 		if(order.isPresent()) {
 			o.setOrder(order.get());

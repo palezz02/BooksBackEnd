@@ -58,8 +58,19 @@ public class PublisherControllerTest {
 		Assertions.assertThat(res.getRc()).isEqualTo(true);
 	}
 	
+
 	@Test
 	@Order(3)
+	public void getByIdPublisher() {
+		log.debug("Test get Publisher");
+		
+		ResponseObject<PublisherDTO> r = publisherC.getById(1);
+		
+		Assertions.assertThat(r.getRc()).isEqualTo(true);
+	}
+	
+	@Test
+	@Order(4)
 	public void deletePublisherTest() {
 		log.debug("Test update Publisher");
 		
@@ -70,15 +81,6 @@ public class PublisherControllerTest {
 		Assertions.assertThat(res.getRc()).isEqualTo(true);
 	}
 	
-	@Test
-	@Order(4)
-	public void getByIdPublisher() {
-		log.debug("Test get Publisher");
-		
-		ResponseObject<PublisherDTO> r = publisherC.getById(1);
-		
-		Assertions.assertThat(r.getRc()).isEqualTo(true);
-	}
 	
 	@Test
 	@Order(5)
