@@ -1,9 +1,5 @@
 package com.betacom.books.be.requests;
 
-import java.time.LocalDateTime;
-
-import com.betacom.books.be.models.Book;
-import com.betacom.books.be.models.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

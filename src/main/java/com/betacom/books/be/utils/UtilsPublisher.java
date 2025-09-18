@@ -17,13 +17,19 @@ public class UtilsPublisher {
                     .map(UtilsPublisher::buildPublisherDTO)
                     .collect(Collectors.toList());
 	}
-	
-	public static PublisherDTO buildPublisherDTO(Publisher p){
-		return PublisherDTO.builder()
-				.id(p.getId())
-				.name(p.getName())
-				.description(p.getDescription())
-				.books(p.getBooks().stream().map(Book::getId).collect(Collectors.toList()))
-				.build();
+
+	public static PublisherDTO buildPublisherDTO(Publisher p) {
+	    if (p == null) {
+	        return null;
+	    }
+
+	    return PublisherDTO.builder()
+	            .id(p.getId())
+	            .name(p.getName())
+	            .description(p.getDescription())
+	            .books(p.getBooks() != null ? 
+	                   p.getBooks().stream().map(Book::getId).collect(Collectors.toList()) : 
+	                   Collections.emptyList())
+	            .build();
 	}
 }

@@ -1,13 +1,10 @@
 package com.betacom.books.be.services.implementations;
 
 import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.time.ZoneOffset;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.betacom.books.be.configurations.WebSecurityConfiguration;
 import com.betacom.books.be.dto.OrderDTO;
 import com.betacom.books.be.exception.BooksException;
 import com.betacom.books.be.models.Address;
@@ -16,7 +13,6 @@ import com.betacom.books.be.repositories.IAddressRepository;
 import com.betacom.books.be.repositories.IOrderRepository;
 import com.betacom.books.be.requests.OrderReq;
 import com.betacom.books.be.services.interfaces.IOrderServices;
-import com.betacom.books.be.utils.Status;
 import com.betacom.books.be.utils.UtilsOrder;
 
 import lombok.extern.log4j.Log4j2;
@@ -25,13 +21,12 @@ import lombok.extern.log4j.Log4j2;
 @Service
 public class OrderImpl extends UtilsOrder implements IOrderServices {
 
-    private final WebSecurityConfiguration webSecurityConfiguration;
 
 	private IOrderRepository orderRepository;
 	private IAddressRepository addR;
-	public OrderImpl(IOrderRepository orderRepository, WebSecurityConfiguration webSecurityConfiguration,IAddressRepository addR) {
+	
+	public OrderImpl(IOrderRepository orderRepository,IAddressRepository addR) {
 		this.orderRepository = orderRepository;
-		this.webSecurityConfiguration = webSecurityConfiguration;
 		this.addR = addR;
 	}
 
