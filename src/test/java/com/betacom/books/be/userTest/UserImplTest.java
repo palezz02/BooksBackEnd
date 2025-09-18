@@ -1,8 +1,5 @@
 package com.betacom.books.be.userTest;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
 import java.time.LocalDate;
 
 import org.assertj.core.api.Assertions;
@@ -10,7 +7,6 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,6 +15,7 @@ import com.betacom.books.be.dto.UserDTO;
 import com.betacom.books.be.exception.BooksException;
 import com.betacom.books.be.requests.UserReq;
 import com.betacom.books.be.services.interfaces.IUserServices;
+import com.betacom.books.be.utils.Roles;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -37,6 +34,7 @@ public class UserImplTest {
 		req.setFirstName("Mario");
 		req.setLastName("Rossi");
 		req.setBirthDate(LocalDate.of(2000, 1, 1));
+		req.setRole(Roles.ADMIN);
 		return req;
 	}
 
@@ -46,7 +44,7 @@ public class UserImplTest {
 
 		UserReq req = buildNewUser("email@esempio.com");
 
-		assertThat(userS.create(req)).isInstanceOf(UserDTO.class);
+		Assertions.assertThat(userS.create(req)).isInstanceOf(UserDTO.class);
 	}
 
 	@ParameterizedTest
@@ -66,7 +64,7 @@ public class UserImplTest {
 	void createUserImplWithSameEmail() throws BooksException {
 		log.debug("test create two user with same email");
 
-		String sameEmail = "email@esempio.com";
+		String sameEmail = "prova@esempio.com";
 		
 		UserReq req = buildNewUser(sameEmail);
 
@@ -132,7 +130,7 @@ public class UserImplTest {
 	@ParameterizedTest
 	@CsvSource({ "2045-09-18", "2030-01-01" })
 	void createUserImplWithInvalidBirthDate(String dateStr) {
-		log.debug("test create with invalid birth date");
+		log.debug("test create ");
 		LocalDate birthDate = LocalDate.parse(dateStr);
 
 		UserReq req = new UserReq();
