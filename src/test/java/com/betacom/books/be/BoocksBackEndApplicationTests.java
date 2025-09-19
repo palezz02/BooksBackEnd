@@ -9,6 +9,10 @@ import com.betacom.books.be.bookTest.BookControllerTest;
 import com.betacom.books.be.bookTest.BookServiceTest;
 import com.betacom.books.be.categoryTest.CategoryControllerTest;
 import com.betacom.books.be.categoryTest.CategoryServiceTest;
+import com.betacom.books.be.reviewTest.ReviewControllerTest;
+import com.betacom.books.be.reviewTest.ReviewImplTest;
+import com.betacom.books.be.userTest.UserControllerTest;
+import com.betacom.books.be.userTest.UserImplTest;
 
 
 @Suite
@@ -16,8 +20,11 @@ import com.betacom.books.be.categoryTest.CategoryServiceTest;
 	BookControllerTest.class,
 	BookServiceTest.class,
 	CategoryControllerTest.class,
-	CategoryServiceTest.class
-	
+	CategoryServiceTest.class,
+	UserImplTest.class,
+	UserControllerTest.class,
+	ReviewImplTest.class,
+	ReviewControllerTest.class
 	})
 
 @SpringBootTest
