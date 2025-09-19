@@ -205,7 +205,7 @@ public class UserImplTest {
 	void deleteUserErrorIdNotFoundTest() throws BooksException {
 
 		UserReq del = new UserReq();
-		del.setId(-1); // ID fittizio per controllo
+		del.setId(-1);
 
 		Assertions.assertThatThrownBy(() -> userS.delete(del)).isInstanceOf(BooksException.class)
 				.hasMessage("Utente da eliminare non trovato");
@@ -304,7 +304,6 @@ public class UserImplTest {
 			.isInstanceOf(BooksException.class)
 			.hasMessage("Mail già presente");
 
-		// Verifica che l'email di B non sia cambiata
 		UserDTO afterB = userS.getAll().stream()
 				.filter(x -> x.getId().equals(b.getId()))
 				.findFirst().orElseThrow();
@@ -390,18 +389,17 @@ public class UserImplTest {
 		log.debug("update mixed fields -> rollback");
 		UserDTO u = userS.create(buildNewUser("mix.rollback@ex.com"));
 
-		String originalEmail = u.getEmail(); // "mix.rollback@ex.com"
+		String originalEmail = u.getEmail();
 
 		UserReq up = new UserReq();
 		up.setId(u.getId());
-		up.setEmail("valida@mail.com");   // valido
-		up.setFirstName("   ");           // invalido -> eccezione
+		up.setEmail("valida@mail.com");
+		up.setFirstName("   ");
 
 		Assertions.assertThatThrownBy(() -> userS.update(up))
 			.isInstanceOf(BooksException.class)
 			.hasMessage("Nome utente non valido");
 
-		// Verifica che NESSUNA modifica sia stata persistita (rollback)
 		UserDTO after = userS.getAll().stream()
 				.filter(x -> x.getId().equals(u.getId()))
 				.findFirst().orElseThrow();
