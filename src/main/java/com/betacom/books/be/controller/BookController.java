@@ -73,8 +73,7 @@ public class BookController {
 	public ResponseObject<BookDTO> getById(@RequestParam(required = true) Integer id) {
 	    ResponseObject<BookDTO> r = new ResponseObject<>();
 	    try {
-	        BookDTO bookDTO = bookService.getById(id);
-	        r.setDati(bookDTO);
+	        r.setDati(bookService.getById(id));
 	        r.setRc(true);
 	    } catch (Exception e) {
 	        r.setRc(false);

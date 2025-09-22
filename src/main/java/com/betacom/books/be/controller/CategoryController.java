@@ -13,6 +13,7 @@ import com.betacom.books.be.dto.CategoryDTO;
 import com.betacom.books.be.requests.CategoryReq;
 import com.betacom.books.be.response.ResponseBase;
 import com.betacom.books.be.response.ResponseList;
+import com.betacom.books.be.response.ResponseObject;
 import com.betacom.books.be.services.interfaces.ICategoryService;
 
 @RestController
@@ -65,10 +66,10 @@ public class CategoryController {
 	}
 	
 	@GetMapping("getById")
-	public ResponseBase getById(@RequestParam (required = true) Integer id) {
-		ResponseBase r = new ResponseBase();
+	public ResponseObject<CategoryDTO> getById(@RequestParam (required = true) Integer id) {
+		ResponseObject<CategoryDTO> r = new ResponseObject<CategoryDTO>();
 		try {
-			categoryService.getById(id);
+			r.setDati(categoryService.getById(id));
 			r.setRc(true);
 		} catch (Exception e) {
 			r.setRc(false);

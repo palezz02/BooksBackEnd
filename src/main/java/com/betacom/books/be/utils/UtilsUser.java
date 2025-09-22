@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.betacom.books.be.dto.UserDTO;
+import com.betacom.books.be.models.Address;
 import com.betacom.books.be.models.Order;
 import com.betacom.books.be.models.Review;
 import com.betacom.books.be.models.User;
@@ -29,7 +30,9 @@ public class UtilsUser {
 	                .reviews(user.getReviews() != null ?
 	                         user.getReviews().stream().map(Review::getId).collect(Collectors.toList()) :
 	                         Collections.emptyList())
-	                .addresses(user.getAddresses())
+	                .addresses(user.getAddresses() != null ? 
+	                		user.getAddresses().stream().map(Address::getId).collect(Collectors.toList()) :
+                            Collections.emptyList())
 	                .orders(user.getOrders() != null ?
 	                        user.getOrders().stream().map(Order::getId).collect(Collectors.toList()) :
 	                        Collections.emptyList())
