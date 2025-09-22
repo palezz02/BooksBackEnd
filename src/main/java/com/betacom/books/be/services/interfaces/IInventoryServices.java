@@ -9,7 +9,7 @@ import com.betacom.books.be.requests.InventoryReq;
 public interface IInventoryServices {
 	InventoryDTO getById(Integer id) throws BooksException;
 
-	void create(InventoryReq req) throws BooksException;
+	InventoryDTO create(InventoryReq req) throws BooksException;
 
 	void update(InventoryReq req) throws BooksException;
 

@@ -18,7 +18,7 @@ import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @Service
-public class InventoryImpl implements IInventoryServices {
+public class InventoryImpl extends UtilsInventory implements IInventoryServices {
 
 	private IInventoryRepository inventoryRepository;
 
@@ -41,7 +41,7 @@ public class InventoryImpl implements IInventoryServices {
 	}
 
 	@Override
-	public void create(InventoryReq req) throws BooksException {
+	public InventoryDTO create(InventoryReq req) throws BooksException {
 		log.debug("Create: " + req);
 		Inventory i = new Inventory();
 		Optional<Inventory> inventory = inventoryRepository.findById(req.getId());
@@ -61,6 +61,8 @@ public class InventoryImpl implements IInventoryServices {
 		i.setPrice(req.getPrice());
 		i.setUpdatedAt(req.getUpdatedAt());
 		inventoryRepository.save(i);
+		
+		return buildInventoryDTO(i);
 
 	}
 

@@ -46,7 +46,7 @@ public class OrderImpl extends UtilsOrder implements IOrderServices {
 
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public void create(OrderReq req) throws BooksException {
+	public OrderDTO create(OrderReq req) throws BooksException {
 		log.debug("Create: " + req);
 		Order o = new Order();
 		Optional<Order> order = orderRepository.findById(req.getId());
@@ -76,6 +76,8 @@ public class OrderImpl extends UtilsOrder implements IOrderServices {
 		
 		o.setAddress(a.get());
 		orderRepository.save(o);
+		return buildOrderDTO(o);
+		
 
 	}
 
