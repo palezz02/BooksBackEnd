@@ -72,13 +72,13 @@ public class OrderItemServiceTest extends UtilsOrderItem {
 	
 	private OrderDTO createOrder() throws BooksException {
 		User u = new User();
-	    u.setFirstName("test");
-	    u.setLastName("test");
-	    u.setEmail("test@example.com");
+	    u.setFirstName("kiwkiwk");
+	    u.setLastName("kiwkiwk");
+	    u.setEmail("kiwkiwk@example.com");
 	    u.setBirthDate(LocalDate.now());
 	    u.setCreatedAt(LocalDateTime.now());
 	    u.setUpdatedAt(LocalDateTime.now());
-	    u.setPassword("test");
+	    u.setPassword("kiwkiwk");
 	    u.setRole(Roles.CUSTOMER);
 	    userRepository.save(u);
 
@@ -94,7 +94,6 @@ public class OrderItemServiceTest extends UtilsOrderItem {
 
 	    // 3. Creo l’ordine valido
 	    OrderReq o = new OrderReq();
-	    o.setId(1);
 	    o.setStatus(Status.PROCESSING);
 	    o.setTotal(20);
 	    o.setOrderNumber(1);
@@ -118,13 +117,13 @@ public class OrderItemServiceTest extends UtilsOrderItem {
 	@Order(1)
 	public void createOrderItemTest() throws BooksException {
 		log.debug("Test createOrderItemTest");
-		OrderDTO order = createOrder();
-		Inventory inv = createInventory();
+		createOrder();
+		createInventory();
 		
 		OrderItemReq req = new OrderItemReq();
 		req.setId(1);
-		req.setOrderId(order.getId());
-		req.setInventoryId(inv.getId());
+		req.setOrderId(15);
+		req.setInventoryId(1);
 		req.setQuantity(2);
 		
 		Assertions.assertThat(orderItemS.create(req)).isExactlyInstanceOf(OrderItemDTO.class);	
