@@ -72,11 +72,8 @@ public class OrderItemImpl extends UtilsOrderItem implements IOrderItemServices 
 			throw new BooksException("Inventory obbligatorio");
 		if (req.getQuantity() == null)
 			throw new BooksException("Quantity obbligatorio");
-		if (req.getUnitPrice() == null)
-			throw new BooksException("UnitPrice obbligatorio");
 		
 		BigDecimal quantity = new BigDecimal(req.getQuantity());
-		BigDecimal subTotal = quantity.multiply(req.getUnitPrice());
 		
 		Optional<Order> order = orderR.findById(req.getOrderId());
 		if(order.isEmpty()) throw new BooksException("Order non trovato");
@@ -86,10 +83,20 @@ public class OrderItemImpl extends UtilsOrderItem implements IOrderItemServices 
 		Optional<Inventory> inventory = invR.findById(req.getInventoryId());
 		if(inventory.isEmpty()) throw new BooksException("Inventory non trovato");
 		
+		BigDecimal subTotal = quantity.multiply(inventory.get().getPrice());
+		
 		o.setInventory(inventory.get());
 		o.setQuantity(req.getQuantity());
-		o.setUnitPrice(req.getUnitPrice());
+		o.setUnitPrice(inventory.get().getPrice());
 		o.setSubtotal(subTotal);
+		
+		Inventory i = inventory.get();
+		if(i.getStock() - req.getQuantity() < 0 )
+			throw new BooksException("Not enought copy in the invntory");
+		
+		i.setStock(i.getStock() - req.getQuantity());
+		
+		invR.save(i);
 		
 		orderIRep.save(o);
 		
@@ -116,21 +123,23 @@ public class OrderItemImpl extends UtilsOrderItem implements IOrderItemServices 
 			o.setInventory(inventory.get());
 		}
 			
-		if (req.getQuantity() != null) {
-			o.setQuantity(req.getQuantity());
-			modified = true;
-		}
-			
-		if (req.getUnitPrice() != null) {
-			o.setUnitPrice(req.getUnitPrice());
-			modified = true;
-		}
-			
 		if(modified == true) {
 			BigDecimal quantity = new BigDecimal(req.getQuantity());
-			BigDecimal subTotal = quantity.multiply(req.getUnitPrice());
+			BigDecimal subTotal = quantity.multiply(inventory.get().getPrice());
 			o.setSubtotal(subTotal);
 		}
+		
+		Inventory i = inventory.get();
+		if(i.getStock() - req.getQuantity() < 0 )
+			throw new BooksException("Not enought copy in the invntory");
+		
+		if(orderItem.get().getQuantity() > req.getQuantity())
+			i.setStock(i.getStock() + (orderItem.get().getQuantity() - req.getQuantity()));
+		
+		if(orderItem.get().getQuantity() < req.getQuantity())
+			i.setStock(i.getStock() - (req.getQuantity()) - orderItem.get().getQuantity());
+		
+		invR.save(i);
 		
 		orderIRep.save(o);
 	}
@@ -144,6 +153,18 @@ public class OrderItemImpl extends UtilsOrderItem implements IOrderItemServices 
 		if(orderItem.isEmpty()) {
 			throw new BooksException("OrderItem non trovato");
 		}
+		
+		Optional<Inventory> inventory = invR.findById(req.getInventoryId());
+		if(inventory.isEmpty()) {
+			throw new BooksException("Inventory non trovato");
+		}
+		Inventory i = inventory.get();
+		if(i.getStock() - req.getQuantity() < 0 )
+			throw new BooksException("Not enought copy in the invntory");
+		
+		i.setStock(i.getStock() + req.getQuantity());
+		
+		invR.save(i);
 		
 		orderIRep.delete(orderItem.get());
 	}

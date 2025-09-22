@@ -22,4 +22,5 @@ public class OrderReq {
 	private Integer orderNumber;
 	private Integer shippingAddress;
 	private LocalDate updatedAt;
+	private Integer user;
 }
