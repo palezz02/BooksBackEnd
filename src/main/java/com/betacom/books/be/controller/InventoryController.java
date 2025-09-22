@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.betacom.books.be.response.ResponseBase;
 import com.betacom.books.be.response.ResponseList;
 import com.betacom.books.be.dto.InventoryDTO;
-import com.betacom.books.be.dto.OrderDTO;
 import com.betacom.books.be.requests.InventoryReq;
 import com.betacom.books.be.response.ResponseObject;
 import com.betacom.books.be.services.interfaces.IInventoryServices;

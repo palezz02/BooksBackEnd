@@ -10,8 +10,10 @@ import com.betacom.books.be.dto.OrderDTO;
 import com.betacom.books.be.exception.BooksException;
 import com.betacom.books.be.models.Address;
 import com.betacom.books.be.models.Order;
+import com.betacom.books.be.models.User;
 import com.betacom.books.be.repositories.IAddressRepository;
 import com.betacom.books.be.repositories.IOrderRepository;
+import com.betacom.books.be.repositories.IUserRepository;
 import com.betacom.books.be.requests.OrderReq;
 import com.betacom.books.be.services.interfaces.IOrderServices;
 import com.betacom.books.be.utils.UtilsOrder;
@@ -25,10 +27,12 @@ public class OrderImpl extends UtilsOrder implements IOrderServices {
 
 	private IOrderRepository orderRepository;
 	private IAddressRepository addR;
+	private IUserRepository userRepository;
 	
-	public OrderImpl(IOrderRepository orderRepository,IAddressRepository addR) {
+	public OrderImpl(IOrderRepository orderRepository,IAddressRepository addR, IUserRepository userRepository) {
 		this.orderRepository = orderRepository;
 		this.addR = addR;
+		this.userRepository = userRepository;
 	}
 
 	@Override
@@ -72,9 +76,16 @@ public class OrderImpl extends UtilsOrder implements IOrderServices {
 		o.setTotal(req.getTotal());
 		o.setOrderNumber(req.getOrderNumber());
 		o.setUpdatedAt(req.getUpdatedAt());
-		
+		o.setStatus(req.getStatus());
 		
 		o.setAddress(a.get());
+		
+		Optional<User> user =  userRepository.findById(req.getUser());
+		if(user.isEmpty()) {
+			throw new BooksException("User not found");
+		}
+		o.setUser(user.get());
+		
 		orderRepository.save(o);
 		return buildOrderDTO(o);
 		
