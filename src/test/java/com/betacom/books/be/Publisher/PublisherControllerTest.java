@@ -7,12 +7,14 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.betacom.books.be.controller.PublisherController;
 import com.betacom.books.be.dto.OrderItemDTO;
 import com.betacom.books.be.dto.PublisherDTO;
+import com.betacom.books.be.exception.BooksException;
 import com.betacom.books.be.models.OrderItem;
 import com.betacom.books.be.requests.OrderItemReq;
 import com.betacom.books.be.requests.PublisherReq;
@@ -94,24 +96,45 @@ public class PublisherControllerTest {
 	
 	@Test
 	@Order(6)
-	public void errorTest() {
-		log.debug("Test Errors Publisher");
+	public void errorGetByIdTest() {
+		log.debug("Test GetById Errors Publisher");
+		
 		// GetById error
 		ResponseObject<PublisherDTO> r = publisherC.getById(123);
 		Assertions.assertThat(r.getRc()).isEqualTo(false);
 		
-		// Create error
+	}
+	
+	@Test
+	@Order(7)
+	public void errorUpdateTest() {
+		log.debug("Test Update Errors Publisher");
+
+		PublisherReq req = new PublisherReq();
+		req.setId(222);
+		ResponseBase res = publisherC.update(req);
+		Assertions.assertThat(res.getRc()).isEqualTo(false);
+	}
+	
+	@Test
+	@Order(8)
+	public void errorCreateTest() {
+		log.debug("Test Create Errors Publisher");
 		PublisherReq req = new PublisherReq();
 		req.setName("test");
 		
 		ResponseBase res = publisherC.create(req);
 		Assertions.assertThat(res.getRc()).isEqualTo(false);
-		
-		// Delete error
-		PublisherReq req2 = new PublisherReq();
+	}
+	
+	@Test
+	@Order(9)
+	public void errorDeleteTest() {
+		log.debug("Test Update Errors Publisher");
+		PublisherReq req = new PublisherReq();
 		req.setId(123);
 		
-		ResponseBase res2 = publisherC.delete(req2);
-		Assertions.assertThat(res2.getRc()).isEqualTo(false);
+		ResponseBase res = publisherC.delete(req);
+		Assertions.assertThat(res.getRc()).isEqualTo(false);
 	}
 }

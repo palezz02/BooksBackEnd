@@ -1,6 +1,5 @@
 package com.betacom.books.be.requests;
 
-import java.math.BigDecimal;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,6 +17,4 @@ public class OrderItemReq {
 	private Integer orderId;
 	private Integer inventoryId;
 	private Integer quantity;
-	private BigDecimal unitPrice;
-	private BigDecimal subtotal;
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.betacom.books.be.response.ResponseBase;
+import com.betacom.books.be.response.ResponseList;
 import com.betacom.books.be.dto.OrderDTO;
 import com.betacom.books.be.requests.OrderReq;
 import com.betacom.books.be.response.ResponseObject;
@@ -29,7 +30,7 @@ public class OrderController {
 	}
 	
 	@GetMapping("/getById")
-	public ResponseObject<OrderDTO> getgetById(@RequestParam(required = true) Integer id) {
+	public ResponseObject<OrderDTO> getById(@RequestParam(required = true) Integer id) {
 		ResponseObject<OrderDTO> r = new ResponseObject<OrderDTO>();
 		try {
 			r.setDati(orderServices.getById(id));
@@ -80,4 +81,16 @@ public class OrderController {
 		return r;
 	}
 	
+	@GetMapping("getAll")
+	public ResponseList<OrderDTO> getAll(){
+		ResponseList<OrderDTO> r = new ResponseList<OrderDTO>();
+		try {
+			r.setDati(orderServices.getAll());
+			r.setRc(true);
+		} catch (Exception e) {
+			r.setRc(false);
+			r.setMsg(e.getMessage());
+		}
+		return r;
+	}
 }

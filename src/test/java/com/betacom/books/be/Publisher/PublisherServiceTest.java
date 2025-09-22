@@ -1,9 +1,6 @@
 package com.betacom.books.be.Publisher;
 
-import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
-
 import java.util.List;
-import java.util.Optional;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer;
@@ -15,9 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.betacom.books.be.dto.PublisherDTO;
 import com.betacom.books.be.exception.BooksException;
-import com.betacom.books.be.models.OrderItem;
-import com.betacom.books.be.models.Publisher;
-import com.betacom.books.be.repositories.IPublisherRepository;
 import com.betacom.books.be.requests.PublisherReq;
 import com.betacom.books.be.services.interfaces.IPublisherServices;
 import com.betacom.books.be.utils.UtilsPublisher;
@@ -154,10 +148,12 @@ public class PublisherServiceTest extends UtilsPublisher {
 		
 		req.setName("test8");
 		req.setDescription("test8");
-		publisherS.create(req);
-		publisherS.delete(req);
+		PublisherDTO p = publisherS.create(req);
+		PublisherReq req2 = new PublisherReq();
+		req2.setId(p.getId());
+		publisherS.delete(req2);
 
-		Assertions.assertThatThrownBy(() -> publisherS.getById(req.getId())).isInstanceOf(BooksException.class);
+		Assertions.assertThatThrownBy(() -> publisherS.getById(p.getId())).isInstanceOf(BooksException.class);
 		
 	}
 	
@@ -191,8 +187,8 @@ public class PublisherServiceTest extends UtilsPublisher {
 		p.setName("test11");
 		p.setDescription("test11");
 		
-		publisherS.create(p);
-		Assertions.assertThat(publisherS.getById(p.getId())).isExactlyInstanceOf(PublisherDTO.class);	
+		PublisherDTO pD = publisherS.create(p);
+		Assertions.assertThat(publisherS.getById(pD.getId())).isInstanceOf(PublisherDTO.class);	
 	}
 	
 
@@ -201,6 +197,6 @@ public class PublisherServiceTest extends UtilsPublisher {
 	public void getByIdNotFound() throws BooksException {
 		log.debug("Test getById Publisher");
 		
-		Assertions.assertThat(publisherS.getById(null)).isExactlyInstanceOf(BooksException.class);	
+		Assertions.assertThatThrownBy(() -> publisherS.getById(222)).isInstanceOf(BooksException.class);
 	}
 }

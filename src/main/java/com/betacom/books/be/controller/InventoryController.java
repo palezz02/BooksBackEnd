@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.betacom.books.be.response.ResponseBase;
+import com.betacom.books.be.response.ResponseList;
 import com.betacom.books.be.dto.InventoryDTO;
 import com.betacom.books.be.requests.InventoryReq;
 import com.betacom.books.be.response.ResponseObject;
@@ -80,4 +81,16 @@ public class InventoryController {
 		return r;
 	}
 
+	@GetMapping("getAll")
+	public ResponseList<InventoryDTO> getAll(){
+		ResponseList<InventoryDTO> r = new ResponseList<InventoryDTO>();
+		try {
+			r.setDati(inventoryServices.getAll());
+			r.setRc(true);
+		} catch (Exception e) {
+			r.setRc(false);
+			r.setMsg(e.getMessage());
+		}
+		return r;
+	}
 }
