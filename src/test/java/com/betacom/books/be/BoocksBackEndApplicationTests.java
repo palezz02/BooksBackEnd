@@ -5,6 +5,9 @@ import org.junit.platform.suite.api.SelectClasses;
 import org.junit.platform.suite.api.Suite;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.betacom.books.be.OrderItem.OrderItemControllerTest;
+import com.betacom.books.be.Publisher.PublisherControllerTest;
+import com.betacom.books.be.Publisher.PublisherServiceTest;
 import com.betacom.books.be.bookTest.BookControllerTest;
 import com.betacom.books.be.bookTest.BookServiceTest;
 import com.betacom.books.be.categoryTest.CategoryControllerTest;
@@ -21,6 +24,9 @@ import com.betacom.books.be.userTest.UserImplTest;
 	BookServiceTest.class,
 	CategoryControllerTest.class,
 	CategoryServiceTest.class,
+	OrderItemControllerTest.class,
+	PublisherControllerTest.class,
+	PublisherServiceTest.class,
 	UserImplTest.class,
 	UserControllerTest.class,
 	ReviewImplTest.class,

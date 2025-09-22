@@ -74,12 +74,13 @@ public class PublisherImpl extends UtilsPublisher implements IPublisherServices 
 	@Override
 	public void update(PublisherReq req) throws BooksException {
 		log.debug("update Publisher");
-		Publisher p = new Publisher();
+		log.debug(req);
 		Optional<Publisher> publisher = publishRep.findById(req.getId());
 		
 		if(publisher.isEmpty()) {
 			throw new BooksException("Publisher non trovato");
 		}
+		Publisher p = publisher.get();
 		
 		if (req.getName() != null)
 			p.setName(req.getName());
