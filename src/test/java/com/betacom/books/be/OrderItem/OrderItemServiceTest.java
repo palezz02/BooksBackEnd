@@ -94,6 +94,7 @@ public class OrderItemServiceTest extends UtilsOrderItem {
 
 	    // 3. Creo l’ordine valido
 	    OrderReq o = new OrderReq();
+	    o.setId(1);
 	    o.setStatus(Status.PROCESSING);
 	    o.setTotal(20);
 	    o.setOrderNumber(1);
@@ -122,7 +123,7 @@ public class OrderItemServiceTest extends UtilsOrderItem {
 		
 		OrderItemReq req = new OrderItemReq();
 		req.setId(1);
-		req.setOrderId(15);
+		req.setOrderId(1);
 		req.setInventoryId(1);
 		req.setQuantity(2);
 		
@@ -150,6 +151,8 @@ public class OrderItemServiceTest extends UtilsOrderItem {
 		Assertions.assertThatThrownBy(() -> orderItemS.create(req2)).isInstanceOf(BooksException.class);
 	}
 	
+	
+	
 	@Test
 	@Order(3)
 	public void createOrderItemNullOrderTest() throws BooksException {
@@ -165,6 +168,20 @@ public class OrderItemServiceTest extends UtilsOrderItem {
 	}
 	
 	@Test
+	@Order(3)
+	public void createOrderIdNotExist() throws BooksException {
+		log.debug("Test createOrderIdNotExist");
+		
+		OrderItemReq req = new OrderItemReq();
+		req.setId(2);
+		req.setOrderId(-1);
+		req.setInventoryId(1);
+		req.setQuantity(1);
+		
+		Assertions.assertThatThrownBy(() -> orderItemS.create(req)).isInstanceOf(BooksException.class);
+	}
+	
+	@Test
 	@Order(4)
 	public void createOrderItemNullInventoryTest() throws BooksException {
 		log.debug("Test createOrderItemNullInventoryTest");
@@ -173,6 +190,20 @@ public class OrderItemServiceTest extends UtilsOrderItem {
 		req.setId(3);
 		req.setOrderId(1);
 		req.setInventoryId(null);
+		req.setQuantity(1);
+		
+		Assertions.assertThatThrownBy(() -> orderItemS.create(req)).isInstanceOf(BooksException.class);
+	}
+	
+	@Test
+	@Order(4)
+	public void createInventoryIdNotExist() throws BooksException {
+		log.debug("Test createInventoryIdNotExist");
+		
+		OrderItemReq req = new OrderItemReq();
+		req.setId(3);
+		req.setOrderId(1);
+		req.setInventoryId(999);
 		req.setQuantity(1);
 		
 		Assertions.assertThatThrownBy(() -> orderItemS.create(req)).isInstanceOf(BooksException.class);
