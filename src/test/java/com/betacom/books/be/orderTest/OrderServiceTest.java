@@ -5,8 +5,10 @@ import com.betacom.books.be.exception.BooksException;
 import com.betacom.books.be.models.Address;
 import com.betacom.books.be.models.Order;
 import com.betacom.books.be.models.OrderItem;
+import com.betacom.books.be.models.User;
 import com.betacom.books.be.repositories.IAddressRepository;
 import com.betacom.books.be.repositories.IOrderRepository;
+import com.betacom.books.be.repositories.IUserRepository;
 import com.betacom.books.be.requests.OrderReq;
 import com.betacom.books.be.services.interfaces.IOrderServices;
 import com.betacom.books.be.utils.Status;
@@ -40,6 +42,9 @@ public class OrderServiceTest {
 
     @MockBean
     private IAddressRepository addressRepository;
+    
+    @MockBean
+    private IUserRepository userRepository;
 
     private Order mkOrder(Integer id) {
         Order o = new Order();
@@ -50,6 +55,9 @@ public class OrderServiceTest {
         o.setCreatedAt(LocalDate.now().minusDays(1));
         o.setUpdatedAt(LocalDate.now());
         o.setOrderItems(Collections.emptyList());
+        User u = new User();
+        u.setId(1);
+        o.setUser(u);
         return o;
     }
 
@@ -78,7 +86,7 @@ public class OrderServiceTest {
     void create_AlreadyExists_Throws() {
         when(orderRepository.findById(200)).thenReturn(Optional.of(mkOrder(200)));
 
-        OrderReq req = new OrderReq(200, Status.CANCElLED, 120, 1234, 1, LocalDate.now());
+        OrderReq req = new OrderReq(200, Status.CANCElLED, 120, 1234, 1, LocalDate.now(), null);
 
         Assertions.assertThatThrownBy(() -> orderService.create(req))
             .isInstanceOf(BooksException.class)
@@ -89,7 +97,7 @@ public class OrderServiceTest {
     void create_MissingStatus_Throws() {
         when(orderRepository.findById(201)).thenReturn(Optional.empty());
 
-        OrderReq req = new OrderReq(201, null, 100, 1234, 1, LocalDate.now());
+        OrderReq req = new OrderReq(201, null, 100, 1234, 1, LocalDate.now(), null);
 
         Assertions.assertThatThrownBy(() -> orderService.create(req))
             .isInstanceOf(BooksException.class)
@@ -101,7 +109,7 @@ public class OrderServiceTest {
         when(orderRepository.findById(202)).thenReturn(Optional.empty());
         when(addressRepository.findById(1)).thenReturn(Optional.empty());
 
-        OrderReq req = new OrderReq(202, Status.CANCElLED, 100, 1234, 1, LocalDate.now());
+        OrderReq req = new OrderReq(202, Status.CANCElLED, 100, 1234, 1, LocalDate.now(), null);
 
         Assertions.assertThatThrownBy(() -> orderService.create(req))
             .isInstanceOf(BooksException.class)
@@ -113,7 +121,7 @@ public class OrderServiceTest {
         when(orderRepository.findById(203)).thenReturn(Optional.empty());
         when(addressRepository.findById(1)).thenReturn(Optional.of(new Address()));
 
-        OrderReq req = new OrderReq(203, Status.CANCElLED, null, 1234, 1, LocalDate.now());
+        OrderReq req = new OrderReq(203, Status.CANCElLED, null, 1234, 1, LocalDate.now(), null);
 
         Assertions.assertThatThrownBy(() -> orderService.create(req))
             .isInstanceOf(BooksException.class)
@@ -125,7 +133,7 @@ public class OrderServiceTest {
         when(orderRepository.findById(204)).thenReturn(Optional.empty());
         when(addressRepository.findById(1)).thenReturn(Optional.of(new Address()));
 
-        OrderReq req = new OrderReq(204, Status.CANCElLED, 100, null, 1, LocalDate.now());
+        OrderReq req = new OrderReq(204, Status.CANCElLED, 100, null, 1, LocalDate.now(), null);
 
         Assertions.assertThatThrownBy(() -> orderService.create(req))
             .isInstanceOf(BooksException.class)
@@ -137,7 +145,7 @@ public class OrderServiceTest {
         when(orderRepository.findById(205)).thenReturn(Optional.empty());
         when(addressRepository.findById(1)).thenReturn(Optional.of(new Address()));
 
-        OrderReq req = new OrderReq(205, Status.CANCElLED, 100, 1234, 1, null);
+        OrderReq req = new OrderReq(205, Status.CANCElLED, 100, 1234, 1, null, null);
 
         Assertions.assertThatThrownBy(() -> orderService.create(req))
             .isInstanceOf(BooksException.class)
@@ -147,30 +155,53 @@ public class OrderServiceTest {
     @Test
     void create_Ok_SavesAndReturnsDTO() throws BooksException {
         when(orderRepository.findById(206)).thenReturn(Optional.empty());
-        when(addressRepository.findById(1)).thenReturn(Optional.of(new Address()));
+
+        // provide address with id = 1
+        Address persistedAddress = new Address();
+        persistedAddress.setId(1);
+        when(addressRepository.findById(1)).thenReturn(Optional.of(persistedAddress));
+
+        // provide user with id = 1
+        User persistedUser = new User();
+        persistedUser.setId(1);
+//        persistedUser.setName("Test User");
+        when(userRepository.findById(1)).thenReturn(Optional.of(persistedUser));
+
+        // simulate DB assigning id = 206 on save (this matches your assertion)
         when(orderRepository.save(any(Order.class))).thenAnswer(inv -> {
             Order o = inv.getArgument(0);
-            o.setId(206);
+            o.setId(206); // simulate generated id
             return o;
         });
 
-        OrderReq req = new OrderReq(206, Status.CANCElLED, 150, 4567, 1, LocalDate.now());
+        OrderReq req = new OrderReq(206, Status.CANCElLED, 150, 4567, 1, LocalDate.now(), 1);
 
         OrderDTO dto = orderService.create(req);
 
+        // assertions on DTO
         Assertions.assertThat(dto).isNotNull();
         Assertions.assertThat(dto.getId()).isEqualTo(206);
         Assertions.assertThat(dto.getTotal()).isEqualTo(150);
 
+        // capture saved order and assert the fields passed to repository
         ArgumentCaptor<Order> cap = ArgumentCaptor.forClass(Order.class);
         verify(orderRepository, times(1)).save(cap.capture());
+
+        Order saved = cap.getValue();
+        Assertions.assertThat(saved.getTotal()).isEqualTo(150);
+        Assertions.assertThat(saved.getOrderNumber()).isEqualTo(4567);
+        Assertions.assertThat(saved.getStatus()).isEqualTo(Status.CANCElLED);
+        Assertions.assertThat(saved.getAddress()).isNotNull();
+        Assertions.assertThat(saved.getAddress().getId()).isEqualTo(1);
+        Assertions.assertThat(saved.getUser()).isNotNull();
+        Assertions.assertThat(saved.getUser().getId()).isEqualTo(1);
     }
 
     @Test
     void update_NotFound_Throws() {
         when(orderRepository.findById(300)).thenReturn(Optional.empty());
 
-        OrderReq req = new OrderReq(300, Status.CANCElLED, 100, 1234, 1, LocalDate.now());
+        OrderReq req = new OrderReq(300, Status.CANCElLED, 100, 1234, 1, LocalDate.now(), null);
 
         Assertions.assertThatThrownBy(() -> orderService.update(req))
             .isInstanceOf(BooksException.class)
@@ -182,7 +213,7 @@ public class OrderServiceTest {
         Order existing = mkOrder(301);
         when(orderRepository.findById(301)).thenReturn(Optional.of(existing));
 
-        OrderReq req = new OrderReq(301, Status.CANCElLED, 200, 5678, 1, LocalDate.now());
+        OrderReq req = new OrderReq(301, Status.CANCElLED, 200, 5678, 1, LocalDate.now(), null);
 
         orderService.update(req);
 
