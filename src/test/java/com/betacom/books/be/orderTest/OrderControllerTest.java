@@ -35,7 +35,7 @@ public class OrderControllerTest {
     private OrderController orderController;
 
     private OrderReq mkReq(Integer id) {
-        return new OrderReq(id, Status.CANCElLED, 100, 1234, 1, LocalDate.now());
+        return new OrderReq(id, Status.CANCElLED, 100, 1234, 1, LocalDate.now(), null);
     }
 
     @Test
