@@ -16,8 +16,10 @@ public interface IUserServices {
 
 	void update(UserReq req) throws BooksException;
 
+	UserDTO getById(Integer id) throws BooksException;
+	
 	List<UserDTO> getAll();
-
+	
 	SingInDTO signIn(SingInReq req);
 
 }

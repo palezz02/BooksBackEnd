@@ -202,4 +202,14 @@ public class UserImpl extends Utilities implements IUserServices {
 		return r;
 	}
 
+	@Override
+	public UserDTO getById(Integer id) throws BooksException {
+		log.debug("getById");
+		Optional<User> user = userR.findById(id);
+		if (user.isEmpty())
+			throw new BooksException("User not found");;
+
+		return UtilsUser.toDTO(user.get());
+	}
+
 }
