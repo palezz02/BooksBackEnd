@@ -92,6 +92,7 @@ public class UserController {
 			res.setDati(userS.getById(id));
 			res.setRc(true);
 		}catch (Exception e) {
+			log.debug("Error: " + e.getMessage());
 			res.setRc(false);
 			res.setMsg(e.getMessage());
 		}
