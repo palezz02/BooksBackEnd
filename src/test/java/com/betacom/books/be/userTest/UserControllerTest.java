@@ -2,20 +2,24 @@ package com.betacom.books.be.userTest;
 
 import com.betacom.books.be.controller.UserController;
 import com.betacom.books.be.dto.UserDTO;
+import com.betacom.books.be.exception.BooksException;
 import com.betacom.books.be.requests.UserReq;
 import com.betacom.books.be.response.ResponseBase;
 import com.betacom.books.be.response.ResponseList;
+import com.betacom.books.be.response.ResponseObject;
 import com.betacom.books.be.services.interfaces.IUserServices;
 import com.betacom.books.be.utils.Roles;
 import lombok.extern.log4j.Log4j2;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 import java.util.Collections;
@@ -32,8 +36,9 @@ public class UserControllerTest {
 	private IUserServices userService;
 
 	@InjectMocks
-	private UserController userController;
+	private UserController mockedUserController;
 
+	
 	// Helpers
 	private UserReq createValidUserReq() {
 		UserReq req = new UserReq();
@@ -59,7 +64,7 @@ public class UserControllerTest {
 	public void createUser_Success() throws Exception {
 		log.debug("POST /rest/user/create - Success");
 
-		ResponseBase r = userController.create(createValidUserReq());
+		ResponseBase r = mockedUserController.create(createValidUserReq());
 
 		Assertions.assertThat(r.getRc()).isTrue();
 		Assertions.assertThat(r.getMsg()).isNull();
@@ -71,7 +76,7 @@ public class UserControllerTest {
 		log.debug("POST /rest/user/create - Failure");
 		when(userService.create(any(UserReq.class))).thenThrow(new RuntimeException("Errore creazione"));
 
-		ResponseBase r = userController.create(createValidUserReq());
+		ResponseBase r = mockedUserController.create(createValidUserReq());
 
 		Assertions.assertThat(r.getRc()).isFalse();
 		Assertions.assertThat(r.getMsg()).isEqualTo("Errore creazione");
@@ -83,7 +88,7 @@ public class UserControllerTest {
 		log.debug("PUT /rest/user/update - Success");
 		doNothing().when(userService).update(any(UserReq.class));
 
-		ResponseBase r = userController.update(createUpdateUserReq(1));
+		ResponseBase r = mockedUserController.update(createUpdateUserReq(1));
 
 		Assertions.assertThat(r.getRc()).isTrue();
 		Assertions.assertThat(r.getMsg()).isNull();
@@ -95,7 +100,7 @@ public class UserControllerTest {
 		log.debug("PUT /rest/user/update - Failure");
 		doThrow(new IllegalArgumentException("Id utente non presente")).when(userService).update(any(UserReq.class));
 
-		ResponseBase r = userController.update(new UserReq()); // id mancante
+		ResponseBase r = mockedUserController.update(new UserReq()); // id mancante
 
 		Assertions.assertThat(r.getRc()).isFalse();
 		Assertions.assertThat(r.getMsg()).isEqualTo("Id utente non presente");
@@ -110,7 +115,7 @@ public class UserControllerTest {
 		UserReq req = new UserReq();
 		req.setId(123);
 
-		ResponseBase r = userController.delete(req);
+		ResponseBase r = mockedUserController.delete(req);
 
 		Assertions.assertThat(r.getRc()).isTrue();
 		Assertions.assertThat(r.getMsg()).isNull();
@@ -126,7 +131,7 @@ public class UserControllerTest {
 		UserReq req = new UserReq();
 		req.setId(-1);
 
-		ResponseBase r = userController.delete(req);
+		ResponseBase r = mockedUserController.delete(req);
 
 		Assertions.assertThat(r.getRc()).isFalse();
 		Assertions.assertThat(r.getMsg()).isEqualTo("Utente da eliminare non trovato");
@@ -139,7 +144,7 @@ public class UserControllerTest {
 		when(userService.getAll()).thenThrow(new RuntimeException("Errore DB"));
 
 		@SuppressWarnings("unchecked")
-		ResponseList<UserDTO> r = (ResponseList<UserDTO>) userController.getAll();
+		ResponseList<UserDTO> r = (ResponseList<UserDTO>) mockedUserController.getAll();
 
 		Assertions.assertThat(r.getRc()).isFalse();
 		Assertions.assertThat(r.getMsg()).isEqualTo("Errore DB");
@@ -153,7 +158,7 @@ public class UserControllerTest {
 		when(userService.getAll()).thenReturn(Collections.emptyList());
 
 		@SuppressWarnings("unchecked")
-		ResponseList<UserDTO> r = (ResponseList<UserDTO>) userController.getAll();
+		ResponseList<UserDTO> r = (ResponseList<UserDTO>) mockedUserController.getAll();
 
 		Assertions.assertThat(r.getRc()).isTrue();
 		Assertions.assertThat(r.getMsg()).isNull();
@@ -162,4 +167,27 @@ public class UserControllerTest {
 		verify(userService, times(1)).getAll();
 	}
 
+	@Test
+	public void getById() throws Exception {
+		log.debug("User geyById test controller");
+		when(userService.getById(any())).thenReturn(mock(UserDTO.class));
+		UserController userController = new UserController(userService);
+		ResponseObject<UserDTO> r = userController.getById(1);
+		
+		
+		Assertions.assertThat(r.getRc()).isTrue();
+		Assertions.assertThat(r.getMsg()).isNull();
+		Assertions.assertThat(r.getDati()).isNotNull();
+	}
+	
+	@Test
+	@Order(1)
+	public void getById_Error() throws Exception {
+		log.debug("User geyById Error test controller");
+		when(userService.getById(any())).thenThrow(BooksException.class);
+		UserController userController = new UserController(userService);
+		ResponseObject<UserDTO> res = userController.getById(999);
+		Assertions.assertThat(res.getRc()).isFalse();
+		
+	}
 }
