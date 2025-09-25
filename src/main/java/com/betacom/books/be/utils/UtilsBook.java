@@ -27,6 +27,8 @@ public final class UtilsBook {
 	            .languageCode(book.getLanguageCode())
 	            .publicationDate(book.getPublicationDate())
 	            .edition(book.getEdition())
+	            .price(book.getInventory().getPrice())
+	            .stock(book.getInventory().getStock())
 	            .publisher(book.getPublisher() != null ? book.getPublisher().getId() : null)
 	            .authors(book.getAuthors() != null ? 
 	                     book.getAuthors().stream().map(Author::getId).collect(Collectors.toList()) : 
