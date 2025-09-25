@@ -172,6 +172,11 @@ public class BookImpl implements IBookService {
 			}
 			book.setCategories(categories);
 		}
+		
+		if (req.getPrice() != null)
+			book.getInventory().setPrice(req.getPrice());
+		if (req.getStock() != null)
+			book.getInventory().setStock(req.getStock());
 
 		bookRepository.save(book);
 	}
@@ -187,10 +192,11 @@ public class BookImpl implements IBookService {
 			throw new BooksException("Inventory not found");
 		}
 
-		Inventory inventory = existingBook.getInventory();
-
-
-		invenntoryRepository.delete(inventory);
+//		Inventory inventory = existingBook.getInventory();
+//
+//
+//		existingBook.setInventory(inventory);
+//		invenntoryRepository.delete(inventory);
 
 		bookRepository.delete(existingBook);
 
