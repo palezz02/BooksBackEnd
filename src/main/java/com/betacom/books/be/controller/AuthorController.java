@@ -6,12 +6,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.betacom.books.be.dto.AuthorDTO;
+import com.betacom.books.be.dto.BookDTO;
 import com.betacom.books.be.requests.AuthorReq;
 import com.betacom.books.be.response.ResponseBase;
 import com.betacom.books.be.response.ResponseList;
+import com.betacom.books.be.response.ResponseObject;
 import com.betacom.books.be.services.interfaces.IAuthorService;
 
 import lombok.extern.log4j.Log4j2;
@@ -79,4 +82,18 @@ public class AuthorController {
         }
         return r;
     }
+    
+    @GetMapping("getById")
+	public ResponseObject<AuthorDTO> getById(@RequestParam(required = true) Integer id) {
+	    ResponseObject<AuthorDTO> r = new ResponseObject<>();
+	    try {
+	        r.setDati(authorS.getById(id));
+	        r.setRc(true);
+	    } catch (Exception e) {
+	        r.setRc(false);
+	        r.setMsg(e.getMessage());
+	        r.setDati(null);
+	    }
+	    return r;
+	}
 }
