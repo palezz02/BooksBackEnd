@@ -211,4 +211,20 @@ public class BookImpl implements IBookService {
 		return UtilsBook.toDTOList(books);
 	}
 
+	@Override
+	public List<BookDTO> getBestByReviews(Integer limit, Integer offset) {
+		log.debug("getBestByRating");
+		// List<Book> books = bookRepository.bestOfReviews(limit,offset);
+		log.debug(bookRepository.bestOfReviews(limit,offset));
+		// return UtilsBook.toDTOList(books);
+		return null;
+	}
+
+	@Override
+	public List<BookDTO> getBestByCategory(Integer limit, Integer offset) {
+		log.debug("getBestByCategory");
+		List<Book> books = bookRepository.bestOfCategorys(limit,offset);
+		return UtilsBook.toDTOList(books);
+	}
+
 }
