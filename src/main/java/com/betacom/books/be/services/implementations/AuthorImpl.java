@@ -100,4 +100,26 @@ public class AuthorImpl extends UtilsAddressAuthor implements IAuthorService {
         List<Author> authors = authorR.findAll();
         return buildListAuthorDTO(authors);
     }
+
+//	@Override
+//	public AuthorDTO getById(Integer id) throws BooksException {
+//		log.debug("getById: ", id);
+//		Author author = authorR.findById(id)
+//				.orElseThrow(() -> new BooksException("Author with ID " + id + " not found."));
+//		return UtilsAddressAuthor.buildListAuthorDTO(author);
+//	}
+
+	@Override
+	public AuthorDTO getById(Integer id) throws BooksException {
+		log.debug("getById Publisher");
+		Optional<Author> author = authorR.findById(id);
+
+		if(author.isEmpty()) {
+			throw new BooksException("Publisher non trovato");
+		}
+
+		Author a = author.get();
+
+		return buildAuthorDTO(a);
+	}
 }
