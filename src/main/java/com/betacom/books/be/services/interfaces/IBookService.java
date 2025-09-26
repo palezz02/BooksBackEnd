@@ -13,4 +13,6 @@ public interface IBookService {
 	void delete(BookReq req) throws BooksException;
 	BookDTO getById(Integer id) throws BooksException;
 	List<BookDTO> getAll();
+	List<BookDTO> getBestByReviews(Integer limit, Integer offset);
+	List<BookDTO> getBestByCategory(Integer limit, Integer offset);
 }
