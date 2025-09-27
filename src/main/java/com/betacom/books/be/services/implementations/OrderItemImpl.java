@@ -161,9 +161,9 @@ public class OrderItemImpl extends UtilsOrderItem implements IOrderItemServices 
 			throw new BooksException("Inventory non trovato");
 		}
 		Inventory i = inventory.get();
-		if(i.getStock() - req.getQuantity() < 0 )
-			throw new BooksException("Not enought copy in the invntory");
-		
+//		if(i.getStock() - req.getQuantity() < 0 )
+//			throw new BooksException("Not enought copy in the invntory");
+//		
 		i.setStock(i.getStock() + req.getQuantity());
 		
 		invR.save(i);

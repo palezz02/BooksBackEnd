@@ -96,5 +96,31 @@ public class BookController {
 		return r;
 	}
 	
+	@GetMapping("getBestByReviews")
+	public ResponseList<BookDTO> getBestByReviews(@RequestParam(required = true) Integer limit,@RequestParam(required = true) Integer offset){
+		ResponseList<BookDTO> r = new ResponseList<BookDTO>();
+		try {
+			r.setDati(bookService.getBestByReviews(limit, offset));
+			r.setRc(true);
+		} catch (Exception e) {
+			r.setRc(false);
+			r.setMsg(e.getMessage());
+		}
+		return r;
+	}
+	
+	@GetMapping("getBestByCategory")
+	public ResponseList<BookDTO> getBestByCategory(@RequestParam(required = true) Integer limit,@RequestParam(required = true) Integer offset){
+		ResponseList<BookDTO> r = new ResponseList<BookDTO>();
+		try {
+			r.setDati(bookService.getBestByCategory(limit, offset));
+			r.setRc(true);
+		} catch (Exception e) {
+			r.setRc(false);
+			r.setMsg(e.getMessage());
+		}
+		return r;
+	}
+	
 
 }

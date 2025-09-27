@@ -172,6 +172,11 @@ public class BookImpl implements IBookService {
 			}
 			book.setCategories(categories);
 		}
+		
+		if (req.getPrice() != null)
+			book.getInventory().setPrice(req.getPrice());
+		if (req.getStock() != null)
+			book.getInventory().setStock(req.getStock());
 
 		bookRepository.save(book);
 	}
@@ -187,10 +192,11 @@ public class BookImpl implements IBookService {
 			throw new BooksException("Inventory not found");
 		}
 
-		Inventory inventory = existingBook.getInventory();
-
-
-		invenntoryRepository.delete(inventory);
+//		Inventory inventory = existingBook.getInventory();
+//
+//
+//		existingBook.setInventory(inventory);
+//		invenntoryRepository.delete(inventory);
 
 		bookRepository.delete(existingBook);
 
@@ -208,6 +214,20 @@ public class BookImpl implements IBookService {
 	public List<BookDTO> getAll() {
 		log.debug("getAll");
 		List<Book> books = bookRepository.findAll();
+		return UtilsBook.toDTOList(books);
+	}
+
+	@Override
+	public List<BookDTO> getBestByReviews(Integer limit, Integer offset) {
+		log.debug("getBestByRating");
+		List<Book> books = bookRepository.bestOfReviews(limit,offset);
+		return UtilsBook.toDTOList(books);
+	}
+
+	@Override
+	public List<BookDTO> getBestByCategory(Integer limit, Integer offset) {
+		log.debug("getBestByCategory");
+		List<Book> books = bookRepository.bestOfCategorys(limit,offset);
 		return UtilsBook.toDTOList(books);
 	}
 

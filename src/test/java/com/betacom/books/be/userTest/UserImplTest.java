@@ -479,5 +479,23 @@ public class UserImplTest {
 
 		Assertions.assertThat(after.getBirthDate()).isEqualTo(LocalDate.of(1995, 5, 15));
 	}
+	
+	@Test
+	void getByIdUser() throws BooksException {
+		log.debug("Test Impl. getById User");
+		Integer id = 1;
+		
+		Assertions.assertThat(userS.getById(id)).isInstanceOf(UserDTO.class);
+		
+	}
+	
+	@Test
+	void getByIdUserError() throws BooksException {
+		log.debug("Test Impl. getByIdError User");
+		Integer id = -1;
+		
+		Assertions.assertThatThrownBy(() ->userS.getById(id)).isInstanceOf(BooksException.class);
+		
+	}
 
 }

@@ -76,7 +76,7 @@ public class InventoryImpl extends UtilsInventory implements IInventoryServices 
 		if (inventory.isEmpty())
 			throw new BooksException("Inventory with id: " + req.getId() + " doesn't exist");
 
-		Inventory i = new Inventory();
+		Inventory i = inventory.get();
 
 		if ((req.getStock() != null)) {
 			i.setStock(req.getStock());
@@ -105,6 +105,7 @@ public class InventoryImpl extends UtilsInventory implements IInventoryServices 
 		if (!inventory.get().getOrderItems().isEmpty())
 			throw new BooksException("Inventory with id: " + req.getId() + " doesn't have items");
 
+		inventoryRepository.delete(inventory.get());
 	}
 
 	@Override

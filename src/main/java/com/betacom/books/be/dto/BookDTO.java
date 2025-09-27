@@ -1,5 +1,6 @@
 package com.betacom.books.be.dto;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -25,6 +26,8 @@ public class BookDTO {
 	    private String languageCode;
 	    private LocalDate publicationDate;
 	    private String edition;
+	    private Integer stock;
+	    private BigDecimal price;
 	    private Integer publisher;
 	    private List<Integer> authors;
 	    private List<CategoryDTO> categories;
