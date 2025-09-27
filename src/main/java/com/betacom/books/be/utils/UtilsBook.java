@@ -30,19 +30,27 @@ public final class UtilsBook {
 	            .price(book.getInventory().getPrice())
 	            .stock(book.getInventory().getStock())
 	            .publisher(book.getPublisher() != null ? book.getPublisher().getId() : null)
-	            .authors(book.getAuthors() != null ? 
-	                     book.getAuthors().stream().map(Author::getId).collect(Collectors.toList()) : 
+	            .authors(book.getAuthors() != null ?
+	                     book.getAuthors().stream().map(Author::getId).collect(Collectors.toList()) :
 	                     Collections.emptyList())
-	            .categories(book.getCategories() != null ? 
-	                        UtilsCategory.toDTOList(book.getCategories()) : 
+	            .categories(book.getCategories() != null ?
+	                        UtilsCategory.toDTOList(book.getCategories()) :
 	                        Collections.emptyList())
-	            .reviews(book.getReviews() != null ? 
-	                     book.getReviews().stream().map(Review::getId).collect(Collectors.toList()) : 
+	            .reviews(book.getReviews() != null ?
+	                     book.getReviews().stream().map(Review::getId).collect(Collectors.toList()) :
 	                     Collections.emptyList())
+	            .averageRating(
+	                    book.getReviews().isEmpty()
+	                        ? null
+	                        : book.getReviews().stream()
+	                              .mapToInt(Review::getRating)
+	                              .average()
+	                              .orElse(0.0)
+	             )
 	            .build();
 	}
 
-	    
+
 	    public static List<BookDTO> toDTOList(List<Book> books) {
 	        if (books == null) {
 	            return Collections.emptyList();
