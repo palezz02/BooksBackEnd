@@ -29,4 +29,5 @@ public class BookDTO {
 	    private List<Integer> authors;
 	    private List<CategoryDTO> categories;
 	    private List<Integer> reviews;
+	    private Double averageRating;
 }
