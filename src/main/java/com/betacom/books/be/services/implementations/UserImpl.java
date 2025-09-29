@@ -13,6 +13,8 @@ import javax.swing.text.Utilities;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.betacom.books.be.dto.CartBookDTO;
+import com.betacom.books.be.dto.OrderDTO;
 import com.betacom.books.be.dto.SingInDTO;
 import com.betacom.books.be.dto.UserDTO;
 import com.betacom.books.be.exception.BooksException;
@@ -210,6 +212,19 @@ public class UserImpl extends Utilities implements IUserServices {
 			throw new BooksException("User not found");;
 
 		return UtilsUser.toDTO(user.get());
+	}
+	
+	@Override
+	public List<CartBookDTO> getCartBooks(Integer userId){
+		log.debug("getCartBooks");
+		
+		List<CartBookDTO> usrCart = userR.getCartBooks(userId);
+		
+		if(usrCart.isEmpty()) {
+			return new ArrayList<>();
+		}
+		
+		return usrCart;
 	}
 
 }
