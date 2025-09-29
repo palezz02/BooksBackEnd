@@ -13,4 +13,5 @@ public class SingInDTO {
 	private Integer id;
 	private Boolean logged;
 	private String  role;
+	private String token;
 }
