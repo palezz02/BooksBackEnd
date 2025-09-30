@@ -5,10 +5,10 @@ import java.util.List;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -23,24 +23,8 @@ public class WebSecurityConfiguration {
 		 	.csrf(csrf -> csrf.disable()) 
 	        .cors(cors -> {})
 			.authorizeHttpRequests((authorize) -> authorize
-					.anyRequest().permitAll()
-//					.requestMatchers("/rest/user/signin", "/rest/user/create", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
-//					.requestMatchers("/rest/address/*", 
-//							"/rest/author/listAll", 
-//							"/rest/book/getAll", 
-//							"/rest/book/getById", 
-//							"/rest/category/getAll",
-//							"/rest/category/getById",
-//							"/rest/order/*", 
-//							"/rest/orderitem/*", 
-//							"/rest/publisher/getAll", 
-//							"/rest/review/*",
-//							"/rest/user/getById",
-//							"/rest/user/delete",
-//							"/rest/user/update",
-//							"/rest/publisher/getById").hasAnyRole("ADMIN", "CUSTOMER")
-//					.requestMatchers("/rest/**").hasRole("ADMIN")
-//					.anyRequest().authenticated()
+					.requestMatchers("/**").permitAll()
+					.anyRequest().authenticated()
 					);
 			return http.build();
 	}
@@ -59,11 +43,10 @@ public class WebSecurityConfiguration {
         return source;
     }
 	
-    @Bean
-    AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-        return authenticationConfiguration.getAuthenticationManager();
-    }
-    
+	@Bean
+	PasswordEncoder getPasswordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 }
 
 
