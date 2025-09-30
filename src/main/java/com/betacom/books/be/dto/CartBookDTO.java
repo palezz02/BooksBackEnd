@@ -17,6 +17,9 @@ import lombok.Setter;
 public class CartBookDTO {
     private Integer orderId;
     private Integer bookId;
+    private Integer orderItemId;
+    private Integer stock;
+    private Integer inventoryId;
     private String title;
     private String description;
     private String coverImage;
@@ -28,4 +31,5 @@ public class CartBookDTO {
     private Integer quantity;
     private BigDecimal unitPrice;
     private BigDecimal subtotal;
+   
 }
