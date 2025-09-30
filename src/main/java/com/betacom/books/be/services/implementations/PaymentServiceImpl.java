@@ -1,6 +1,7 @@
 package com.betacom.books.be.services.implementations;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,6 +20,7 @@ import com.betacom.books.be.repositories.IPaymentRepository;
 import com.betacom.books.be.requests.CreatePaymentIntentReq;
 import com.betacom.books.be.requests.ConfirmPaymentReq;
 import com.betacom.books.be.services.interfaces.IPaymentService;
+import com.betacom.books.be.utils.Status;
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentIntent;
@@ -73,7 +75,8 @@ public class PaymentServiceImpl implements IPaymentService {
                 metadata.put("order_id", req.getOrderId().toString());
             }
             metadata.put("source", "bookstore");
-            paramsBuilder.setMetadata(metadata);
+//            paramsBuilder.setMetadata(metadata);
+            paramsBuilder.putMetadata("source", "bookstore");
 
             PaymentIntent intent = PaymentIntent.create(paramsBuilder.build());
 
@@ -144,8 +147,8 @@ public class PaymentServiceImpl implements IPaymentService {
                 // Update order status to paid
                 if (payment.getOrder() != null) {
                     Order order = payment.getOrder();
-                    order.setStatus("PAID");
-                    order.setUpdatedAt(LocalDateTime.now());
+                    order.setStatus(Status.COMPLETED);
+                    order.setUpdatedAt(LocalDate.now());
                     orderRepository.save(order);
                 }
             } else if ("payment_failed".equals(intent.getStatus())) {
