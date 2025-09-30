@@ -10,6 +10,11 @@ import java.util.Optional;
 
 import javax.swing.text.Utilities;
 
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,9 +38,12 @@ import lombok.extern.log4j.Log4j2;
 public class UserImpl extends Utilities implements IUserServices {
 
 	private IUserRepository userR;
+	
+	private AuthenticationManager authenticationManager;
 
-	public UserImpl(IUserRepository userR) {
+	public UserImpl(IUserRepository userR, AuthenticationManager authenticationManager) {
 		this.userR = userR;
+		this.authenticationManager = authenticationManager;
 	}
 
 	@Transactional(rollbackFor = Exception.class)
@@ -190,14 +198,25 @@ public class UserImpl extends Utilities implements IUserServices {
 	public SingInDTO signIn(SingInReq req) {
 		log.debug("signIn:" + req);
 		SingInDTO r = new SingInDTO();
-		Optional<User> u = userR.findByEmailAndPassword(req.getUser(), req.getPwd());
-		if (u.isEmpty()) {
-			r.setLogged(false);
-		} else {
-			r.setId(u.get().getId());
-			r.setLogged(true);
-			r.setRole(u.get().getRole().toString());
-		}
+		 try {
+		        User user = userR.findByEmailAndPassword(req.getUser(), req.getPwd())
+			            .orElseThrow(() -> new UsernameNotFoundException("User not found: " + req.getUser()));
+			 
+	            Authentication authentication = authenticationManager.authenticate(
+	                new UsernamePasswordAuthenticationToken(req.getUser(),  req.getPwd())
+	            );
+
+	            SecurityContextHolder.getContext().setAuthentication(authentication);
+
+	            r.setLogged(true);
+	            r.setRole(authentication.getAuthorities().iterator().next().getAuthority().replace("ROLE_", ""));
+	            r.setId(user.getId());
+
+	        } catch (Exception e) {
+	            log.warn("Authentication failed for user: " + req.getUser(), e);
+	            r.setLogged(false);
+	            r.setRole(null);
+	        }
 		
 		return r;
 	}
