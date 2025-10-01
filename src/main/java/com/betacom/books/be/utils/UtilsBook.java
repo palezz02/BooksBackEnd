@@ -47,6 +47,7 @@ public final class UtilsBook {
 	                              .average()
 	                              .orElse(0.0)
 	             )
+	            .inventoryId(book.getInventory().getId())
 	            .build();
 	}
 
