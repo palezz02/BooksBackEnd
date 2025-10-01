@@ -15,5 +15,6 @@ public interface IAddressService {
 	void update(AddressReq req) throws BooksException;
 
 	List<AddressDTO> getAll();
-
+	
+	AddressDTO getById(Integer id) throws BooksException;
 }

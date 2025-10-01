@@ -82,18 +82,19 @@ public class AuthorController {
         }
         return r;
     }
-    
-    @GetMapping("getById")
-	public ResponseObject<AuthorDTO> getById(@RequestParam(required = true) Integer id) {
-	    ResponseObject<AuthorDTO> r = new ResponseObject<>();
-	    try {
-	        r.setDati(authorS.getById(id));
-	        r.setRc(true);
-	    } catch (Exception e) {
-	        r.setRc(false);
-	        r.setMsg(e.getMessage());
-	        r.setDati(null);
-	    }
-	    return r;
+
+
+	@GetMapping("/getById")
+	public ResponseObject<AuthorDTO> getById(@RequestParam(required=true) Integer id){
+		ResponseObject<AuthorDTO> res = new ResponseObject<>();
+		try {
+			res.setDati(authorS.getById(id));
+			res.setRc(true);
+		}catch (Exception e) {
+			res.setRc(false);
+			res.setMsg(e.getMessage());
+		}
+		return res;
+
 	}
 }

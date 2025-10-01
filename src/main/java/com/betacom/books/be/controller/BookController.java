@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.betacom.books.be.dto.BookDTO;
+import com.betacom.books.be.dto.ReviewBookDTO;
 import com.betacom.books.be.requests.BookReq;
 import com.betacom.books.be.response.ResponseBase;
 import com.betacom.books.be.response.ResponseList;
@@ -124,11 +125,26 @@ public class BookController {
 		return r;
 	}
 
+
 	@GetMapping("getBooksOrderedByName")
 	public ResponseList<BookDTO> getBooksOrderedByName() {
 		ResponseList<BookDTO> r = new ResponseList<BookDTO>();
 		try {
 			r.setDati(bookService.getBooksOrderedByName());
+	r.setRc(true);
+		} catch (Exception e) {
+			r.setRc(false);
+			r.setMsg(e.getMessage());
+		}
+		return r;
+}
+	
+	@GetMapping("getBookReviews")
+	public ResponseList<ReviewBookDTO> getBookReviews(@RequestParam(required = true) Integer bookId){
+		ResponseList<ReviewBookDTO> r = new ResponseList<ReviewBookDTO>();
+		try {
+			r.setDati(bookService.getBookReviews(bookId));
+
 			r.setRc(true);
 		} catch (Exception e) {
 			r.setRc(false);

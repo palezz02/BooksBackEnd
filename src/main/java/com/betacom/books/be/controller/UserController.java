@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.betacom.books.be.dto.CartBookDTO;
+import com.betacom.books.be.dto.OrderDTO;
 import com.betacom.books.be.dto.SingInDTO;
 import com.betacom.books.be.dto.UserDTO;
 import com.betacom.books.be.requests.SingInReq;
@@ -103,6 +105,21 @@ public class UserController {
 	@PostMapping("/signin")
 	public SingInDTO signin(@RequestBody (required = true) SingInReq req) {
 		return userS.signIn(req);
+	}
+	
+	@GetMapping("/getCartBooks")
+	public ResponseList<CartBookDTO> getCartBooks(@RequestParam(required=true) Integer id){
+		ResponseList<CartBookDTO> res = new ResponseList<CartBookDTO>();
+		try {
+			res.setDati(userS.getCartBooks(id));
+			res.setRc(true);
+		}catch (Exception e) {
+			log.debug("Error: " + e.getMessage());
+			res.setRc(false);
+			res.setMsg(e.getMessage());
+		}
+		return res;
+		
 	}
 
 }

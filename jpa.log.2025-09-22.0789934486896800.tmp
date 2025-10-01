@@ -1,0 +1,661 @@
+2025-09-22T15:54:02.057+02:00  INFO 6820 --- [projectJPA] [main] c.b.books.be.orderTest.OrderServiceTest  : Starting OrderServiceTest using Java 21.0.7 with PID 6820 (started by Betacom in C:\Users\Betacom\eclipse-workspace\BooksBackEnd)
+2025-09-22T15:54:02.097+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.orderTest.OrderServiceTest  : Running with Spring Boot v3.5.5, Spring v6.2.10
+2025-09-22T15:54:02.107+02:00  INFO 6820 --- [projectJPA] [main] c.b.books.be.orderTest.OrderServiceTest  : No active profile set, falling back to 1 default profile: "default"
+2025-09-22T15:54:07.276+02:00  INFO 6820 --- [projectJPA] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-22T15:54:07.777+02:00  INFO 6820 --- [projectJPA] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 444 ms. Found 10 JPA repository interfaces.
+2025-09-22T15:54:11.197+02:00  INFO 6820 --- [projectJPA] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-22T15:54:11.423+02:00  INFO 6820 --- [projectJPA] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.26.Final
+2025-09-22T15:54:11.535+02:00  INFO 6820 --- [projectJPA] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-22T15:54:11.971+02:00  INFO 6820 --- [projectJPA] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-22T15:54:12.067+02:00  INFO 6820 --- [projectJPA] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-22T15:54:15.084+02:00  INFO 6820 --- [projectJPA] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:dbJPA user=SA
+2025-09-22T15:54:15.094+02:00  INFO 6820 --- [projectJPA] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-22T15:54:15.370+02:00  INFO 6820 --- [projectJPA] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-22T15:54:19.253+02:00  INFO 6820 --- [projectJPA] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-22T15:54:19.675+02:00  INFO 6820 --- [projectJPA] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-22T15:54:22.202+02:00  WARN 6820 --- [projectJPA] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-22T15:54:23.277+02:00  WARN 6820 --- [projectJPA] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 5947a364-2035-41d6-af83-aad3e3ea367f
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-09-22T15:54:23.304+02:00  INFO 6820 --- [projectJPA] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-09-22T15:54:24.625+02:00  INFO 6820 --- [projectJPA] [main] c.b.books.be.orderTest.OrderServiceTest  : Started OrderServiceTest in 24.743 seconds (process running for 58.239)
+2025-09-22T15:54:24.766+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.OrderImpl      : Delete: OrderReq(id=402, status=null, total=null, orderNumber=null, shippingAddress=null, updatedAt=null, user=null)
+2025-09-22T15:54:24.910+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.OrderImpl      : Order id:999
+2025-09-22T15:54:24.938+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.OrderImpl      : Order id:100
+2025-09-22T15:54:24.992+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.OrderImpl      : Delete: OrderReq(id=400, status=null, total=null, orderNumber=null, shippingAddress=null, updatedAt=null, user=null)
+2025-09-22T15:54:25.054+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.OrderImpl      : Delete: OrderReq(id=401, status=null, total=null, orderNumber=null, shippingAddress=null, updatedAt=null, user=null)
+2025-09-22T15:54:25.374+02:00  INFO 6820 --- [projectJPA] [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-09-22T15:54:25.374+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-09-22T15:54:25.375+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-09-22T15:54:25.744+02:00  INFO 6820 --- [projectJPA] [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-09-22T15:54:25.745+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-09-22T15:54:25.746+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-09-22T15:54:25.794+02:00  INFO 6820 --- [projectJPA] [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-09-22T15:54:25.794+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-09-22T15:54:25.795+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-09-22T15:54:25.852+02:00  INFO 6820 --- [projectJPA] [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-09-22T15:54:25.854+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-09-22T15:54:25.855+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-09-22T15:54:26.025+02:00  INFO 6820 --- [projectJPA] [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-09-22T15:54:26.026+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-09-22T15:54:26.027+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-09-22T15:54:26.066+02:00  INFO 6820 --- [projectJPA] [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-09-22T15:54:26.067+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-09-22T15:54:26.069+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-09-22T15:54:26.081+02:00  WARN 6820 --- [projectJPA] [main] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' is not supported]
+2025-09-22T15:54:26.101+02:00  INFO 6820 --- [projectJPA] [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-09-22T15:54:26.102+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-09-22T15:54:26.104+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-09-22T15:54:26.126+02:00  INFO 6820 --- [projectJPA] [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-09-22T15:54:26.127+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-09-22T15:54:26.128+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-09-22T15:54:26.155+02:00  INFO 6820 --- [projectJPA] [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-09-22T15:54:26.155+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-09-22T15:54:26.156+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-09-22T15:54:26.213+02:00  INFO 6820 --- [projectJPA] [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-09-22T15:54:26.215+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-09-22T15:54:26.216+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-09-22T15:54:26.256+02:00  INFO 6820 --- [projectJPA] [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-09-22T15:54:26.257+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-09-22T15:54:26.258+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-09-22T15:54:26.266+02:00  WARN 6820 --- [projectJPA] [main] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' is not supported]
+2025-09-22T15:54:26.575+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : delete: 
+2025-09-22T15:54:26.593+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : getById: 
+2025-09-22T15:54:26.605+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : delete: 
+2025-09-22T15:54:26.614+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : update: 
+2025-09-22T15:54:26.625+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : create: 
+2025-09-22T15:54:26.644+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : create: 
+2025-09-22T15:54:26.659+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : getAll
+2025-09-22T15:54:26.664+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : getById: 
+2025-09-22T15:54:26.670+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : delete: 
+2025-09-22T15:54:26.676+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : create: 
+2025-09-22T15:54:26.690+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : update: 
+2025-09-22T15:54:26.697+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : getById: 
+2025-09-22T15:54:26.712+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : update: 
+2025-09-22T15:54:26.719+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : update: 
+2025-09-22T15:54:26.726+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : getAll
+2025-09-22T15:54:26.840+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.reviewTest.ReviewControllerTest  : POST /rest/review/create - Failure
+2025-09-22T15:54:26.845+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.reviewTest.ReviewControllerTest  : DELETE /rest/review/delete - Failure
+2025-09-22T15:54:26.855+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.reviewTest.ReviewControllerTest  : PUT /rest/review/update - Success
+2025-09-22T15:54:26.860+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.reviewTest.ReviewControllerTest  : PUT /rest/review/update - Failure
+2025-09-22T15:54:26.867+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.reviewTest.ReviewControllerTest  : DELETE /rest/review/delete - Success
+2025-09-22T15:54:26.880+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.reviewTest.ReviewControllerTest  : GET /rest/review/getAll - Failure
+2025-09-22T15:54:26.910+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.reviewTest.ReviewControllerTest  : GET /rest/review/getAll - Empty
+2025-09-22T15:54:26.930+02:00  INFO 6820 --- [projectJPA] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.betacom.books.be.reviewTest.ReviewImplTest]: ReviewImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-22T15:54:27.029+02:00  INFO 6820 --- [projectJPA] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.betacom.books.be.BoocksBackEndApplication for test class com.betacom.books.be.reviewTest.ReviewImplTest
+2025-09-22T15:54:27.042+02:00  INFO 6820 --- [projectJPA] [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2025-09-22T15:54:27.147+02:00  INFO 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : Starting ReviewImplTest using Java 21.0.7 with PID 6820 (started by Betacom in C:\Users\Betacom\eclipse-workspace\BooksBackEnd)
+2025-09-22T15:54:27.149+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : Running with Spring Boot v3.5.5, Spring v6.2.10
+2025-09-22T15:54:27.152+02:00  INFO 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : No active profile set, falling back to 1 default profile: "default"
+2025-09-22T15:54:27.964+02:00  INFO 6820 --- [projectJPA] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-22T15:54:28.105+02:00  INFO 6820 --- [projectJPA] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 122 ms. Found 10 JPA repository interfaces.
+2025-09-22T15:54:28.905+02:00  INFO 6820 --- [projectJPA] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-22T15:54:28.920+02:00  INFO 6820 --- [projectJPA] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-22T15:54:28.947+02:00  INFO 6820 --- [projectJPA] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-22T15:54:28.951+02:00  INFO 6820 --- [projectJPA] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-09-22T15:54:28.955+02:00  INFO 6820 --- [projectJPA] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:dbJPA user=SA
+2025-09-22T15:54:28.956+02:00  INFO 6820 --- [projectJPA] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-09-22T15:54:28.958+02:00  INFO 6820 --- [projectJPA] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-22T15:54:29.327+02:00  INFO 6820 --- [projectJPA] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-22T15:54:29.423+02:00  INFO 6820 --- [projectJPA] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-22T15:54:29.748+02:00  WARN 6820 --- [projectJPA] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-22T15:54:29.960+02:00  WARN 6820 --- [projectJPA] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 6b514f8a-4f82-49f2-95f3-db1faf417ed2
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-09-22T15:54:29.965+02:00  INFO 6820 --- [projectJPA] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-09-22T15:54:30.238+02:00  INFO 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : Started ReviewImplTest in 3.197 seconds (process running for 63.852)
+2025-09-22T15:54:30.255+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : create: userId mancante
+2025-09-22T15:54:30.262+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : create: ReviewReq(id=null, bookId=20, userId=null, rating=4, title=null, body=null)
+2025-09-22T15:54:30.279+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : update: title blank
+2025-09-22T15:54:30.284+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : update : ReviewReq(id=201, bookId=null, userId=null, rating=null, title=   , body=null)
+2025-09-22T15:54:30.311+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : create: ok
+2025-09-22T15:54:30.317+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : create: ReviewReq(id=null, bookId=20, userId=10, rating=5, title=Titolo, body=Testo)
+2025-09-22T15:54:30.357+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : update: body ok
+2025-09-22T15:54:30.361+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : update : ReviewReq(id=204, bookId=null, userId=null, rating=null, title=null, body=Corpo aggiornato)
+2025-09-22T15:54:30.380+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : create: bookId mancante
+2025-09-22T15:54:30.382+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : create: ReviewReq(id=null, bookId=null, userId=10, rating=4, title=null, body=null)
+2025-09-22T15:54:30.394+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : create: user inesistente
+2025-09-22T15:54:30.396+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : create: ReviewReq(id=null, bookId=20, userId=10, rating=5, title=null, body=null)
+2025-09-22T15:54:30.408+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : update: campo valido poi titolo invalido -> rollback, nessun save
+2025-09-22T15:54:30.413+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : update : ReviewReq(id=205, bookId=null, userId=null, rating=4, title=   , body=null)
+2025-09-22T15:54:30.433+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : getAll: mapping entità -> DTO
+2025-09-22T15:54:30.455+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : update: review non trovata
+2025-09-22T15:54:30.458+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : update : ReviewReq(id=999, bookId=null, userId=null, rating=null, title=null, body=null)
+2025-09-22T15:54:30.479+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : update: title ok con trim
+2025-09-22T15:54:30.481+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : update : ReviewReq(id=203, bookId=null, userId=null, rating=null, title=  Nuovo Titolo  , body=null)
+2025-09-22T15:54:30.555+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : create: book inesistente
+2025-09-22T15:54:30.557+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : create: ReviewReq(id=null, bookId=20, userId=10, rating=4, title=null, body=null)
+2025-09-22T15:54:30.774+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : create: rating fuori range
+2025-09-22T15:54:30.790+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : create: ReviewReq(id=null, bookId=20, userId=10, rating=0, title=null, body=null)
+2025-09-22T15:54:30.809+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : create: rating fuori range
+2025-09-22T15:54:30.810+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : create: ReviewReq(id=null, bookId=20, userId=10, rating=6, title=null, body=null)
+2025-09-22T15:54:30.821+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : create: rating fuori range
+2025-09-22T15:54:30.823+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : create: ReviewReq(id=null, bookId=20, userId=10, rating=-1, title=null, body=null)
+2025-09-22T15:54:30.831+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : create: rating fuori range
+2025-09-22T15:54:30.832+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : create: ReviewReq(id=null, bookId=20, userId=10, rating=100, title=null, body=null)
+2025-09-22T15:54:30.843+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : delete: review non trovata
+2025-09-22T15:54:30.848+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : delete : ReviewReq(id=999, bookId=null, userId=null, rating=null, title=null, body=null)
+2025-09-22T15:54:30.874+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : delete: ok
+2025-09-22T15:54:30.881+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : delete : ReviewReq(id=111, bookId=null, userId=null, rating=null, title=null, body=null)
+2025-09-22T15:54:30.892+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : update: rating ok
+2025-09-22T15:54:30.894+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : update : ReviewReq(id=202, bookId=null, userId=null, rating=5, title=null, body=null)
+2025-09-22T15:54:30.912+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : update: rating fuori range
+2025-09-22T15:54:30.914+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : update : ReviewReq(id=200, bookId=null, userId=null, rating=0, title=null, body=null)
+2025-09-22T15:54:30.932+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : update: rating fuori range
+2025-09-22T15:54:30.933+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : update : ReviewReq(id=200, bookId=null, userId=null, rating=6, title=null, body=null)
+2025-09-22T15:54:30.963+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : update: rating fuori range
+2025-09-22T15:54:30.967+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : update : ReviewReq(id=200, bookId=null, userId=null, rating=-5, title=null, body=null)
+2025-09-22T15:54:30.991+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : create: rating mancante
+2025-09-22T15:54:30.997+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : create: ReviewReq(id=null, bookId=20, userId=10, rating=null, title=null, body=null)
+2025-09-22T15:54:31.040+02:00  INFO 6820 --- [projectJPA] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.betacom.books.be.inventoryTest.InventoryServiceTest]: InventoryServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-22T15:54:31.096+02:00  INFO 6820 --- [projectJPA] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.betacom.books.be.BoocksBackEndApplication for test class com.betacom.books.be.inventoryTest.InventoryServiceTest
+2025-09-22T15:54:31.110+02:00  INFO 6820 --- [projectJPA] [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2025-09-22T15:54:31.206+02:00  INFO 6820 --- [projectJPA] [main] c.b.b.b.i.InventoryServiceTest           : Starting InventoryServiceTest using Java 21.0.7 with PID 6820 (started by Betacom in C:\Users\Betacom\eclipse-workspace\BooksBackEnd)
+2025-09-22T15:54:31.211+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.i.InventoryServiceTest           : Running with Spring Boot v3.5.5, Spring v6.2.10
+2025-09-22T15:54:31.212+02:00  INFO 6820 --- [projectJPA] [main] c.b.b.b.i.InventoryServiceTest           : No active profile set, falling back to 1 default profile: "default"
+2025-09-22T15:54:31.996+02:00  INFO 6820 --- [projectJPA] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-22T15:54:32.084+02:00  INFO 6820 --- [projectJPA] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 84 ms. Found 10 JPA repository interfaces.
+2025-09-22T15:54:32.480+02:00  INFO 6820 --- [projectJPA] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-22T15:54:32.492+02:00  INFO 6820 --- [projectJPA] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-22T15:54:32.513+02:00  INFO 6820 --- [projectJPA] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-22T15:54:32.515+02:00  INFO 6820 --- [projectJPA] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2025-09-22T15:54:32.518+02:00  INFO 6820 --- [projectJPA] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection conn20: url=jdbc:h2:mem:dbJPA user=SA
+2025-09-22T15:54:32.519+02:00  INFO 6820 --- [projectJPA] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2025-09-22T15:54:32.522+02:00  INFO 6820 --- [projectJPA] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-3)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-22T15:54:32.775+02:00  INFO 6820 --- [projectJPA] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-22T15:54:32.795+02:00  INFO 6820 --- [projectJPA] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-22T15:54:33.075+02:00  WARN 6820 --- [projectJPA] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-22T15:54:33.286+02:00  WARN 6820 --- [projectJPA] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: fea2ff4c-c373-49d5-82e4-f83391804435
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-09-22T15:54:33.289+02:00  INFO 6820 --- [projectJPA] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-09-22T15:54:33.551+02:00  INFO 6820 --- [projectJPA] [main] c.b.b.b.i.InventoryServiceTest           : Started InventoryServiceTest in 2.442 seconds (process running for 67.166)
+2025-09-22T15:54:33.571+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.InventoryImpl  : Create: InventoryReq(id=204, stock=50, price=100.00, updatedAt=2025-09-22T15:54:33.566798700, errorMsg=null)
+2025-09-22T15:54:33.592+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.InventoryImpl  : Create: InventoryReq(id=203, stock=10, price=12.00, updatedAt=null, errorMsg=null)
+2025-09-22T15:54:33.604+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.InventoryImpl  : Create: InventoryReq(id=201, stock=null, price=15.00, updatedAt=2025-09-22T15:54:33.603699500, errorMsg=null)
+2025-09-22T15:54:33.615+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.InventoryImpl  : Update: InventoryReq(id=301, stock=20, price=75.00, updatedAt=2025-09-22T15:54:33.614669600, errorMsg=null)
+2025-09-22T15:54:33.624+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.InventoryImpl  : Delete: InventoryReq(id=402, stock=null, price=null, updatedAt=null, errorMsg=null)
+2025-09-22T15:54:33.634+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.InventoryImpl  : Delete: InventoryReq(id=401, stock=null, price=null, updatedAt=null, errorMsg=null)
+2025-09-22T15:54:33.645+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.InventoryImpl  : Create: InventoryReq(id=200, stock=5, price=15.00, updatedAt=2025-09-22T15:54:33.644590200, errorMsg=null)
+2025-09-22T15:54:33.655+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.InventoryImpl  : Inventory id:999
+2025-09-22T15:54:33.663+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.InventoryImpl  : Inventory id:100
+2025-09-22T15:54:33.679+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.InventoryImpl  : Delete: InventoryReq(id=400, stock=null, price=null, updatedAt=null, errorMsg=null)
+2025-09-22T15:54:33.695+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.InventoryImpl  : Update: InventoryReq(id=300, stock=20, price=20.00, updatedAt=2025-09-22T15:54:33.694458, errorMsg=null)
+2025-09-22T15:54:33.708+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.InventoryImpl  : Create: InventoryReq(id=202, stock=10, price=null, updatedAt=2025-09-22T15:54:33.707422600, errorMsg=null)
+2025-09-22T15:54:33.884+02:00  INFO 6820 --- [projectJPA] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.betacom.books.be.BoocksBackEndApplicationTests]: BoocksBackEndApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-22T15:54:33.899+02:00  INFO 6820 --- [projectJPA] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.betacom.books.be.BoocksBackEndApplication for test class com.betacom.books.be.BoocksBackEndApplicationTests
+2025-09-22T15:54:33.907+02:00  INFO 6820 --- [projectJPA] [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2025-09-22T15:54:33.995+02:00  INFO 6820 --- [projectJPA] [main] c.b.b.be.BoocksBackEndApplicationTests   : Starting BoocksBackEndApplicationTests using Java 21.0.7 with PID 6820 (started by Betacom in C:\Users\Betacom\eclipse-workspace\BooksBackEnd)
+2025-09-22T15:54:33.996+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.BoocksBackEndApplicationTests   : Running with Spring Boot v3.5.5, Spring v6.2.10
+2025-09-22T15:54:33.997+02:00  INFO 6820 --- [projectJPA] [main] c.b.b.be.BoocksBackEndApplicationTests   : No active profile set, falling back to 1 default profile: "default"
+2025-09-22T15:54:34.759+02:00  INFO 6820 --- [projectJPA] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-22T15:54:34.842+02:00  INFO 6820 --- [projectJPA] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 79 ms. Found 10 JPA repository interfaces.
+2025-09-22T15:54:35.126+02:00  INFO 6820 --- [projectJPA] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-22T15:54:35.149+02:00  INFO 6820 --- [projectJPA] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-22T15:54:35.178+02:00  INFO 6820 --- [projectJPA] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-22T15:54:35.181+02:00  INFO 6820 --- [projectJPA] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2025-09-22T15:54:35.185+02:00  INFO 6820 --- [projectJPA] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection conn30: url=jdbc:h2:mem:dbJPA user=SA
+2025-09-22T15:54:35.187+02:00  INFO 6820 --- [projectJPA] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2025-09-22T15:54:35.191+02:00  INFO 6820 --- [projectJPA] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-4)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-22T15:54:35.556+02:00  INFO 6820 --- [projectJPA] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-22T15:54:35.585+02:00  INFO 6820 --- [projectJPA] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-22T15:54:35.866+02:00  WARN 6820 --- [projectJPA] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-22T15:54:36.095+02:00  WARN 6820 --- [projectJPA] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: db5b6f65-838d-4ce3-b6a2-321e6e621b82
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-09-22T15:54:36.098+02:00  INFO 6820 --- [projectJPA] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-09-22T15:54:36.361+02:00  INFO 6820 --- [projectJPA] [main] c.b.b.be.BoocksBackEndApplicationTests   : Started BoocksBackEndApplicationTests in 2.455 seconds (process running for 69.976)
+2025-09-22T15:54:36.512+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.bookTest.BookControllerTest     : Test Create Book - Success
+2025-09-22T15:54:36.517+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.controller.BookController   : CREATE: {req}
+2025-09-22T15:54:36.528+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.bookTest.BookControllerTest     : Test Create Book - Failure
+2025-09-22T15:54:36.531+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.controller.BookController   : CREATE: {req}
+2025-09-22T15:54:36.539+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.bookTest.BookControllerTest     : Test Update Book - Success
+2025-09-22T15:54:36.551+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.bookTest.BookControllerTest     : Test Update Book - Failure
+2025-09-22T15:54:36.558+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.bookTest.BookControllerTest     : Test Delete Book - Success
+2025-09-22T15:54:36.565+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.bookTest.BookControllerTest     : Test Delete Book - Failure
+2025-09-22T15:54:36.574+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.bookTest.BookControllerTest     : Test Get By Id - Success
+2025-09-22T15:54:36.579+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.bookTest.BookControllerTest     : Test Get By Id - Failure
+2025-09-22T15:54:36.584+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.bookTest.BookControllerTest     : Test Get All - Success
+2025-09-22T15:54:36.590+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.bookTest.BookControllerTest     : Test Get All - Failure
+2025-09-22T15:54:36.598+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.bookTest.BookControllerTest     : Test Get All - No Books Found
+2025-09-22T15:54:37.006+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : delete: 
+2025-09-22T15:54:37.018+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : update: 
+2025-09-22T15:54:37.046+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : update: 
+2025-09-22T15:54:37.064+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : update: 
+2025-09-22T15:54:37.078+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : getById: 
+2025-09-22T15:54:37.088+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : getAll
+2025-09-22T15:54:37.095+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : create: 
+2025-09-22T15:54:37.106+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : create: 
+2025-09-22T15:54:37.114+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : getById: 
+2025-09-22T15:54:37.143+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : getAll
+2025-09-22T15:54:37.150+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : create: 
+2025-09-22T15:54:37.160+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : delete: 
+2025-09-22T15:54:37.165+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : delete: 
+2025-09-22T15:54:37.172+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : create: 
+2025-09-22T15:54:37.196+02:00  INFO 6820 --- [projectJPA] [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-09-22T15:54:37.197+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-09-22T15:54:37.200+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-09-22T15:54:37.250+02:00  INFO 6820 --- [projectJPA] [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-09-22T15:54:37.250+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-09-22T15:54:37.260+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-09-22T15:54:37.283+02:00  INFO 6820 --- [projectJPA] [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-09-22T15:54:37.283+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-09-22T15:54:37.295+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-09-22T15:54:37.321+02:00  INFO 6820 --- [projectJPA] [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-09-22T15:54:37.322+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-09-22T15:54:37.323+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-09-22T15:54:37.375+02:00  INFO 6820 --- [projectJPA] [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-09-22T15:54:37.376+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-09-22T15:54:37.377+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-09-22T15:54:37.429+02:00  INFO 6820 --- [projectJPA] [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-09-22T15:54:37.430+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-09-22T15:54:37.431+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-09-22T15:54:37.436+02:00  WARN 6820 --- [projectJPA] [main] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' is not supported]
+2025-09-22T15:54:37.462+02:00  INFO 6820 --- [projectJPA] [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-09-22T15:54:37.462+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-09-22T15:54:37.463+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-09-22T15:54:37.537+02:00  INFO 6820 --- [projectJPA] [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-09-22T15:54:37.541+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-09-22T15:54:37.542+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-09-22T15:54:37.588+02:00  INFO 6820 --- [projectJPA] [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-09-22T15:54:37.589+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-09-22T15:54:37.590+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-09-22T15:54:37.641+02:00  INFO 6820 --- [projectJPA] [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-09-22T15:54:37.647+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-09-22T15:54:37.656+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-09-22T15:54:37.688+02:00  INFO 6820 --- [projectJPA] [main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-09-22T15:54:37.690+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-09-22T15:54:37.691+02:00  INFO 6820 --- [projectJPA] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-09-22T15:54:37.695+02:00  WARN 6820 --- [projectJPA] [main] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' is not supported]
+2025-09-22T15:54:37.701+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : delete: 
+2025-09-22T15:54:37.717+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : getById: 
+2025-09-22T15:54:37.735+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : delete: 
+2025-09-22T15:54:37.743+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : update: 
+2025-09-22T15:54:37.750+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : create: 
+2025-09-22T15:54:37.757+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : create: 
+2025-09-22T15:54:37.777+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : getAll
+2025-09-22T15:54:37.823+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : getById: 
+2025-09-22T15:54:37.837+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : delete: 
+2025-09-22T15:54:37.848+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : create: 
+2025-09-22T15:54:37.857+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : update: 
+2025-09-22T15:54:37.910+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : getById: 
+2025-09-22T15:54:37.913+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : update: 
+2025-09-22T15:54:37.922+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : update: 
+2025-09-22T15:54:37.926+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.CategoryImpl   : getAll
+2025-09-22T15:54:37.932+02:00  INFO 6820 --- [projectJPA] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.betacom.books.be.userTest.UserImplTest]: UserImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-22T15:54:37.954+02:00  INFO 6820 --- [projectJPA] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.betacom.books.be.BoocksBackEndApplication for test class com.betacom.books.be.userTest.UserImplTest
+2025-09-22T15:54:37.967+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : check getAll consistency
+2025-09-22T15:54:37.971+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : getAll
+2025-09-22T15:54:38.358+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : getAll
+2025-09-22T15:54:38.390+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create user with wrong email
+2025-09-22T15:54:38.394+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=emailprova.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:38.404+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create user with wrong email
+2025-09-22T15:54:38.407+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=altraEmail, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:38.420+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create user with wrong email
+2025-09-22T15:54:38.421+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:38.446+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create user with wrong email
+2025-09-22T15:54:38.451+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=null, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:38.476+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update mixed fields -> rollback
+2025-09-22T15:54:38.481+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=mix.rollback@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:38.892+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: UserReq(id=1, email=valida@mail.com, password=null, firstName=   , lastName=null, birthDate=null, role=null)
+2025-09-22T15:54:38.960+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : getAll
+2025-09-22T15:54:38.994+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create user with invalid password
+2025-09-22T15:54:38.995+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=valid@example.com, password=null, firstName=Nome, lastName=Cognome, birthDate=null, role=null)
+2025-09-22T15:54:39.017+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create user with invalid password
+2025-09-22T15:54:39.023+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=valid@example.com, password=, firstName=Nome, lastName=Cognome, birthDate=null, role=null)
+2025-09-22T15:54:39.047+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create user with invalid password
+2025-09-22T15:54:39.050+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=valid@example.com, password=   , firstName=Nome, lastName=Cognome, birthDate=null, role=null)
+2025-09-22T15:54:39.079+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update role ok
+2025-09-22T15:54:39.080+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=role.ok@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:39.094+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: UserReq(id=2, email=null, password=null, firstName=null, lastName=null, birthDate=null, role=ADMIN)
+2025-09-22T15:54:39.122+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: utente aggiornato id=2
+2025-09-22T15:54:39.160+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : getAll
+2025-09-22T15:54:39.203+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update email duplicate
+2025-09-22T15:54:39.204+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=dupA@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:39.214+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=dupB@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:39.225+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: UserReq(id=4, email=dupA@ex.com, password=null, firstName=null, lastName=null, birthDate=null, role=null)
+2025-09-22T15:54:39.240+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : getAll
+2025-09-22T15:54:39.274+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create with invalid first name
+2025-09-22T15:54:39.275+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=valid@example.com, password=password, firstName=null, lastName=Cognome, birthDate=null, role=null)
+2025-09-22T15:54:39.290+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create with invalid first name
+2025-09-22T15:54:39.291+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=valid@example.com, password=password, firstName=, lastName=Cognome, birthDate=null, role=null)
+2025-09-22T15:54:39.304+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create with invalid first name
+2025-09-22T15:54:39.305+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=valid@example.com, password=password, firstName=   , lastName=Cognome, birthDate=null, role=null)
+2025-09-22T15:54:39.327+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : delete: UserReq(id=null, email=null, password=null, firstName=null, lastName=null, birthDate=null, role=null)
+2025-09-22T15:54:39.336+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update password blank
+2025-09-22T15:54:39.337+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=pwd.blank@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:39.345+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: UserReq(id=5, email=null, password=  , firstName=null, lastName=null, birthDate=null, role=null)
+2025-09-22T15:54:39.363+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : delete: UserReq(id=-1, email=null, password=null, firstName=null, lastName=null, birthDate=null, role=null)
+2025-09-22T15:54:39.378+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update email blank
+2025-09-22T15:54:39.380+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=email.blank@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:39.387+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: UserReq(id=6, email=   , password=null, firstName=null, lastName=null, birthDate=null, role=null)
+2025-09-22T15:54:39.407+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update birthDate ok
+2025-09-22T15:54:39.407+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=bd.ok@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:39.420+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: UserReq(id=7, email=null, password=null, firstName=null, lastName=null, birthDate=1995-05-15, role=null)
+2025-09-22T15:54:39.433+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: utente aggiornato id=7
+2025-09-22T15:54:39.441+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : getAll
+2025-09-22T15:54:39.500+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update password ok
+2025-09-22T15:54:39.504+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=pwd.ok2@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:39.515+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: UserReq(id=8, email=null, password=NuovaPassword123, firstName=null, lastName=null, birthDate=null, role=null)
+2025-09-22T15:54:39.525+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: utente aggiornato id=8
+2025-09-22T15:54:39.530+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : getAll
+2025-09-22T15:54:39.601+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update null request -> NPE
+2025-09-22T15:54:39.603+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: null
+2025-09-22T15:54:39.614+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create 
+2025-09-22T15:54:39.618+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=mail@esempio.com, password=Password123, firstName=Mario, lastName=Rossi, birthDate=2045-09-18, role=null)
+2025-09-22T15:54:39.628+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create 
+2025-09-22T15:54:39.629+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=mail@esempio.com, password=Password123, firstName=Mario, lastName=Rossi, birthDate=2030-01-01, role=null)
+2025-09-22T15:54:39.641+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update lastName ok
+2025-09-22T15:54:39.643+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=ln.ok@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:39.654+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: UserReq(id=9, email=null, password=null, firstName=null, lastName=Bianchi, birthDate=null, role=null)
+2025-09-22T15:54:39.661+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: utente aggiornato id=9
+2025-09-22T15:54:39.666+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : getAll
+2025-09-22T15:54:39.724+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create user
+2025-09-22T15:54:39.725+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=email@esempio.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:39.741+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update lastName blank
+2025-09-22T15:54:39.742+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=ln.blank@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:39.751+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: UserReq(id=11, email=null, password=null, firstName=null, lastName=   , birthDate=null, role=null)
+2025-09-22T15:54:39.764+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update birthDate future
+2025-09-22T15:54:39.765+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=bd.future@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:39.777+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: UserReq(id=12, email=null, password=null, firstName=null, lastName=null, birthDate=2025-09-23, role=null)
+2025-09-22T15:54:39.794+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update missing id
+2025-09-22T15:54:39.795+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: UserReq(id=null, email=a@b.com, password=null, firstName=null, lastName=null, birthDate=null, role=null)
+2025-09-22T15:54:39.805+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update email ok
+2025-09-22T15:54:39.807+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=update.ok@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:39.834+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: UserReq(id=13, email=nuova@mail.com, password=null, firstName=null, lastName=null, birthDate=null, role=null)
+2025-09-22T15:54:39.852+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: utente aggiornato id=13
+2025-09-22T15:54:39.857+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : getAll
+2025-09-22T15:54:39.955+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update email bad format
+2025-09-22T15:54:39.956+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=emailtest1@prova.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:39.964+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: UserReq(id=14, email=notanemail, password=null, firstName=null, lastName=null, birthDate=null, role=null)
+2025-09-22T15:54:39.981+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update email bad format
+2025-09-22T15:54:39.983+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=emailtest2@prova.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:39.992+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: UserReq(id=15, email=a@b, password=null, firstName=null, lastName=null, birthDate=null, role=null)
+2025-09-22T15:54:40.010+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update email bad format
+2025-09-22T15:54:40.010+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=emailtest3@prova.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:40.020+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: UserReq(id=16, email=user@domain, password=null, firstName=null, lastName=null, birthDate=null, role=null)
+2025-09-22T15:54:40.041+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update email bad format
+2025-09-22T15:54:40.043+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=emailtest4@prova.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:40.050+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: UserReq(id=17, email=user@domain., password=null, firstName=null, lastName=null, birthDate=null, role=null)
+2025-09-22T15:54:40.067+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update email bad format
+2025-09-22T15:54:40.068+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=emailtest5@prova.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:40.077+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: UserReq(id=18, email=user@.com, password=null, firstName=null, lastName=null, birthDate=null, role=null)
+2025-09-22T15:54:40.100+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update firstName blank
+2025-09-22T15:54:40.101+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=fn.blank@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:40.110+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: UserReq(id=19, email=null, password=null, firstName=   , lastName=null, birthDate=null, role=null)
+2025-09-22T15:54:40.127+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create user with invalid password
+2025-09-22T15:54:40.128+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=valid@example.com, password=password, firstName=Nome, lastName=Cognome, birthDate=null, role=null)
+2025-09-22T15:54:40.143+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create two user with same email
+2025-09-22T15:54:40.144+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=prova@esempio.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:40.154+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=prova@esempio.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:40.164+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update firstName ok
+2025-09-22T15:54:40.165+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=fn.ok@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:40.176+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: UserReq(id=21, email=null, password=null, firstName=Luigi, lastName=null, birthDate=null, role=null)
+2025-09-22T15:54:40.189+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: utente aggiornato id=21
+2025-09-22T15:54:40.193+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : getAll
+2025-09-22T15:54:40.346+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=email@delete.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:40.357+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : getAll
+2025-09-22T15:54:40.508+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : delete: UserReq(id=22, email=null, password=null, firstName=null, lastName=null, birthDate=null, role=null)
+2025-09-22T15:54:40.524+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : delete: utente cancellato id= 22
+2025-09-22T15:54:40.541+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : getAll
+2025-09-22T15:54:40.611+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update not found id
+2025-09-22T15:54:40.613+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: UserReq(id=-1, email=null, password=null, firstName=null, lastName=null, birthDate=null, role=null)
+2025-09-22T15:54:40.625+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create with invalid last name
+2025-09-22T15:54:40.628+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=valid@example.com, password=password, firstName=Nome, lastName=null, birthDate=null, role=null)
+2025-09-22T15:54:40.646+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create with invalid last name
+2025-09-22T15:54:40.647+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=valid@example.com, password=password, firstName=Nome, lastName=, birthDate=null, role=null)
+2025-09-22T15:54:40.664+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create with invalid last name
+2025-09-22T15:54:40.665+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=valid@example.com, password=password, firstName=Nome, lastName=   , birthDate=null, role=null)
+2025-09-22T15:54:40.793+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.userTest.UserControllerTest     : POST /rest/user/create - Success
+2025-09-22T15:54:40.796+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.userTest.UserControllerTest     : DELETE /rest/user/delete - Success
+2025-09-22T15:54:40.800+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.userTest.UserControllerTest     : POST /rest/user/create - Failure
+2025-09-22T15:54:40.806+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.userTest.UserControllerTest     : PUT /rest/user/update - Success
+2025-09-22T15:54:40.812+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.userTest.UserControllerTest     : GET /rest/user/getAll - Failure
+2025-09-22T15:54:40.820+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.userTest.UserControllerTest     : DELETE /rest/user/delete - Failure
+2025-09-22T15:54:40.824+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.userTest.UserControllerTest     : PUT /rest/user/update - Failure
+2025-09-22T15:54:40.828+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.userTest.UserControllerTest     : GET /rest/user/getAll - Empty
+2025-09-22T15:54:40.837+02:00  INFO 6820 --- [projectJPA] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.betacom.books.be.reviewTest.ReviewImplTest]: ReviewImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-22T15:54:40.841+02:00  INFO 6820 --- [projectJPA] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.betacom.books.be.BoocksBackEndApplication for test class com.betacom.books.be.reviewTest.ReviewImplTest
+2025-09-22T15:54:40.850+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : create: userId mancante
+2025-09-22T15:54:40.851+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : create: ReviewReq(id=null, bookId=20, userId=null, rating=4, title=null, body=null)
+2025-09-22T15:54:40.864+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : update: title blank
+2025-09-22T15:54:40.866+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : update : ReviewReq(id=201, bookId=null, userId=null, rating=null, title=   , body=null)
+2025-09-22T15:54:40.877+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : create: ok
+2025-09-22T15:54:40.879+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : create: ReviewReq(id=null, bookId=20, userId=10, rating=5, title=Titolo, body=Testo)
+2025-09-22T15:54:40.890+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : update: body ok
+2025-09-22T15:54:40.891+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : update : ReviewReq(id=204, bookId=null, userId=null, rating=null, title=null, body=Corpo aggiornato)
+2025-09-22T15:54:40.907+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : create: bookId mancante
+2025-09-22T15:54:40.907+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : create: ReviewReq(id=null, bookId=null, userId=10, rating=4, title=null, body=null)
+2025-09-22T15:54:40.915+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : create: user inesistente
+2025-09-22T15:54:40.917+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : create: ReviewReq(id=null, bookId=20, userId=10, rating=5, title=null, body=null)
+2025-09-22T15:54:40.927+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : update: campo valido poi titolo invalido -> rollback, nessun save
+2025-09-22T15:54:40.929+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : update : ReviewReq(id=205, bookId=null, userId=null, rating=4, title=   , body=null)
+2025-09-22T15:54:40.940+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : getAll: mapping entità -> DTO
+2025-09-22T15:54:40.950+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : update: review non trovata
+2025-09-22T15:54:40.952+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : update : ReviewReq(id=999, bookId=null, userId=null, rating=null, title=null, body=null)
+2025-09-22T15:54:40.963+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : update: title ok con trim
+2025-09-22T15:54:40.965+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : update : ReviewReq(id=203, bookId=null, userId=null, rating=null, title=  Nuovo Titolo  , body=null)
+2025-09-22T15:54:40.979+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : create: book inesistente
+2025-09-22T15:54:40.981+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : create: ReviewReq(id=null, bookId=20, userId=10, rating=4, title=null, body=null)
+2025-09-22T15:54:40.998+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : create: rating fuori range
+2025-09-22T15:54:40.999+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : create: ReviewReq(id=null, bookId=20, userId=10, rating=0, title=null, body=null)
+2025-09-22T15:54:41.008+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : create: rating fuori range
+2025-09-22T15:54:41.009+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : create: ReviewReq(id=null, bookId=20, userId=10, rating=6, title=null, body=null)
+2025-09-22T15:54:41.020+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : create: rating fuori range
+2025-09-22T15:54:41.021+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : create: ReviewReq(id=null, bookId=20, userId=10, rating=-1, title=null, body=null)
+2025-09-22T15:54:41.030+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : create: rating fuori range
+2025-09-22T15:54:41.031+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : create: ReviewReq(id=null, bookId=20, userId=10, rating=100, title=null, body=null)
+2025-09-22T15:54:41.040+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : delete: review non trovata
+2025-09-22T15:54:41.042+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : delete : ReviewReq(id=999, bookId=null, userId=null, rating=null, title=null, body=null)
+2025-09-22T15:54:41.051+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : delete: ok
+2025-09-22T15:54:41.054+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : delete : ReviewReq(id=111, bookId=null, userId=null, rating=null, title=null, body=null)
+2025-09-22T15:54:41.063+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : update: rating ok
+2025-09-22T15:54:41.064+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : update : ReviewReq(id=202, bookId=null, userId=null, rating=5, title=null, body=null)
+2025-09-22T15:54:41.082+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : update: rating fuori range
+2025-09-22T15:54:41.083+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : update : ReviewReq(id=200, bookId=null, userId=null, rating=0, title=null, body=null)
+2025-09-22T15:54:41.094+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : update: rating fuori range
+2025-09-22T15:54:41.095+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : update : ReviewReq(id=200, bookId=null, userId=null, rating=6, title=null, body=null)
+2025-09-22T15:54:41.105+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : update: rating fuori range
+2025-09-22T15:54:41.107+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : update : ReviewReq(id=200, bookId=null, userId=null, rating=-5, title=null, body=null)
+2025-09-22T15:54:41.116+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.reviewTest.ReviewImplTest   : create: rating mancante
+2025-09-22T15:54:41.117+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.ReviewImpl     : create: ReviewReq(id=null, bookId=20, userId=10, rating=null, title=null, body=null)
+2025-09-22T15:54:41.127+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.reviewTest.ReviewControllerTest  : POST /rest/review/create - Failure
+2025-09-22T15:54:41.142+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.reviewTest.ReviewControllerTest  : DELETE /rest/review/delete - Failure
+2025-09-22T15:54:41.146+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.reviewTest.ReviewControllerTest  : PUT /rest/review/update - Success
+2025-09-22T15:54:41.149+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.reviewTest.ReviewControllerTest  : PUT /rest/review/update - Failure
+2025-09-22T15:54:41.153+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.reviewTest.ReviewControllerTest  : DELETE /rest/review/delete - Success
+2025-09-22T15:54:41.159+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.reviewTest.ReviewControllerTest  : GET /rest/review/getAll - Failure
+2025-09-22T15:54:41.166+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.reviewTest.ReviewControllerTest  : GET /rest/review/getAll - Empty
+2025-09-22T15:54:41.213+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.AuthorImpl     : delete :AuthorReq(id=1, fullName=null, biography=null, birthDate=null, deathDate=null, coverImageUrl=null)
+2025-09-22T15:54:41.221+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.AuthorImpl     : create :AuthorReq(id=null, fullName=, biography=null, birthDate=null, deathDate=null, coverImageUrl=null)
+2025-09-22T15:54:41.230+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.AuthorImpl     : update :AuthorReq(id=1, fullName=Eric Arthur Blair, biography=Updated bio, birthDate=1903-06-25, deathDate=null, coverImageUrl=null)
+2025-09-22T15:54:41.238+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.AuthorImpl     : create :AuthorReq(id=null, fullName=J.K. Rowling, biography=British author, birthDate=null, deathDate=null, coverImageUrl=null)
+2025-09-22T15:54:41.243+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.AuthorImpl     : update :AuthorReq(id=999, fullName=null, biography=null, birthDate=null, deathDate=null, coverImageUrl=null)
+2025-09-22T15:54:41.247+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.AuthorImpl     : delete :AuthorReq(id=999, fullName=null, biography=null, birthDate=null, deathDate=null, coverImageUrl=null)
+2025-09-22T15:54:41.253+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.AuthorImpl     : delete :AuthorReq(id=1, fullName=null, biography=null, birthDate=null, deathDate=null, coverImageUrl=null)
+2025-09-22T15:54:41.580+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.AddressImpl    : update :AddressReq(id=999, street=null, city=null, region=null, cap=null, country=null, user=null)
+2025-09-22T15:54:41.584+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.AddressImpl    : create :AddressReq(id=null, street=null, city=null, region=null, cap=null, country=null, user=999)
+2025-09-22T15:54:41.591+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.AddressImpl    : update :AddressReq(id=1, street=null, city=null, region=null, cap=null, country=null, user=999)
+2025-09-22T15:54:41.599+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.AddressImpl    : update :AddressReq(id=1, street=New Street, city=null, region=null, cap=null, country=null, user=1)
+2025-09-22T15:54:41.603+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.AddressImpl    : create :AddressReq(id=null, street=Via Roma, city=Milan, region=null, cap=20100, country=Italy, user=1)
+2025-09-22T15:54:41.606+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.AddressImpl    : delete :AddressReq(id=1, street=null, city=null, region=null, cap=null, country=null, user=null)
+2025-09-22T15:54:41.811+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.AddressImpl    : delete :AddressReq(id=1, street=null, city=null, region=null, cap=null, country=null, user=null)
+2025-09-22T15:54:41.863+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.AddressImpl    : delete :AddressReq(id=999, street=null, city=null, region=null, cap=null, country=null, user=null)
+2025-09-22T15:54:42.012+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.bookTest.BookControllerTest     : Test Create Book - Success
+2025-09-22T15:54:42.014+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.controller.BookController   : CREATE: {req}
+2025-09-22T15:54:42.067+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.bookTest.BookControllerTest     : Test Create Book - Failure
+2025-09-22T15:54:42.073+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.controller.BookController   : CREATE: {req}
+2025-09-22T15:54:42.083+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.bookTest.BookControllerTest     : Test Update Book - Success
+2025-09-22T15:54:42.099+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.bookTest.BookControllerTest     : Test Update Book - Failure
+2025-09-22T15:54:42.122+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.bookTest.BookControllerTest     : Test Delete Book - Success
+2025-09-22T15:54:42.131+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.bookTest.BookControllerTest     : Test Delete Book - Failure
+2025-09-22T15:54:42.144+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.bookTest.BookControllerTest     : Test Get By Id - Success
+2025-09-22T15:54:42.151+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.bookTest.BookControllerTest     : Test Get By Id - Failure
+2025-09-22T15:54:42.160+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.bookTest.BookControllerTest     : Test Get All - Success
+2025-09-22T15:54:42.167+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.bookTest.BookControllerTest     : Test Get All - Failure
+2025-09-22T15:54:42.175+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.bookTest.BookControllerTest     : Test Get All - No Books Found
+2025-09-22T15:54:42.201+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : delete: 
+2025-09-22T15:54:42.227+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : update: 
+2025-09-22T15:54:42.257+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : update: 
+2025-09-22T15:54:42.267+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : update: 
+2025-09-22T15:54:42.277+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : getById: 
+2025-09-22T15:54:42.283+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : getAll
+2025-09-22T15:54:42.328+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : create: 
+2025-09-22T15:54:42.347+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : create: 
+2025-09-22T15:54:42.362+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : getById: 
+2025-09-22T15:54:42.372+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : getAll
+2025-09-22T15:54:42.378+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : create: 
+2025-09-22T15:54:42.383+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : delete: 
+2025-09-22T15:54:42.390+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : delete: 
+2025-09-22T15:54:42.395+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.BookImpl       : create: 
+2025-09-22T15:54:42.428+02:00  INFO 6820 --- [projectJPA] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.betacom.books.be.userTest.UserImplTest]: UserImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-22T15:54:42.434+02:00  INFO 6820 --- [projectJPA] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.betacom.books.be.BoocksBackEndApplication for test class com.betacom.books.be.userTest.UserImplTest
+2025-09-22T15:54:42.454+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : check getAll consistency
+2025-09-22T15:54:42.455+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : getAll
+2025-09-22T15:54:42.594+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : getAll
+2025-09-22T15:54:42.733+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create user with wrong email
+2025-09-22T15:54:42.734+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=emailprova.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:42.754+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create user with wrong email
+2025-09-22T15:54:42.757+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=altraEmail, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:42.806+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create user with wrong email
+2025-09-22T15:54:42.812+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:42.840+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create user with wrong email
+2025-09-22T15:54:42.843+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=null, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:42.938+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update mixed fields -> rollback
+2025-09-22T15:54:42.945+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=mix.rollback@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:42.971+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create user with invalid password
+2025-09-22T15:54:42.974+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=valid@example.com, password=null, firstName=Nome, lastName=Cognome, birthDate=null, role=null)
+2025-09-22T15:54:43.011+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create user with invalid password
+2025-09-22T15:54:43.016+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=valid@example.com, password=, firstName=Nome, lastName=Cognome, birthDate=null, role=null)
+2025-09-22T15:54:43.045+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create user with invalid password
+2025-09-22T15:54:43.049+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=valid@example.com, password=   , firstName=Nome, lastName=Cognome, birthDate=null, role=null)
+2025-09-22T15:54:43.079+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update role ok
+2025-09-22T15:54:43.081+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=role.ok@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:43.111+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update email duplicate
+2025-09-22T15:54:43.112+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=dupA@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:43.157+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create with invalid first name
+2025-09-22T15:54:43.174+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=valid@example.com, password=password, firstName=null, lastName=Cognome, birthDate=null, role=null)
+2025-09-22T15:54:43.217+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create with invalid first name
+2025-09-22T15:54:43.218+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=valid@example.com, password=password, firstName=, lastName=Cognome, birthDate=null, role=null)
+2025-09-22T15:54:43.276+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create with invalid first name
+2025-09-22T15:54:43.278+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=valid@example.com, password=password, firstName=   , lastName=Cognome, birthDate=null, role=null)
+2025-09-22T15:54:43.353+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : delete: UserReq(id=null, email=null, password=null, firstName=null, lastName=null, birthDate=null, role=null)
+2025-09-22T15:54:43.366+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update password blank
+2025-09-22T15:54:43.367+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=pwd.blank@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:43.396+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : delete: UserReq(id=-1, email=null, password=null, firstName=null, lastName=null, birthDate=null, role=null)
+2025-09-22T15:54:43.416+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update email blank
+2025-09-22T15:54:43.417+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=email.blank@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:43.439+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update birthDate ok
+2025-09-22T15:54:43.442+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=bd.ok@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:43.496+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update password ok
+2025-09-22T15:54:43.505+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=pwd.ok2@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:43.545+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update null request -> NPE
+2025-09-22T15:54:43.546+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: null
+2025-09-22T15:54:43.567+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create 
+2025-09-22T15:54:43.615+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=mail@esempio.com, password=Password123, firstName=Mario, lastName=Rossi, birthDate=2045-09-18, role=null)
+2025-09-22T15:54:43.632+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create 
+2025-09-22T15:54:43.634+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=mail@esempio.com, password=Password123, firstName=Mario, lastName=Rossi, birthDate=2030-01-01, role=null)
+2025-09-22T15:54:43.662+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update lastName ok
+2025-09-22T15:54:43.663+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=ln.ok@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:43.684+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create user
+2025-09-22T15:54:43.685+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=email@esempio.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:43.706+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update lastName blank
+2025-09-22T15:54:43.707+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=ln.blank@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:43.724+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update birthDate future
+2025-09-22T15:54:43.725+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=bd.future@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:43.744+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update missing id
+2025-09-22T15:54:43.748+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: UserReq(id=null, email=a@b.com, password=null, firstName=null, lastName=null, birthDate=null, role=null)
+2025-09-22T15:54:43.758+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update email ok
+2025-09-22T15:54:43.760+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=update.ok@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:43.780+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: UserReq(id=23, email=nuova@mail.com, password=null, firstName=null, lastName=null, birthDate=null, role=null)
+2025-09-22T15:54:43.944+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update email bad format
+2025-09-22T15:54:43.945+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=emailtest1@prova.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:43.967+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update email bad format
+2025-09-22T15:54:43.969+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=emailtest2@prova.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:44.034+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update email bad format
+2025-09-22T15:54:44.038+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=emailtest3@prova.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:44.065+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update email bad format
+2025-09-22T15:54:44.067+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=emailtest4@prova.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:44.093+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update email bad format
+2025-09-22T15:54:44.094+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=emailtest5@prova.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:44.114+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update firstName blank
+2025-09-22T15:54:44.117+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=fn.blank@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:44.132+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create user with invalid password
+2025-09-22T15:54:44.142+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=valid@example.com, password=password, firstName=Nome, lastName=Cognome, birthDate=null, role=null)
+2025-09-22T15:54:44.172+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create two user with same email
+2025-09-22T15:54:44.180+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=prova@esempio.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:44.226+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update firstName ok
+2025-09-22T15:54:44.230+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=fn.ok@ex.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:44.303+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=email@delete.com, password=password, firstName=Mario, lastName=Rossi, birthDate=2000-01-01, role=ADMIN)
+2025-09-22T15:54:44.313+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : getAll
+2025-09-22T15:54:44.528+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : delete: UserReq(id=24, email=null, password=null, firstName=null, lastName=null, birthDate=null, role=null)
+2025-09-22T15:54:44.538+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : delete: utente cancellato id= 24
+2025-09-22T15:54:44.545+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : getAll
+2025-09-22T15:54:44.675+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : update not found id
+2025-09-22T15:54:44.676+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : update: UserReq(id=-1, email=null, password=null, firstName=null, lastName=null, birthDate=null, role=null)
+2025-09-22T15:54:44.707+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create with invalid last name
+2025-09-22T15:54:44.708+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=valid@example.com, password=password, firstName=Nome, lastName=null, birthDate=null, role=null)
+2025-09-22T15:54:44.762+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create with invalid last name
+2025-09-22T15:54:44.764+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=valid@example.com, password=password, firstName=Nome, lastName=, birthDate=null, role=null)
+2025-09-22T15:54:44.776+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.books.be.userTest.UserImplTest       : test create with invalid last name
+2025-09-22T15:54:44.777+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.b.s.implementations.UserImpl       : create: UserReq(id=null, email=valid@example.com, password=password, firstName=Nome, lastName=   , birthDate=null, role=null)
+2025-09-22T15:54:44.801+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.userTest.UserControllerTest     : POST /rest/user/create - Success
+2025-09-22T15:54:44.807+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.userTest.UserControllerTest     : DELETE /rest/user/delete - Success
+2025-09-22T15:54:44.813+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.userTest.UserControllerTest     : POST /rest/user/create - Failure
+2025-09-22T15:54:44.818+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.userTest.UserControllerTest     : PUT /rest/user/update - Success
+2025-09-22T15:54:44.825+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.userTest.UserControllerTest     : GET /rest/user/getAll - Failure
+2025-09-22T15:54:44.830+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.userTest.UserControllerTest     : DELETE /rest/user/delete - Failure
+2025-09-22T15:54:44.834+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.userTest.UserControllerTest     : PUT /rest/user/update - Failure
+2025-09-22T15:54:44.843+02:00 DEBUG 6820 --- [projectJPA] [main] c.b.b.be.userTest.UserControllerTest     : GET /rest/user/getAll - Empty
+2025-09-22T15:54:46.940+02:00  INFO 6820 --- [projectJPA] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-22T15:54:46.956+02:00  INFO 6820 --- [projectJPA] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-22T15:54:46.982+02:00  INFO 6820 --- [projectJPA] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-22T15:54:47.008+02:00  INFO 6820 --- [projectJPA] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-22T15:54:47.010+02:00  INFO 6820 --- [projectJPA] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-09-22T15:54:47.045+02:00  INFO 6820 --- [projectJPA] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2025-09-22T15:54:47.055+02:00  INFO 6820 --- [projectJPA] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-22T15:54:47.061+02:00  INFO 6820 --- [projectJPA] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2025-09-22T15:54:47.070+02:00  INFO 6820 --- [projectJPA] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2025-09-22T15:54:47.076+02:00  INFO 6820 --- [projectJPA] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-22T15:54:47.077+02:00  INFO 6820 --- [projectJPA] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2025-09-22T15:54:47.522+02:00  INFO 6820 --- [projectJPA] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.

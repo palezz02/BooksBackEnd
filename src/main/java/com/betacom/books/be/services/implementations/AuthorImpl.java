@@ -23,101 +23,101 @@ import lombok.extern.log4j.Log4j2;
 @Service
 public class AuthorImpl extends UtilsAddressAuthor implements IAuthorService {
 
-	private final IAuthorRepository authorR;
 
-	public AuthorImpl(IAuthorRepository authorR) {
-		this.authorR = authorR;
-	}
+    private final IAuthorRepository authorR;
 
-	@Transactional(rollbackFor = Exception.class)
-	@Override
-	public Integer create(AuthorReq req) throws BooksException {
-		log.debug("create :" + req);
+    public AuthorImpl(IAuthorRepository authorR) {
+        this.authorR = authorR;
+    }
 
-		if (req.getFullName() == null || req.getFullName().isBlank()) {
-			throw new BooksException("Full name is required");
-		}
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public Integer create(AuthorReq req) throws BooksException {
+        log.debug("create :" + req);
 
-		Author author = new Author();
-		author.setFullName(req.getFullName());
-		author.setBiography(req.getBiography());
-		author.setBirthDate(req.getBirthDate());
-		author.setDeathDate(req.getDeathDate());
-		author.setCoverImageUrl(req.getCoverImageUrl());
+        if (req.getFullName() == null || req.getFullName().isBlank()) {
+            throw new BooksException("Full name is required");
+        }
 
-		return authorR.save(author).getId();
-	}
+        Author author = new Author();
+        author.setFullName(req.getFullName());
+        author.setBiography(req.getBiography());
+        author.setBirthDate(req.getBirthDate());
+        author.setDeathDate(req.getDeathDate());
+        author.setCoverImageUrl(req.getCoverImageUrl());
 
-	@Transactional(rollbackFor = Exception.class)
-	@Override
-	public void delete(AuthorReq req) throws BooksException {
-		log.debug("delete :" + req);
+        return authorR.save(author).getId();
+    }
 
-		Optional<Author> authorOpt = authorR.findById(req.getId());
-		if (authorOpt.isEmpty()) {
-			throw new BooksException("Author not found with id " + req.getId());
-		}
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void delete(AuthorReq req) throws BooksException {
+        log.debug("delete :" + req);
 
-		Author author = authorOpt.get();
+        Optional<Author> authorOpt = authorR.findById(req.getId());
+        if (authorOpt.isEmpty()) {
+            throw new BooksException("Author not found with id " + req.getId());
+        }
 
-		if (author.getBooks() != null && !author.getBooks().isEmpty()) {
-			throw new BooksException("Author has associated books and cannot be deleted");
-		}
+        Author author = authorOpt.get();
 
-		authorR.delete(author);
-	}
+        if (author.getBooks() != null && !author.getBooks().isEmpty()) {
+            throw new BooksException("Author has associated books and cannot be deleted");
+        }
 
-	@Transactional(rollbackFor = Exception.class)
-	@Override
-	public void update(AuthorReq req) throws BooksException {
-		log.debug("update :" + req);
+        authorR.delete(author);
+    }
 
-		Optional<Author> authorOpt = authorR.findById(req.getId());
-		if (authorOpt.isEmpty()) {
-			throw new BooksException("Author not found with id " + req.getId());
-		}
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void update(AuthorReq req) throws BooksException {
+        log.debug("update :" + req);
 
-		Author author = authorOpt.get();
+        Optional<Author> authorOpt = authorR.findById(req.getId());
+        if (authorOpt.isEmpty()) {
+            throw new BooksException("Author not found with id " + req.getId());
+        }
 
-		if (req.getFullName() != null) {
-			author.setFullName(req.getFullName());
-		}
-		if (req.getBiography() != null) {
-			author.setBiography(req.getBiography());
-		}
-		if (req.getBirthDate() != null) {
-			author.setBirthDate(req.getBirthDate());
-		}
-		if (req.getDeathDate() != null) {
-			author.setDeathDate(req.getDeathDate());
-		}
-		if (req.getCoverImageUrl() != null) {
-			author.setCoverImageUrl(req.getCoverImageUrl());
-		}
+        Author author = authorOpt.get();
 
-		authorR.save(author);
-	}
+        if (req.getFullName() != null) {
+            author.setFullName(req.getFullName());
+        }
+        if (req.getBiography() != null) {
+            author.setBiography(req.getBiography());
+        }
+        if (req.getBirthDate() != null) {
+            author.setBirthDate(req.getBirthDate());
+        }
+        if (req.getDeathDate() != null) {
+            author.setDeathDate(req.getDeathDate());
+        }
+        if (req.getCoverImageUrl() != null) {
+            author.setCoverImageUrl(req.getCoverImageUrl());
+        }
 
-	@Override
-	public List<AuthorDTO> getAll() {
-		List<Author> authors = authorR.findAll();
-		return buildListAuthorDTO(authors);
-	}
+        authorR.save(author);
+    }
+
+    @Override
+    public List<AuthorDTO> getAll() {
+        List<Author> authors = authorR.findAll();
+        return buildListAuthorDTO(authors);
+    }
+
 
 	@Override
 	public AuthorDTO getById(Integer id) throws BooksException {
-		log.debug("getById Author" + id);
-		Author a = authorR.findById(id).orElseThrow(() -> new BooksException("Author with " + id + "not found"));
-		return AuthorDTO.builder()
-                .id(a.getId())
-                .fullName(a.getFullName())
-                .biography(a.getBiography())
-                .birthDate(a.getBirthDate())
-                .deathDate(a.getDeathDate())
-                .coverImageUrl(a.getCoverImageUrl())
-                .books(a.getBooks() != null ? 
-                        a.getBooks().stream().map(Book::getId).collect(Collectors.toList()) : 
-                        Collections.emptyList())
-                .build();
+		log.debug("getById Author");
+		Optional<Author> author = authorR.findById(id);
+
+		if(author.isEmpty()) {
+			throw new BooksException("Author non trovato");
+		}
+
+		Author a = author.get();
+
+		return buildAuthorDTO(a);
+
 	}
 }
