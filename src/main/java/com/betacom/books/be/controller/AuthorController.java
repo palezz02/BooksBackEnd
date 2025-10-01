@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.betacom.books.be.dto.AuthorDTO;
+import com.betacom.books.be.dto.BookDTO;
 import com.betacom.books.be.requests.AuthorReq;
 import com.betacom.books.be.response.ResponseBase;
 import com.betacom.books.be.response.ResponseList;

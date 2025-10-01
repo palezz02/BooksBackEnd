@@ -16,5 +16,6 @@ public interface IBookService {
 	List<BookDTO> getAll();
 	List<BookDTO> getBestByReviews(Integer limit, Integer offset);
 	List<BookDTO> getBestByCategory(Integer limit, Integer offset);
+	List<BookDTO> getBooksOrderedByName();
 	List<ReviewBookDTO> getBookReviews(Integer BookId);
 }

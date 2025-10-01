@@ -233,6 +233,13 @@ public class BookImpl implements IBookService {
 	}
 	
 	@Override
+	public List<BookDTO> getBooksOrderedByName() {
+		log.debug("getBooksOrderedByName");
+		List<Book> books = bookRepository.getBooksOrderedByName();
+		return UtilsBook.toDTOList(books);
+}
+    
+@Override
 	public List<ReviewBookDTO> getBookReviews(Integer bookId) {
 		log.debug("getBookReviews");
 		return bookRepository.getBookReviews(bookId);

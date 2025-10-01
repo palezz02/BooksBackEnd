@@ -17,5 +17,7 @@ public interface IAuthorService {
 	AuthorDTO getById(Integer id) throws BooksException;
 
 	List<AuthorDTO> getAll();
+	
+	AuthorDTO getById(Integer id) throws BooksException;
 
 }
