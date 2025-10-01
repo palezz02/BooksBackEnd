@@ -33,4 +33,5 @@ public class BookDTO {
 	    private List<CategoryDTO> categories;
 	    private List<Integer> reviews;
 	    private Double averageRating;
+	    private Integer inventoryId;
 }

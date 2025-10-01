@@ -43,10 +43,10 @@ public class OrderController {
 	}
 	
 	@PostMapping("create")
-	public ResponseBase create(@RequestBody (required = true)  OrderReq req) {
-		ResponseBase r = new ResponseBase();
+	public ResponseObject<OrderDTO> create(@RequestBody (required = true)  OrderReq req) {
+		ResponseObject<OrderDTO> r = new ResponseObject<OrderDTO>();
 		try {
-			orderServices.create(req);
+			r.setDati(orderServices.create(req));
 			r.setRc(true);
 		} catch (Exception e) {
 			r.setRc(false);
