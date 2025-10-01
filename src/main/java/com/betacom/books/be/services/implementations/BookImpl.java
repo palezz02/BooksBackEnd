@@ -230,5 +230,12 @@ public class BookImpl implements IBookService {
 		List<Book> books = bookRepository.bestOfCategorys(limit,offset);
 		return UtilsBook.toDTOList(books);
 	}
+	
+	@Override
+	public List<BookDTO> getBooksOrderedByName() {
+		log.debug("getBooksOrderedByName");
+		List<Book> books = bookRepository.getBooksOrderedByName();
+		return UtilsBook.toDTOList(books);
+	}
 
 }

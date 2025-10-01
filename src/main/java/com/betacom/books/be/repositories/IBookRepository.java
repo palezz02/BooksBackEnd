@@ -20,4 +20,7 @@ public interface IBookRepository extends JpaRepository<Book, Integer> {
 
 	@Query(value = "SELECT * FROM top_books_by_rating(:limit, :offset)", nativeQuery = true)
 	List<Book> bestOfReviews(@Param("limit") Integer limit, @Param("offset") Integer offset);
+
+	@Query(value = "SELECT * FROM get_books_ordered()", nativeQuery = true)
+	List<Book> getBooksOrderedByName();
 }
