@@ -26,7 +26,7 @@ public class WebSecurityConfiguration {
         .addFilterBefore(new JwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
 		.authorizeHttpRequests((authorize) -> authorize
 			// Requests allowed for unauthenticated users (NONE)
-			.requestMatchers("/rest/user/create", "/rest/user/signin").permitAll()
+			.requestMatchers("/rest/user/create", "/rest/user/signin","/rest/user/getCartBooks").permitAll()
 			.requestMatchers(
 				// USER
 				"/rest/user/create",
@@ -38,6 +38,7 @@ public class WebSecurityConfiguration {
 				
 				"/rest/address/create",
 				"/rest/address/update",
+				"/rest/address/getById",
 				
 				"/rest/author/create",
 				"/rest/author/delete",
@@ -47,9 +48,12 @@ public class WebSecurityConfiguration {
 				"/rest/book/create",
 				"/rest/book/update",
 				"/rest/book/delete",
+				"/rest/book/getAll",
 				"/rest/book/getById",
-				"/rest/book/getBestByReviews/**",
+				"/rest/book/getBestByReviews",
 				"/rest/book/getBestByCategory",
+				"rest/book/getBookReviews",
+				"rest/book/getBooksOrderedByName",
 
 				"/rest/category/create",
 				"/rest/category/update",
@@ -79,11 +83,21 @@ public class WebSecurityConfiguration {
 
 				"/rest/review/create",
 				"/rest/review/update",
-				"/rest/review/delete"
-			).hasRole("CUSTOMER")
+				"/rest/review/delete",
+				
+				"/rest/payment/**"
+			).hasAnyRole("CUSTOMER", "ADMIN")
 			
 			// Requests allowed only for ADMIN role
-			.requestMatchers("/rest/**").hasRole("ADMIN")
+			.requestMatchers("/rest/user/**",
+					"/rest/address/**",
+					"/rest/author/**",
+					"/rest/book/**",
+					"/rest/category/**",
+					"/rest/inventory/**",
+					"/rest/order/**",
+					"/rest/orderitem/**",
+					"/rest/review/**").hasRole("ADMIN")
 			
 			// All other requests must be authenticated
 			.anyRequest().authenticated()
