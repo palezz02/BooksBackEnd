@@ -123,8 +123,9 @@ public class OrderItemImpl extends UtilsOrderItem implements IOrderItemServices 
 		if(inventory.isPresent()) {
 			o.setInventory(inventory.get());
 		}
-		
+		System.out.println(o.getQuantity() + " " + req.getQuantity());
 		if(o.getQuantity() != req.getQuantity()) {
+			log.debug("asdasd");
 			BigDecimal quantity = new BigDecimal(req.getQuantity());
 			BigDecimal subTotal = quantity.multiply(inventory.get().getPrice());
 			o.setQuantity(req.getQuantity());
@@ -140,6 +141,8 @@ public class OrderItemImpl extends UtilsOrderItem implements IOrderItemServices 
 		
 		if(orderItem.get().getQuantity() < req.getQuantity())
 			i.setStock(i.getStock() - (req.getQuantity()) - orderItem.get().getQuantity());
+		
+		
 		
 		invR.save(i);
 		

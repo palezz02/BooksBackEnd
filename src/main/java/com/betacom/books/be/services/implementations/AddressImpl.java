@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.betacom.books.be.dto.AddressDTO;
+import com.betacom.books.be.dto.OrderItemDTO;
 import com.betacom.books.be.exception.BooksException;
 import com.betacom.books.be.models.Address;
+import com.betacom.books.be.models.OrderItem;
 import com.betacom.books.be.models.User;
 import com.betacom.books.be.repositories.IAddressRepository;
 import com.betacom.books.be.repositories.IUserRepository;
@@ -115,4 +117,18 @@ public class AddressImpl extends UtilsAddressAuthor implements IAddressService {
         List<Address> lA = addressR.findAll();
         return buildListAddressDTO(lA);
     }
+
+    @Override
+	public AddressDTO getById(Integer id) throws BooksException {
+		log.debug("getById address");
+		Optional<Address> address = addressR.findById(id);
+		
+		if(address.isEmpty()) {
+			throw new BooksException("Address non trovato");
+		}
+		
+		Address a = address.get();
+		
+		return buildAddressDTO(a);
+	}
 }

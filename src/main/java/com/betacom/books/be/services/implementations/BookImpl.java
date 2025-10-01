@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.betacom.books.be.dto.BookDTO;
+import com.betacom.books.be.dto.ReviewBookDTO;
 import com.betacom.books.be.exception.BooksException;
 import com.betacom.books.be.models.Author;
 import com.betacom.books.be.models.Book;
@@ -229,6 +230,19 @@ public class BookImpl implements IBookService {
 		log.debug("getBestByCategory");
 		List<Book> books = bookRepository.bestOfCategorys(limit,offset);
 		return UtilsBook.toDTOList(books);
+	}
+	
+	@Override
+	public List<BookDTO> getBooksOrderedByName() {
+		log.debug("getBooksOrderedByName");
+		List<Book> books = bookRepository.getBooksOrderedByName();
+		return UtilsBook.toDTOList(books);
+}
+    
+@Override
+	public List<ReviewBookDTO> getBookReviews(Integer bookId) {
+		log.debug("getBookReviews");
+		return bookRepository.getBookReviews(bookId);
 	}
 
 }

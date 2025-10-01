@@ -1,7 +1,9 @@
 package com.betacom.books.be.services.implementations;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.betacom.books.be.dto.AuthorDTO;
 import com.betacom.books.be.exception.BooksException;
 import com.betacom.books.be.models.Author;
+import com.betacom.books.be.models.Book;
 import com.betacom.books.be.repositories.IAuthorRepository;
 import com.betacom.books.be.requests.AuthorReq;
 import com.betacom.books.be.services.interfaces.IAuthorService;
@@ -19,6 +22,7 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 @Service
 public class AuthorImpl extends UtilsAddressAuthor implements IAuthorService {
+
 
     private final IAuthorRepository authorR;
 
@@ -101,25 +105,19 @@ public class AuthorImpl extends UtilsAddressAuthor implements IAuthorService {
         return buildListAuthorDTO(authors);
     }
 
-//	@Override
-//	public AuthorDTO getById(Integer id) throws BooksException {
-//		log.debug("getById: ", id);
-//		Author author = authorR.findById(id)
-//				.orElseThrow(() -> new BooksException("Author with ID " + id + " not found."));
-//		return UtilsAddressAuthor.buildListAuthorDTO(author);
-//	}
 
 	@Override
 	public AuthorDTO getById(Integer id) throws BooksException {
-		log.debug("getById Publisher");
+		log.debug("getById Author");
 		Optional<Author> author = authorR.findById(id);
 
 		if(author.isEmpty()) {
-			throw new BooksException("Publisher non trovato");
+			throw new BooksException("Author non trovato");
 		}
 
 		Author a = author.get();
 
 		return buildAuthorDTO(a);
+
 	}
 }
