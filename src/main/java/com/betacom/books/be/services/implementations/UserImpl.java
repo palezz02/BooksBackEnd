@@ -13,6 +13,7 @@ import javax.swing.text.Utilities;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.betacom.books.be.configurations.JwtUtils;
 import com.betacom.books.be.dto.CartBookDTO;
 import com.betacom.books.be.dto.OrderDTO;
 import com.betacom.books.be.dto.SingInDTO;
@@ -190,18 +191,22 @@ public class UserImpl extends Utilities implements IUserServices {
 	
 	@Override
 	public SingInDTO signIn(SingInReq req) {
-		log.debug("signIn:" + req);
-		SingInDTO r = new SingInDTO();
-		Optional<User> u = userR.findByEmailAndPassword(req.getUser(), req.getPwd());
-		if (u.isEmpty()) {
-			r.setLogged(false);
-		} else {
-			r.setId(u.get().getId());
-			r.setLogged(true);
-			r.setRole(u.get().getRole().toString());
-		}
-		
-		return r;
+	    log.debug("signIn:" + req);
+	    SingInDTO r = new SingInDTO();
+	    Optional<User> u = userR.findByEmailAndPassword(req.getUser(), req.getPwd());
+	    if (u.isEmpty()) {
+	        r.setLogged(false);
+	    } else {
+	        User user = u.get();
+	        r.setId(user.getId());
+	        r.setLogged(true);
+	        r.setRole(user.getRole().toString());
+	        
+	        // GENERA IL TOKEN JWT!
+	        String token = JwtUtils.generateToken(user.getEmail(), List.of(user.getRole().toString()));
+	        r.setToken(token);
+	    }
+	    return r;
 	}
 
 	@Override
