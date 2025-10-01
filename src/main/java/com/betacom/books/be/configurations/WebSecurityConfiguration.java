@@ -50,7 +50,9 @@ public class WebSecurityConfiguration {
 				"/rest/book/delete",
 				"/rest/book/getAll",
 				"/rest/book/getById",
+
 				"/rest/book/getBestByReviews",
+				"/rest/book/getAll",
 				"/rest/book/getBestByCategory",
 				"rest/book/getBookReviews",
 				"rest/book/getBooksOrderedByName",
@@ -75,7 +77,8 @@ public class WebSecurityConfiguration {
 				"/rest/orderitem/update",
 				"/rest/orderitem/delete",
 				"/rest/orderitem/getById",
-
+				"/rest/order/getAll",
+				
 				"/rest/publisher/create",
 				"/rest/publisher/update",
 				"/rest/publisher/delete",
