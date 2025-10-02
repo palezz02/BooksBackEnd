@@ -17,6 +17,11 @@ public final class UtilsBook {
 	        return null;
 	    }
 
+	    final List<Review> bookReviews = book.getReviews() != null 
+                ? book.getReviews() 
+                : Collections.emptyList();
+
+	    
 	    return BookDTO.builder()
 	            .id(book.getId())
 	            .isbn(book.getIsbn())
@@ -36,13 +41,11 @@ public final class UtilsBook {
 	            .categories(book.getCategories() != null ?
 	                        UtilsCategory.toDTOList(book.getCategories()) :
 	                        Collections.emptyList())
-	            .reviews(book.getReviews() != null ?
-	                     book.getReviews().stream().map(Review::getId).collect(Collectors.toList()) :
-	                     Collections.emptyList())
+	            .reviews(bookReviews.stream().map(Review::getId).collect(Collectors.toList()))
 	            .averageRating(
-	                    book.getReviews().isEmpty()
+	                    bookReviews.isEmpty()
 	                        ? null
-	                        : book.getReviews().stream()
+	                        : bookReviews.stream()
 	                              .mapToInt(Review::getRating)
 	                              .average()
 	                              .orElse(0.0)
