@@ -18,12 +18,14 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 import java.util.Collections;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -190,4 +192,34 @@ public class UserControllerTest {
 		Assertions.assertThat(res.getRc()).isFalse();
 		
 	}
+	@Test
+    void getById_WhenServiceReturnsUser_ShouldReturnRcTrueAndData() throws BooksException {
+        IUserServices userService = Mockito.mock(IUserServices.class);
+        UserController controller = new UserController(userService);
+
+        UserDTO user = mock(UserDTO.class);
+        user.setId(1);
+        user.setEmail("test@test.com");
+
+        when(userService.getById(1)).thenReturn(user);
+
+        ResponseObject<UserDTO> result = controller.getById(1);
+
+        assertThat(result.getRc()).isTrue();
+        assertThat(result.getDati()).isEqualTo(user);
+        verify(userService).getById(1);
+    }
+
+    @Test
+    void getById_WhenServiceThrowsException_ShouldReturnRcFalseAndMsg() throws BooksException {
+        IUserServices userService = Mockito.mock(IUserServices.class);
+        UserController controller = new UserController(userService);
+
+        when(userService.getById(99)).thenThrow(new RuntimeException("User not found"));
+
+        ResponseObject<UserDTO> result = controller.getById(99);
+
+        assertThat(result.getRc()).isFalse();
+        assertThat(result.getMsg()).isEqualTo("User not found");
+    }
 }
