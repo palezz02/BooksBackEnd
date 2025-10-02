@@ -239,7 +239,7 @@ public class BookImpl implements IBookService {
 		return UtilsBook.toDTOList(books);
 }
     
-@Override
+	@Override
 	public List<ReviewBookDTO> getBookReviews(Integer bookId) {
 		log.debug("getBookReviews");
 		return bookRepository.getBookReviews(bookId);

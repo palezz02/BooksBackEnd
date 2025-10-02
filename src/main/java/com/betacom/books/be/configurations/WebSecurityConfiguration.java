@@ -26,7 +26,7 @@ public class WebSecurityConfiguration {
         .addFilterBefore(new JwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
 		.authorizeHttpRequests((authorize) -> authorize
 			// Requests allowed for unauthenticated users (NONE)
-			.requestMatchers("/rest/user/create", "/rest/user/signin","/rest/user/getCartBooks").permitAll()
+			.requestMatchers("swagger-ui/**","/v3/**","/rest/**","/rest/user/create", "/rest/user/signin","/rest/user/getCartBooks").permitAll()
 			.requestMatchers(
 				// USER
 				"/rest/user/create",
@@ -44,10 +44,10 @@ public class WebSecurityConfiguration {
 				"/rest/author/delete",
 				"/rest/author/update",
 				"/rest/author/getById",
+				"/rest/author/listAll",
 				
 				"/rest/book/create",
 				"/rest/book/update",
-				"/rest/book/delete",
 				"/rest/book/getAll",
 				"/rest/book/getById",
 
@@ -61,6 +61,7 @@ public class WebSecurityConfiguration {
 				"/rest/category/update",
 				"/rest/category/delete",
 				"/rest/category/getById",
+				"rest/category/getAll",
 				
 				"/rest/inventory/create",
 				"/rest/inventory/update",
@@ -89,7 +90,7 @@ public class WebSecurityConfiguration {
 				"/rest/review/delete",
 				
 				"/rest/payment/**"
-			).hasAnyRole("CUSTOMER", "ADMIN")
+			).hasRole("CUSTOMER")
 			
 			// Requests allowed only for ADMIN role
 			.requestMatchers("/rest/user/**",

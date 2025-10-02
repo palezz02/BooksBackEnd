@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.betacom.books.be.dto.BookDTO;
 import com.betacom.books.be.dto.ReviewBookDTO;
 import com.betacom.books.be.models.Book;
 
@@ -15,6 +16,9 @@ import com.betacom.books.be.models.Book;
 public interface IBookRepository extends JpaRepository<Book, Integer> {
 
 	Optional<Book> findByIsbn(String isbn);
+	
+	@Query(value = "SELECT * FROM get_by_id_book(:book_id_in)", nativeQuery = true)
+	Optional<Book> findById(@Param("book_id_in") Integer id);
 
 	@Query(value = "SELECT * FROM top_books_per_category(:limit, :offset)", nativeQuery = true)
 	List<Book> bestOfCategorys(@Param("limit") Integer limit, @Param("offset") Integer offset);
