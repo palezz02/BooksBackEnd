@@ -16,7 +16,6 @@ import lombok.Setter;
 @Setter
 @Builder
 public class BookDTO {
-
 	private Integer id;
     private String isbn;
     private String title;
