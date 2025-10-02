@@ -12,10 +12,11 @@ public class JwtUtils {
     private static final SecretKey KEY = Keys.hmacShaKeyFor(SECRET.getBytes());
     private static final long EXPIRATION = 1000 * 60 * 60 * 24; // 24h
 
-    public static String generateToken(String username, List<String> roles) {
+    public static String generateToken(String username, List<String> roles,Integer userId) {
         return Jwts.builder()
             .setSubject(username)
             .claim("roles", roles)
+            .claim("userId", userId)
             .setIssuedAt(new Date())
             .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION))
             .signWith(KEY)

@@ -203,7 +203,7 @@ public class UserImpl extends Utilities implements IUserServices {
 	        r.setRole(user.getRole().toString());
 	        
 	        // GENERA IL TOKEN JWT!
-	        String token = JwtUtils.generateToken(user.getEmail(), List.of(user.getRole().toString()));
+	        String token = JwtUtils.generateToken(user.getEmail(), List.of(user.getRole().toString()), user.getId());
 	        r.setToken(token);
 	    }
 	    return r;
