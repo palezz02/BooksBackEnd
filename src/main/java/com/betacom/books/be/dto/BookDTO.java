@@ -31,7 +31,7 @@ public class BookDTO {
     private Integer publisherId;
     private String publisherName;
     private String publisherDescription;
-    private List<Integer> authors;
+    private List<AuthorDTO> authors;
     private List<CategoryDTO> categories;
     private List<Integer> reviews;
     private Double averageRating;

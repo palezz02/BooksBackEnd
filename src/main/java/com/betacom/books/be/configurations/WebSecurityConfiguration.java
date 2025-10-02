@@ -26,7 +26,7 @@ public class WebSecurityConfiguration {
         .addFilterBefore(new JwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
 		.authorizeHttpRequests((authorize) -> authorize
 			// Requests allowed for unauthenticated users (NONE)
-			.requestMatchers("/rest/**","/rest/user/create", "/rest/user/signin","/rest/user/getCartBooks").permitAll()
+			.requestMatchers("swagger-ui/**","/v3/**","/rest/**","/rest/user/create", "/rest/user/signin","/rest/user/getCartBooks").permitAll()
 			.requestMatchers(
 				// USER
 				"/rest/user/create",

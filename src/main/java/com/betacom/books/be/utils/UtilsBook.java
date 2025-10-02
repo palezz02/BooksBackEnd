@@ -73,8 +73,8 @@ public final class UtilsBook {
 	    	    .publisherName(book.getPublisher() != null ? book.getPublisher().getName() : null)
 	    	    .publisherDescription(book.getPublisher() != null ? book.getPublisher().getDescription() : null)
 	    	    .authors(book.getAuthors() != null ?
-	                     book.getAuthors().stream().map(Author::getId).collect(Collectors.toList()) :
-	                     Collections.emptyList())
+                        UtilsAddressAuthor.buildListAuthorDTO(book.getAuthors()) :
+                        Collections.emptyList())
 	    	    .categories(book.getCategories() != null ?
                         UtilsCategory.toDTOList(book.getCategories()) :
                         Collections.emptyList())
