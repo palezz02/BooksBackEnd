@@ -1,5 +1,6 @@
 package com.betacom.books.be.authorTest;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -7,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.Collections;
@@ -19,9 +22,11 @@ import org.mockito.MockitoAnnotations;
 
 import com.betacom.books.be.controller.AuthorController;
 import com.betacom.books.be.dto.AuthorDTO;
+import com.betacom.books.be.exception.BooksException;
 import com.betacom.books.be.requests.AuthorReq;
 import com.betacom.books.be.response.ResponseBase;
 import com.betacom.books.be.response.ResponseList;
+import com.betacom.books.be.response.ResponseObject;
 import com.betacom.books.be.services.interfaces.IAuthorService;
 
 public class AuthorControllerTest {
@@ -123,5 +128,36 @@ public class AuthorControllerTest {
 
         assertFalse(response.getRc());
         assertEquals("Author not found", response.getMsg());
+    }
+    
+    @Test
+    void getById_WhenServiceReturnsAuthor_ShouldReturnRcTrueAndData() throws BooksException {
+        IAuthorService service = mock(IAuthorService.class);
+        AuthorController controller = new AuthorController(service);
+
+        AuthorDTO author = mock(AuthorDTO.class);
+        author.setId(7);
+        author.setFullName("George Orwell");
+
+        when(service.getById(7)).thenReturn(author);
+
+        ResponseObject<AuthorDTO> result = controller.getById(7);
+
+        assertThat(result.getRc()).isTrue();
+        assertThat(result.getDati()).isEqualTo(author);
+        verify(service).getById(7);
+    }
+
+    @Test
+    void getById_WhenServiceThrowsException_ShouldReturnRcFalseAndMsg() throws BooksException {
+        IAuthorService service = mock(IAuthorService.class);
+        AuthorController controller = new AuthorController(service);
+
+        when(service.getById(99)).thenThrow(new RuntimeException("Author not found"));
+
+        ResponseObject<AuthorDTO> result = controller.getById(99);
+
+        assertThat(result.getRc()).isFalse();
+        assertThat(result.getMsg()).isEqualTo("Author not found");
     }
 }

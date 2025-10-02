@@ -6,12 +6,23 @@ import org.junit.platform.suite.api.Suite;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.betacom.books.be.OrderItem.OrderItemControllerTest;
+import com.betacom.books.be.OrderItem.OrderItemServiceTest;
 import com.betacom.books.be.Publisher.PublisherControllerTest;
 import com.betacom.books.be.Publisher.PublisherServiceTest;
+import com.betacom.books.be.addressTest.AddressControllerTest;
+import com.betacom.books.be.addressTest.AddressServiceTest;
+import com.betacom.books.be.authorTest.AuthorControllerTest;
+import com.betacom.books.be.authorTest.AuthorServiceTest;
 import com.betacom.books.be.bookTest.BookControllerTest;
 import com.betacom.books.be.bookTest.BookServiceTest;
 import com.betacom.books.be.categoryTest.CategoryControllerTest;
 import com.betacom.books.be.categoryTest.CategoryServiceTest;
+import com.betacom.books.be.inventoryTest.InventoryControllerTest;
+import com.betacom.books.be.inventoryTest.InventoryServiceTest;
+import com.betacom.books.be.orderTest.OrderControllerTest;
+import com.betacom.books.be.orderTest.OrderServiceTest;
+import com.betacom.books.be.paymentTests.PaymentControllerTest;
+import com.betacom.books.be.paymentTests.PaymentServiceTest;
 import com.betacom.books.be.reviewTest.ReviewControllerTest;
 import com.betacom.books.be.reviewTest.ReviewImplTest;
 import com.betacom.books.be.userTest.UserControllerTest;
@@ -25,12 +36,25 @@ import com.betacom.books.be.userTest.UserImplTest;
 	CategoryControllerTest.class,
 	CategoryServiceTest.class,
 	OrderItemControllerTest.class,
+	OrderItemServiceTest.class,
 	PublisherControllerTest.class,
 	PublisherServiceTest.class,
 	UserImplTest.class,
 	UserControllerTest.class,
 	ReviewImplTest.class,
-	ReviewControllerTest.class
+	ReviewControllerTest.class,
+	AddressControllerTest.class,
+	AddressServiceTest.class,
+	AuthorControllerTest.class,
+	AuthorServiceTest.class,
+	InventoryControllerTest.class,
+	InventoryServiceTest.class,
+	OrderControllerTest.class,
+	OrderServiceTest.class,
+	PaymentControllerTest.class,
+	PaymentServiceTest.class,
+	UserControllerTest.class,
+	UserImplTest.class
 	})
 
 @SpringBootTest

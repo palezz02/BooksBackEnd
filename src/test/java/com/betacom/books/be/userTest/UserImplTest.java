@@ -1,6 +1,12 @@
 package com.betacom.books.be.userTest;
 
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer;
@@ -14,10 +20,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import com.betacom.books.be.dto.CartBookDTO;
+import com.betacom.books.be.dto.SingInDTO;
 import com.betacom.books.be.dto.UserDTO;
 import com.betacom.books.be.exception.BooksException;
+import com.betacom.books.be.models.User;
 import com.betacom.books.be.repositories.IUserRepository;
+import com.betacom.books.be.requests.SingInReq;
 import com.betacom.books.be.requests.UserReq;
+import com.betacom.books.be.services.implementations.UserImpl;
 import com.betacom.books.be.services.interfaces.IUserServices;
 import com.betacom.books.be.utils.Roles;
 
@@ -237,7 +248,7 @@ public class UserImplTest {
 		Assertions.assertThatThrownBy(() -> userS.update(req)).isInstanceOf(BooksException.class)
 				.hasMessage("Utente non trovato");
 	}
-	
+
 	@Test
 	void updateEmailOk() throws BooksException {
 		log.debug("update email ok");
@@ -249,9 +260,7 @@ public class UserImplTest {
 
 		userS.update(up);
 
-		UserDTO after = userS.getAll().stream()
-				.filter(x -> x.getId().equals(u.getId()))
-				.findFirst().orElseThrow();
+		UserDTO after = userS.getAll().stream().filter(x -> x.getId().equals(u.getId())).findFirst().orElseThrow();
 
 		Assertions.assertThat(after.getEmail()).isEqualTo("nuova@mail.com");
 	}
@@ -265,19 +274,13 @@ public class UserImplTest {
 		up.setId(u.getId());
 		up.setEmail("   ");
 
-		Assertions.assertThatThrownBy(() -> userS.update(up))
-			.isInstanceOf(BooksException.class)
-			.hasMessage("Email non valida");
+		Assertions.assertThatThrownBy(() -> userS.update(up)).isInstanceOf(BooksException.class)
+				.hasMessage("Email non valida");
 	}
 
 	@ParameterizedTest
-	@CsvSource({
-		"notanemail, emailtest1@prova.com",
-		"a@b, emailtest2@prova.com",
-		"user@domain,emailtest3@prova.com",
-		"user@domain.,emailtest4@prova.com",
-		"user@.com,emailtest5@prova.com"
-	})
+	@CsvSource({ "notanemail, emailtest1@prova.com", "a@b, emailtest2@prova.com", "user@domain,emailtest3@prova.com",
+			"user@domain.,emailtest4@prova.com", "user@.com,emailtest5@prova.com" })
 	void updateEmailBadFormatThrows(String bad, String emailTest) throws BooksException {
 		log.debug("update email bad format");
 		UserDTO u = userS.create(buildNewUser(emailTest));
@@ -286,8 +289,7 @@ public class UserImplTest {
 		up.setId(u.getId());
 		up.setEmail(bad);
 
-		Assertions.assertThatThrownBy(() -> userS.update(up))
-			.isInstanceOf(BooksException.class);
+		Assertions.assertThatThrownBy(() -> userS.update(up)).isInstanceOf(BooksException.class);
 	}
 
 	@Test
@@ -300,13 +302,10 @@ public class UserImplTest {
 		up.setId(b.getId());
 		up.setEmail("dupA@ex.com");
 
-		Assertions.assertThatThrownBy(() -> userS.update(up))
-			.isInstanceOf(BooksException.class)
-			.hasMessage("Mail già presente");
+		Assertions.assertThatThrownBy(() -> userS.update(up)).isInstanceOf(BooksException.class)
+				.hasMessage("Mail già presente");
 
-		UserDTO afterB = userS.getAll().stream()
-				.filter(x -> x.getId().equals(b.getId()))
-				.findFirst().orElseThrow();
+		UserDTO afterB = userS.getAll().stream().filter(x -> x.getId().equals(b.getId())).findFirst().orElseThrow();
 		Assertions.assertThat(afterB.getEmail()).isEqualTo("dupB@ex.com");
 	}
 
@@ -319,9 +318,8 @@ public class UserImplTest {
 		up.setId(u.getId());
 		up.setPassword("  ");
 
-		Assertions.assertThatThrownBy(() -> userS.update(up))
-			.isInstanceOf(BooksException.class)
-			.hasMessage("Password non valida");
+		Assertions.assertThatThrownBy(() -> userS.update(up)).isInstanceOf(BooksException.class)
+				.hasMessage("Password non valida");
 	}
 
 	@Test
@@ -333,9 +331,8 @@ public class UserImplTest {
 		up.setId(u.getId());
 		up.setFirstName("   ");
 
-		Assertions.assertThatThrownBy(() -> userS.update(up))
-			.isInstanceOf(BooksException.class)
-			.hasMessage("Nome utente non valido");
+		Assertions.assertThatThrownBy(() -> userS.update(up)).isInstanceOf(BooksException.class)
+				.hasMessage("Nome utente non valido");
 	}
 
 	@Test
@@ -347,9 +344,8 @@ public class UserImplTest {
 		up.setId(u.getId());
 		up.setLastName("   ");
 
-		Assertions.assertThatThrownBy(() -> userS.update(up))
-			.isInstanceOf(BooksException.class)
-			.hasMessage("Cognome utente non valido");
+		Assertions.assertThatThrownBy(() -> userS.update(up)).isInstanceOf(BooksException.class)
+				.hasMessage("Cognome utente non valido");
 	}
 
 	@Test
@@ -361,9 +357,8 @@ public class UserImplTest {
 		up.setId(u.getId());
 		up.setBirthDate(LocalDate.now().plusDays(1));
 
-		Assertions.assertThatThrownBy(() -> userS.update(up))
-			.isInstanceOf(BooksException.class)
-			.hasMessage("Data di nascita inserita non valida");
+		Assertions.assertThatThrownBy(() -> userS.update(up)).isInstanceOf(BooksException.class)
+				.hasMessage("Data di nascita inserita non valida");
 	}
 
 	@Test
@@ -377,9 +372,7 @@ public class UserImplTest {
 
 		userS.update(up);
 
-		UserDTO after = userS.getAll().stream()
-				.filter(x -> x.getId().equals(u.getId()))
-				.findFirst().orElseThrow();
+		UserDTO after = userS.getAll().stream().filter(x -> x.getId().equals(u.getId())).findFirst().orElseThrow();
 
 		Assertions.assertThat(after.getRole()).isEqualTo(Roles.ADMIN);
 	}
@@ -396,18 +389,15 @@ public class UserImplTest {
 		up.setEmail("valida@mail.com");
 		up.setFirstName("   ");
 
-		Assertions.assertThatThrownBy(() -> userS.update(up))
-			.isInstanceOf(BooksException.class)
-			.hasMessage("Nome utente non valido");
+		Assertions.assertThatThrownBy(() -> userS.update(up)).isInstanceOf(BooksException.class)
+				.hasMessage("Nome utente non valido");
 
-		UserDTO after = userS.getAll().stream()
-				.filter(x -> x.getId().equals(u.getId()))
-				.findFirst().orElseThrow();
+		UserDTO after = userS.getAll().stream().filter(x -> x.getId().equals(u.getId())).findFirst().orElseThrow();
 
 		Assertions.assertThat(after.getEmail()).isEqualTo(originalEmail);
 		Assertions.assertThat(after.getFirstName()).isEqualTo("Mario");
 	}
-	
+
 	@Test
 	void updatePasswordOk() throws BooksException {
 		log.debug("update password ok");
@@ -419,9 +409,7 @@ public class UserImplTest {
 
 		userS.update(up);
 
-		UserDTO after = userS.getAll().stream()
-				.filter(x -> x.getId().equals(u.getId()))
-				.findFirst().orElseThrow();
+		UserDTO after = userS.getAll().stream().filter(x -> x.getId().equals(u.getId())).findFirst().orElseThrow();
 
 		Assertions.assertThat(after.getId()).isEqualTo(u.getId());
 	}
@@ -437,9 +425,7 @@ public class UserImplTest {
 
 		userS.update(up);
 
-		UserDTO after = userS.getAll().stream()
-				.filter(x -> x.getId().equals(u.getId()))
-				.findFirst().orElseThrow();
+		UserDTO after = userS.getAll().stream().filter(x -> x.getId().equals(u.getId())).findFirst().orElseThrow();
 
 		Assertions.assertThat(after.getFirstName()).isEqualTo("Luigi");
 	}
@@ -455,9 +441,7 @@ public class UserImplTest {
 
 		userS.update(up);
 
-		UserDTO after = userS.getAll().stream()
-				.filter(x -> x.getId().equals(u.getId()))
-				.findFirst().orElseThrow();
+		UserDTO after = userS.getAll().stream().filter(x -> x.getId().equals(u.getId())).findFirst().orElseThrow();
 
 		Assertions.assertThat(after.getLastName()).isEqualTo("Bianchi");
 	}
@@ -473,29 +457,101 @@ public class UserImplTest {
 
 		userS.update(up);
 
-		UserDTO after = userS.getAll().stream()
-				.filter(x -> x.getId().equals(u.getId()))
-				.findFirst().orElseThrow();
+		UserDTO after = userS.getAll().stream().filter(x -> x.getId().equals(u.getId())).findFirst().orElseThrow();
 
 		Assertions.assertThat(after.getBirthDate()).isEqualTo(LocalDate.of(1995, 5, 15));
 	}
-	
+
 	@Test
 	void getByIdUser() throws BooksException {
 		log.debug("Test Impl. getById User");
 		Integer id = 1;
-		
+
 		Assertions.assertThat(userS.getById(id)).isInstanceOf(UserDTO.class);
-		
+
 	}
-	
+
 	@Test
 	void getByIdUserError() throws BooksException {
 		log.debug("Test Impl. getByIdError User");
 		Integer id = -1;
-		
-		Assertions.assertThatThrownBy(() ->userS.getById(id)).isInstanceOf(BooksException.class);
-		
+
+		Assertions.assertThatThrownBy(() -> userS.getById(id)).isInstanceOf(BooksException.class);
+
 	}
 
+	@Test
+	void signIn_WithInvalidCredentials_ReturnsLoggedFalse() {
+		IUserRepository repo = Mockito.mock(IUserRepository.class);
+		UserImpl service = new UserImpl(repo);
+
+		SingInReq req = new SingInReq();
+		req.setUser("notfound@example.com");
+		req.setPwd("wrong");
+
+		when(repo.findByEmailAndPassword(req.getUser(), req.getPwd())).thenReturn(Optional.empty());
+
+		SingInDTO result = service.signIn(req);
+
+		Assertions.assertThat(result.getToken()).isNull();
+	}
+
+	@Test
+	void signIn_WithValidCredentials_ReturnsLoggedTrueAndToken() {
+		IUserRepository repo = Mockito.mock(IUserRepository.class);
+		UserImpl service = new UserImpl(repo);
+
+		User u = new User();
+		u.setId(123);
+		u.setEmail("valid@example.com");
+		u.setPassword("secret");
+		u.setRole(Roles.ADMIN);
+
+		SingInReq req = new SingInReq();
+		req.setUser(u.getEmail());
+		req.setPwd(u.getPassword());
+
+		when(repo.findByEmailAndPassword(req.getUser(), req.getPwd())).thenReturn(Optional.of(u));
+
+		SingInDTO result = service.signIn(req);
+
+		Assertions.assertThat(result.getId()).isEqualTo(123);
+		Assertions.assertThat(result.getRole()).isEqualTo("ADMIN");
+		Assertions.assertThat(result.getToken()).isNotBlank(); // il token JWT deve essere generato
+	}
+
+	@Test
+	void getCartBooks_WhenRepositoryReturnsEmpty_ReturnsEmptyList() {
+		IUserRepository repo = Mockito.mock(IUserRepository.class);
+		UserImpl service = new UserImpl(repo);
+
+		Integer userId = 1;
+		when(repo.getCartBooks(userId)).thenReturn(new ArrayList<>());
+
+		List<CartBookDTO> result = service.getCartBooks(userId);
+
+		Assertions.assertThat(result).isEmpty();
+		verify(repo).getCartBooks(userId);
+	}
+
+	@Test
+	void getCartBooks_WhenRepositoryReturnsBooks_ReturnsSameList() {
+		IUserRepository repo = Mockito.mock(IUserRepository.class);
+		UserImpl service = new UserImpl(repo);
+
+		Integer userId = 1;
+		CartBookDTO dto = new CartBookDTO();
+		dto.setBookId(10);
+		dto.setQuantity(2);
+		List<CartBookDTO> cart = List.of(dto);
+
+		when(repo.getCartBooks(userId)).thenReturn(cart);
+
+		List<CartBookDTO> result = service.getCartBooks(userId);
+
+		Assertions.assertThat(result).hasSize(1);
+		Assertions.assertThat(result.get(0).getBookId()).isEqualTo(10);
+		Assertions.assertThat(result.get(0).getQuantity()).isEqualTo(2);
+		verify(repo).getCartBooks(userId);
+	}
 }
